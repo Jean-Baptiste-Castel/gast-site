@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  activePage?: string;
+}
+
+const { title, activePage = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} - Gast Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <img src="/gast-logo-white.png" alt="Gast">
+    </a>
+    <div class="nav-links">
+      <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+    </div>
+  </nav>
+
+  <slot />
+
+  <footer class="footer">
+    <span class="footer-copyright">&copy; 2026 Gast Studio. Singel 260, Amsterdam.</span>
+    <a href="https://instagram.com/gast.studio" target="_blank" rel="noopener">Instagram</a>
+  </footer>
+</div>
+
+</body>
+</html>

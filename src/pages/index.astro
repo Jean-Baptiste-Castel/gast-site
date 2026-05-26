@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Home">
+  <main class="home">
+    <section class="hero">
+      <h1>Creative studio<br>for CGI & motion.</h1>
+      <p>Based in Amsterdam.</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .home {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--page-pad);
+  }
+  .hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--headline);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--body);
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 32px;
+    }
+  }
+</style>
