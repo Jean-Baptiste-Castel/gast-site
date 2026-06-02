@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+
+// ── Asset hosts ──
+// NOTE: most stills still point at the Squarespace CDN during migration.
+// Re-host them to Cloudinary (like the videos + V2 stills below) before the
+// Squarespace site is taken down. See README "Migration Plan".
+const SQ = 'https://images.squarespace-cdn.com/content/v1/6397a67a7842513d84ffeded/';
+const CL = 'https://res.cloudinary.com/dvyflhlls/';
+
+const sqImg = (u: string, w: number) => `${SQ}${u}?format=${w}w`;
+const sqSet = (u: string) => [500, 1000, 1500, 2500].map((w) => `${sqImg(u, w)} ${w}w`).join(', ');
+const clImg = (id: string, w: number) => `${CL}image/upload/f_auto,q_auto,w_${w}/${id}`;
+const clSet = (id: string) => [600, 1000, 1600, 2000].map((w) => `${clImg(id, w)} ${w}w`).join(', ');
+const clVid = (id: string) => `${CL}video/upload/q_auto/f_auto/${id}.mp4`;
+const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_700/${id}.jpg`;
+
+type Item =
+  | { t: 'sq'; u: string }      // Squarespace image
+  | { t: 'gif'; u: string }     // Squarespace gif
+  | { t: 'cl'; id: string }     // Cloudinary image
+  | { t: 'vid'; id: string };   // Cloudinary video
+
+type Row = { cols: number; ar: number; feature?: boolean; items: Item[] };
+
+// Same order as the laptop site. feature row = the 4-up wheel swap.
+const rows: Row[] = [
+  { cols: 3, ar: 0.82, items: [
+    { t: 'gif', u: '01798e88-9f10-47ce-ad95-95891eb52c34/RED-ezgif.com-video-to-gif-converter.gif' },
+    { t: 'sq',  u: '17a8d5ff-a9aa-415c-a89c-738b5cb3e60b/STILL_HERO_GOLD_V14-min.png' },
+    { t: 'sq',  u: '87de22a7-28a0-48e1-9eee-6b90a9ae8411/STILL_HERO_GOLD_V302_0021-min.png' },
+  ]},
+  { cols: 2, ar: 0.80, items: [
+    { t: 'cl', id: 'STILL_HERO_GOLD_V2.25_gmuy8p' },
+    { t: 'cl', id: 'STILL_HERO_GOLD_V2.16_yeg33y' },
+  ]},
+  { cols: 4, ar: 0.56, feature: true, items: [
+    { t: 'gif', u: 'fb1175e8-9678-4c08-a646-7e9325dcee47/HERO_SHOT_PIT_GUN_POV_V012-ezgif.com-optimize.gif' },
+    { t: 'gif', u: 'f7ec814f-d67e-408d-9122-a2f9dbe8bd0b/PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003-ezgif.com-optimize.gif' },
+    { t: 'gif', u: '36a52938-aff5-47d9-b3ce-c5e40823a422/BLUE_PIT_9.16-ezgif.com-optimize+%281%29.gif' },
+    { t: 'vid', id: 'MainEdit_122_wicm8j' },
+  ]},
+  { cols: 3, ar: 0.82, items: [
+    { t: 'sq', u: '4e9be174-4903-412c-957a-20a1949aae87/STILL_HERO_GOLD_V41_0025_0018-min.png' },
+    { t: 'sq', u: '88b6f004-3521-482c-89ed-98081688dd5b/STILL_HERO_GOLD_V41_0021-min.png' },
+    { t: 'sq', u: '9d0c2753-a24b-4818-bf92-a1e43619fd0f/RACE_SUITCASE_.png' },
+  ]},
+  { cols: 3, ar: 1.02, items: [
+    { t: 'sq', u: 'ba77e426-b65b-4287-8cf7-fb2236f944a2/HERO_SHOT_WHEEL_ONLY_V0012.4.png' },
+    { t: 'sq', u: '83909f31-990f-4a95-b661-d81269915753/HERO_SHOT_WHEEL_ONLY_V0017.10.jpg' },
+    { t: 'sq', u: '7a1cc29f-5a12-47ae-8ab9-0ff131e91baa/HERO_SHOT_WHEEL_ONLY_V0012.8.png' },
+  ]},
+  { cols: 3, ar: 0.82, items: [
+    { t: 'sq', u: 'c65cdc59-fb96-4205-a07b-255a405bb7dd/e.jpg' },
+    { t: 'sq', u: 'ea1e1cfa-6912-46a9-9047-c841322ce3bf/HERO_SHOT_WHEEL_ONLY_V0018.15.png' },
+    { t: 'sq', u: '38c187d7-eb4f-4f49-92da-00f45f9344a1/HERO_SHOT_WHEEL_ONLY_V0018.16.png' },
+  ]},
+  { cols: 3, ar: 0.82, items: [
+    { t: 'sq', u: 'c4f68564-a5ac-4123-b7de-934d0fe11a9f/HERO_SHOT_WHEEL_ONLY_V0039.3_2.png' },
+    { t: 'sq', u: '6aa37c29-e51a-40dd-abe3-f053b07660a3/240622_wheels_as_bubbles.png' },
+    { t: 'sq', u: '6271d006-a312-41e9-bab5-ec97e2c8cbc7/STILL_HERO_GOLD_V006%2C2.png' },
+  ]},
+  { cols: 2, ar: 0.82, items: [
+    { t: 'sq', u: 'c6244a90-6aa4-4ff7-ab63-9fcbc468afeb/TREE.png' },
+    { t: 'sq', u: '2795556d-9c39-40d7-80ca-1684a8b7a970/Screenshot+2024-12-27+at+14.08.02.png' },
+  ]},
+  { cols: 3, ar: 0.5625, items: [
+    { t: 'vid', id: 'PILE_WHEELS_lqurec' },
+    { t: 'vid', id: 'SCROLL_htffzh' },
+    { t: 'vid', id: 'ROLL_WHEELS_d2uhvv' },
+  ]},
+];
+---
+
+<BaseLayout title="Floyd" activePage="work">
+  <style>
+    .work-intro {
+      display: flex;
+      padding: 0 var(--page-pad) 40px;
+      gap: 0;
+    }
+    .work-intro-left {
+      width: var(--left-col);
+      min-width: var(--left-col);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-top: 2px;
+    }
+    .work-intro-right { flex: 1; }
+    .label { font-size: 11px; line-height: 1; color: var(--label); }
+    .headline {
+      font-size: 28px; line-height: 1; font-weight: 400;
+      color: var(--headline); text-wrap: balance; max-width: 640px;
+    }
+
+    /* ── Media gallery ── */
+    .work-gallery {
+      padding: 0 var(--page-pad);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .work-row {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(var(--cols), 1fr);
+    }
+    .work-cell {
+      position: relative;
+      aspect-ratio: var(--ar);
+      overflow: hidden;
+      background: #141414;
+    }
+    .work-cell img,
+    .work-cell video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .work-cell.is-video video { opacity: 0; transition: opacity 0.4s ease; }
+    .work-cell.is-video.playing video { opacity: 1; }
+
+    /* ── Write-up ── */
+    .work-writeup {
+      display: flex;
+      padding: clamp(64px, 9vw, 140px) var(--page-pad) clamp(48px, 8vw, 120px);
+      gap: 0;
+    }
+    .work-writeup-left {
+      width: var(--left-col);
+      min-width: var(--left-col);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-top: 2px;
+    }
+    .work-writeup-right {
+      flex: 1;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .work-writeup-right p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--body);
+      text-wrap: pretty;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .work-intro { flex-direction: column; gap: 12px; padding: 0 var(--page-pad) 24px; }
+      .work-intro-left { width: auto; min-width: auto; flex-direction: row; gap: 8px; }
+      .headline { font-size: 22px; }
+      .work-row { grid-template-columns: 1fr; }
+      .work-row.feature { grid-template-columns: repeat(3, 1fr); }
+      .work-row.feature .work-cell.is-video { grid-column: 1 / -1; order: -1; aspect-ratio: 0.62; }
+      .work-writeup { flex-direction: column; gap: 16px; }
+      .work-writeup-left { width: auto; min-width: auto; flex-direction: row; gap: 8px; }
+      .work-writeup-right { max-width: 100%; }
+    }
+  </style>
+
+  <section class="work-intro">
+    <div class="work-intro-left">
+      <span class="label">Work</span>
+      <span class="label">Floyd</span>
+    </div>
+    <div class="work-intro-right">
+      <h1 class="headline">A wheel you can swap in seconds, shown like a pit stop.</h1>
+    </div>
+  </section>
+
+  <div class="work-gallery">
+    {rows.map((row) => (
+      <div class:list={["work-row", { feature: row.feature }]} style={`--cols:${row.cols};--ar:${row.ar}`}>
+        {row.items.map((m, i) => {
+          if (m.t === 'sq') {
+            return (
+              <div class="work-cell">
+                <img
+                  src={sqImg(m.u, 1000)}
+                  srcset={sqSet(m.u)}
+                  sizes="(max-width:768px) 100vw, 33vw"
+                  alt=""
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
+            );
+          }
+          if (m.t === 'gif') {
+            return (
+              <div class="work-cell"><img src={`${SQ}${m.u}`} alt="" decoding="async" loading="lazy" /></div>
+            );
+          }
+          if (m.t === 'cl') {
+            return (
+              <div class="work-cell">
+                <img
+                  src={clImg(m.id, 1000)}
+                  srcset={clSet(m.id)}
+                  sizes="(max-width:768px) 100vw, 50vw"
+                  alt=""
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
+            );
+          }
+          return (
+            <div class="work-cell is-video">
+              <img class="poster" src={clPoster(m.id)} alt="" decoding="async" loading="lazy" />
+              <video muted loop playsinline preload="none" data-src={clVid(m.id)}></video>
+            </div>
+          );
+        })}
+      </div>
+    ))}
+  </div>
+
+  <section class="work-writeup">
+    <div class="work-writeup-left">
+      <span class="label">Client: Floyd</span>
+      <span class="label">Concept &amp; CGI: Gast Studio</span>
+    </div>
+    <div class="work-writeup-right">
+      <p>A broken wheel is one of the fastest ways to make a suitcase useless. Floyd fixed that at the product level: the wheels come off and swap, the same way skateboard wheels do. The problem was that almost no one knew it. The feature was there, but the swap had never been shown clearly enough for people to get it.</p>
+      <p>Our job was to make that obvious. We built the campaign around a pit stop. A wheel that has done its kilometers gets pulled and replaced in seconds, fast, mechanical, satisfying.</p>
+      <p>It became the most viewed video on the studio's Instagram for a long time. Other brands reached out to Floyd about partnerships, the project turned into more work together, and it brought us referrals to new clients. Floyd came back to refresh it twice more with new colors and backgrounds. Running the same idea three times tells you how well it worked.</p>
+    </div>
+  </section>
+
+  <script>
+    // Play videos only when near the viewport (battery + bandwidth friendly).
+    const cells = document.querySelectorAll('.work-cell.is-video');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          const cell = e.target as HTMLElement;
+          const v = cell.querySelector('video') as HTMLVideoElement;
+          if (e.isIntersecting) {
+            if (!v.src) v.src = v.dataset.src || '';
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+            cell.classList.add('playing');
+          } else {
+            v.pause();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      cells.forEach((c) => io.observe(c));
+    } else {
+      cells.forEach((c) => {
+        const v = c.querySelector('video') as HTMLVideoElement;
+        v.src = v.dataset.src || '';
+        v.autoplay = true;
+        if (v.play) v.play();
+        c.classList.add('playing');
+      });
+    }
+  </script>
+</BaseLayout>
