@@ -15,24 +15,25 @@ const { title, activePage = '' } = Astro.props;
   <title>{title} - Gast Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="page">
-  <nav class="nav">
-    <a href="https://www.gast.studio/" class="nav-logo">
-      <img src="/gast-logo-white.png" alt="Gast">
-    </a>
-    <div class="nav-links">
-      <a href="https://www.gast.studio/work" class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
-      <a href="https://www.gast.studio/store" class="nav-link">Store</a>
-      <a href="https://www.gast.studio/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
-      <a href="https://www.gast.studio/contact" class="nav-link">Contact</a>
-    </div>
-  </nav>
+<nav class="nav">
+  <a href="https://www.gast.studio/" class="nav-logo">
+    <img src="/gast-wordmark-white.png" alt="Gast">
+  </a>
+  <div class="nav-links">
+    <a href="https://www.gast.studio/work" class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
+    <a href="https://www.gast.studio/store" class="nav-link">Store</a>
+    <a href="https://www.gast.studio/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+    <a href="https://www.gast.studio/contact" class="nav-link">Contact</a>
+  </div>
+</nav>
 
+<div class="page">
   <slot />
+</div>
 
   <footer class="footer">
     <a href="https://www.instagram.com/gast_studio/" target="_blank" rel="noopener" aria-label="Instagram" class="social">
@@ -43,7 +44,6 @@ const { title, activePage = '' } = Astro.props;
     </a>
     <a href="https://www.are.na/jean-baptiste-castel/channels" target="_blank" rel="noopener" aria-label="Are.na" class="social social-arena">&#10038;&#10038;</a>
   </footer>
-</div>
 
 </body>
 </html>

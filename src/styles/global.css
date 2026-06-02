@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  font-family: 'Arimo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: var(--body);
   background: var(--bg);
   line-height: 1;
@@ -39,7 +39,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px var(--page-pad);
+  max-width: 2200px;
+  margin: 0 auto;
+  padding: 36px clamp(16px, 3vw, 56px);
 }
 .nav-logo {
   display: flex;
@@ -105,7 +107,7 @@ body {
     --page-pad: 20px;
   }
   .nav {
-    padding: 24px var(--page-pad);
+    padding: 22px clamp(16px, 5vw, 56px);
   }
   .footer {
     padding: 56px var(--page-pad) 48px;
