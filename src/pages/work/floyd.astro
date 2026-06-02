@@ -25,6 +25,7 @@ const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_800/${i
 
 type Item =
   | { t: 'cl'; id: string }
+  | { t: 'clgif'; id: string }
   | { t: 'fetch'; u: string }
   | { t: 'sqgif'; u: string }
   | { t: 'vid'; id: string };
@@ -33,7 +34,7 @@ type Row = { cols: number; ar: number; feature?: boolean; items: Item[] };
 
 const rows: Row[] = [
   { cols: 3, ar: 0.82, items: [
-    { t: 'cl', id: 'floyd_red_loop' },
+    { t: 'clgif', id: 'floyd_red_loop' },
     { t: 'cl', id: 'floyd_hero_v14' },
     { t: 'cl', id: 'floyd_hero_v302' },
   ]},
@@ -199,6 +200,10 @@ const rows: Row[] = [
                   <img src={fImg(m.u, 1400)} srcset={fSet(m.u)} sizes="(max-width:768px) 100vw, 40vw" alt="" decoding="async" loading="lazy" />
                 </div>
               );
+            }
+            if (m.t === 'clgif') {
+              // Animated gif stored on Cloudinary; the free plan blocks transforms on it, so deliver raw.
+              return <div class="work-cell"><img src={`${CL}image/upload/${m.id}`} alt="" decoding="async" loading="lazy" /></div>;
             }
             if (m.t === 'sqgif') {
               return <div class="work-cell"><img src={sqGif(m.u)} alt="" decoding="async" loading="lazy" /></div>;
