@@ -3,28 +3,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 
 // ── Asset hosts ──
-// NOTE: most stills still point at the Squarespace CDN during migration.
-// Re-host them to Cloudinary (like the videos + V2 stills below) before the
-// Squarespace site is taken down. See README "Migration Plan".
+// Migration TODO: the SQ stills/gifs still come from the Squarespace CDN.
+// They must be moved to Cloudinary before Squarespace is switched off.
 const SQ = 'https://images.squarespace-cdn.com/content/v1/6397a67a7842513d84ffeded/';
 const CL = 'https://res.cloudinary.com/dvyflhlls/';
 
 const sqImg = (u: string, w: number) => `${SQ}${u}?format=${w}w`;
-const sqSet = (u: string) => [500, 1000, 1500, 2500].map((w) => `${sqImg(u, w)} ${w}w`).join(', ');
+const sqSet = (u: string) => [800, 1500, 2500].map((w) => `${sqImg(u, w)} ${w}w`).join(', ');
 const clImg = (id: string, w: number) => `${CL}image/upload/f_auto,q_auto,w_${w}/${id}`;
-const clSet = (id: string) => [600, 1000, 1600, 2000].map((w) => `${clImg(id, w)} ${w}w`).join(', ');
+const clSet = (id: string) => [800, 1400, 2000].map((w) => `${clImg(id, w)} ${w}w`).join(', ');
 const clVid = (id: string) => `${CL}video/upload/q_auto/f_auto/${id}.mp4`;
-const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_700/${id}.jpg`;
+const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_800/${id}.jpg`;
 
 type Item =
-  | { t: 'sq'; u: string }      // Squarespace image
-  | { t: 'gif'; u: string }     // Squarespace gif
-  | { t: 'cl'; id: string }     // Cloudinary image
-  | { t: 'vid'; id: string };   // Cloudinary video
+  | { t: 'sq'; u: string }
+  | { t: 'gif'; u: string }
+  | { t: 'cl'; id: string }
+  | { t: 'vid'; id: string };
 
 type Row = { cols: number; ar: number; feature?: boolean; items: Item[] };
 
-// Same order as the laptop site. feature row = the 4-up wheel swap.
 const rows: Row[] = [
   { cols: 3, ar: 0.82, items: [
     { t: 'gif', u: '01798e88-9f10-47ce-ad95-95891eb52c34/RED-ezgif.com-video-to-gif-converter.gif' },
@@ -75,29 +73,13 @@ const rows: Row[] = [
 
 <BaseLayout title="Floyd" activePage="work">
   <style>
-    .work-intro {
-      display: flex;
-      padding: 0 var(--page-pad) 40px;
-      gap: 0;
-    }
-    .work-intro-left {
-      width: var(--left-col);
-      min-width: var(--left-col);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      padding-top: 2px;
-    }
-    .work-intro-right { flex: 1; }
-    .label { font-size: 11px; line-height: 1; color: var(--label); }
-    .headline {
-      font-size: 28px; line-height: 1; font-weight: 400;
-      color: var(--headline); text-wrap: balance; max-width: 640px;
-    }
+    /* Break out of the centered .page wrapper so the gallery runs near the edges. */
+    .floyd { width: 100vw; margin-left: calc(50% - 50vw); }
 
-    /* ── Media gallery ── */
     .work-gallery {
-      padding: 0 var(--page-pad);
+      max-width: 2200px;
+      margin: 0 auto;
+      padding: clamp(8px, 2vw, 32px) clamp(10px, 3vw, 56px) 0;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -125,10 +107,12 @@ const rows: Row[] = [
     .work-cell.is-video video { opacity: 0; transition: opacity 0.4s ease; }
     .work-cell.is-video.playing video { opacity: 1; }
 
-    /* ── Write-up ── */
+    /* Write-up */
     .work-writeup {
+      max-width: 2200px;
+      margin: 0 auto;
+      padding: clamp(64px, 9vw, 150px) clamp(10px, 3vw, 56px) clamp(40px, 6vw, 90px);
       display: flex;
-      padding: clamp(64px, 9vw, 140px) var(--page-pad) clamp(48px, 8vw, 120px);
       gap: 0;
     }
     .work-writeup-left {
@@ -139,6 +123,7 @@ const rows: Row[] = [
       gap: 2px;
       padding-top: 2px;
     }
+    .label { font-size: 11px; line-height: 1; color: var(--label); }
     .work-writeup-right {
       flex: 1;
       max-width: 640px;
@@ -153,92 +138,93 @@ const rows: Row[] = [
       text-wrap: pretty;
     }
 
-    /* ── Mobile ── */
+    /* Next project */
+    .work-next {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 2200px;
+      margin: 0 auto;
+      padding: clamp(40px, 6vw, 90px) clamp(10px, 3vw, 56px) clamp(80px, 10vw, 160px);
+      border-top: 1px solid var(--tag-border);
+      text-decoration: none;
+    }
+    .work-next-label { font-size: 11px; line-height: 1; color: var(--label); }
+    .work-next-title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1;
+      color: var(--headline);
+      transition: opacity 0.2s;
+    }
+    .work-next:hover .work-next-title { opacity: 0.55; }
+    .work-next-arrow { font-size: 0.7em; }
+
     @media (max-width: 768px) {
-      .work-intro { flex-direction: column; gap: 12px; padding: 0 var(--page-pad) 24px; }
-      .work-intro-left { width: auto; min-width: auto; flex-direction: row; gap: 8px; }
-      .headline { font-size: 22px; }
       .work-row { grid-template-columns: 1fr; }
       .work-row.feature { grid-template-columns: repeat(3, 1fr); }
       .work-row.feature .work-cell.is-video { grid-column: 1 / -1; order: -1; aspect-ratio: 0.62; }
       .work-writeup { flex-direction: column; gap: 16px; }
       .work-writeup-left { width: auto; min-width: auto; flex-direction: row; gap: 8px; }
       .work-writeup-right { max-width: 100%; }
+      .work-next-title { font-size: 26px; }
     }
   </style>
 
-  <section class="work-intro">
-    <div class="work-intro-left">
-      <span class="label">Work</span>
-      <span class="label">Floyd</span>
+  <div class="floyd">
+    <div class="work-gallery">
+      {rows.map((row) => (
+        <div class:list={["work-row", { feature: row.feature }]} style={`--cols:${row.cols};--ar:${row.ar}`}>
+          {row.items.map((m) => {
+            if (m.t === 'sq') {
+              return (
+                <div class="work-cell">
+                  <img src={sqImg(m.u, 1500)} srcset={sqSet(m.u)} sizes="(max-width:768px) 100vw, 33vw" alt="" decoding="async" loading="lazy" />
+                </div>
+              );
+            }
+            if (m.t === 'gif') {
+              return <div class="work-cell"><img src={`${SQ}${m.u}`} alt="" decoding="async" loading="lazy" /></div>;
+            }
+            if (m.t === 'cl') {
+              return (
+                <div class="work-cell">
+                  <img src={clImg(m.id, 1400)} srcset={clSet(m.id)} sizes="(max-width:768px) 100vw, 50vw" alt="" decoding="async" loading="lazy" />
+                </div>
+              );
+            }
+            return (
+              <div class="work-cell is-video">
+                <img class="poster" src={clPoster(m.id)} alt="" decoding="async" loading="lazy" />
+                <video muted loop playsinline preload="none" data-src={clVid(m.id)}></video>
+              </div>
+            );
+          })}
+        </div>
+      ))}
     </div>
-    <div class="work-intro-right">
-      <h1 class="headline">A wheel you can swap in seconds, shown like a pit stop.</h1>
-    </div>
-  </section>
 
-  <div class="work-gallery">
-    {rows.map((row) => (
-      <div class:list={["work-row", { feature: row.feature }]} style={`--cols:${row.cols};--ar:${row.ar}`}>
-        {row.items.map((m, i) => {
-          if (m.t === 'sq') {
-            return (
-              <div class="work-cell">
-                <img
-                  src={sqImg(m.u, 1000)}
-                  srcset={sqSet(m.u)}
-                  sizes="(max-width:768px) 100vw, 33vw"
-                  alt=""
-                  decoding="async"
-                  loading="lazy"
-                />
-              </div>
-            );
-          }
-          if (m.t === 'gif') {
-            return (
-              <div class="work-cell"><img src={`${SQ}${m.u}`} alt="" decoding="async" loading="lazy" /></div>
-            );
-          }
-          if (m.t === 'cl') {
-            return (
-              <div class="work-cell">
-                <img
-                  src={clImg(m.id, 1000)}
-                  srcset={clSet(m.id)}
-                  sizes="(max-width:768px) 100vw, 50vw"
-                  alt=""
-                  decoding="async"
-                  loading="lazy"
-                />
-              </div>
-            );
-          }
-          return (
-            <div class="work-cell is-video">
-              <img class="poster" src={clPoster(m.id)} alt="" decoding="async" loading="lazy" />
-              <video muted loop playsinline preload="none" data-src={clVid(m.id)}></video>
-            </div>
-          );
-        })}
+    <section class="work-writeup">
+      <div class="work-writeup-left">
+        <span class="label">Client: Floyd</span>
+        <span class="label">Concept &amp; CGI: Gast Studio</span>
       </div>
-    ))}
+      <div class="work-writeup-right">
+        <p>A broken wheel is one of the fastest ways to make a suitcase useless. Floyd fixed that at the product level: the wheels come off and swap, the same way skateboard wheels do. The problem was that almost no one knew it. The feature was there, but the swap had never been shown clearly enough for people to get it.</p>
+        <p>Our job was to make that obvious. We built the campaign around a pit stop. A wheel that has done its kilometers gets pulled and replaced in seconds, fast, mechanical, satisfying.</p>
+        <p>It became the most viewed video on the studio's Instagram for a long time. Other brands reached out to Floyd about partnerships, the project turned into more work together, and it brought us referrals to new clients. Floyd came back to refresh it twice more with new colors and backgrounds. Running the same idea three times tells you how well it worked.</p>
+      </div>
+    </section>
+
+    <a class="work-next" href="https://www.gast.studio/work/swarovski-x-ariana-grande">
+      <span class="work-next-label">Next project</span>
+      <span class="work-next-title">Swarovski x Ariana Grande <span class="work-next-arrow">&rarr;</span></span>
+    </a>
   </div>
 
-  <section class="work-writeup">
-    <div class="work-writeup-left">
-      <span class="label">Client: Floyd</span>
-      <span class="label">Concept &amp; CGI: Gast Studio</span>
-    </div>
-    <div class="work-writeup-right">
-      <p>A broken wheel is one of the fastest ways to make a suitcase useless. Floyd fixed that at the product level: the wheels come off and swap, the same way skateboard wheels do. The problem was that almost no one knew it. The feature was there, but the swap had never been shown clearly enough for people to get it.</p>
-      <p>Our job was to make that obvious. We built the campaign around a pit stop. A wheel that has done its kilometers gets pulled and replaced in seconds, fast, mechanical, satisfying.</p>
-      <p>It became the most viewed video on the studio's Instagram for a long time. Other brands reached out to Floyd about partnerships, the project turned into more work together, and it brought us referrals to new clients. Floyd came back to refresh it twice more with new colors and backgrounds. Running the same idea three times tells you how well it worked.</p>
-    </div>
-  </section>
-
   <script>
-    // Play videos only when near the viewport (battery + bandwidth friendly).
     const cells = document.querySelectorAll('.work-cell.is-video');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {

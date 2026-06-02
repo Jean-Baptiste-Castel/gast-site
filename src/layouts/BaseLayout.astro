@@ -25,7 +25,10 @@ const { title, activePage = '' } = Astro.props;
       <img src="/gast-logo-white.png" alt="Gast">
     </a>
     <div class="nav-links">
+      <a href="https://www.gast.studio/work" class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
+      <a href="https://www.gast.studio/store" class="nav-link">Store</a>
       <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+      <a href="https://www.gast.studio/contact" class="nav-link">Contact</a>
     </div>
   </nav>
 
