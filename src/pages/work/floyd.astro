@@ -147,29 +147,27 @@ const rows: Row[] = [
       text-wrap: pretty;
     }
 
-    /* Next project */
-    .work-next {
+    /* Project pager (prev/next). Floyd is the first project, so only Next shows. */
+    .work-pager {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
       max-width: 2200px;
       margin: 0 auto;
-      padding: clamp(40px, 6vw, 90px) clamp(10px, 3vw, 56px) clamp(80px, 10vw, 160px);
-      border-top: 1px solid var(--tag-border);
-      text-decoration: none;
+      padding: clamp(64px, 11vw, 170px) clamp(10px, 3vw, 56px);
     }
-    .work-next-label { font-size: 11px; line-height: 1; color: var(--label); }
-    .work-next-title {
-      display: flex;
+    .pager-link {
+      display: inline-flex;
       align-items: center;
-      gap: 18px;
-      font-size: clamp(28px, 5vw, 56px);
+      gap: 16px;
+      font-size: clamp(26px, 4.2vw, 44px);
       line-height: 1;
       color: var(--headline);
+      text-decoration: none;
       transition: opacity 0.2s;
     }
-    .work-next:hover .work-next-title { opacity: 0.55; }
-    .work-next-arrow { font-size: 0.7em; }
+    .pager-link:hover { opacity: 0.55; }
+    .pager-chev { width: 0.5em; height: 0.5em; flex: none; }
 
     @media (max-width: 768px) {
       .work-row { grid-template-columns: 1fr; }
@@ -178,7 +176,7 @@ const rows: Row[] = [
       .work-writeup { flex-direction: column; gap: 16px; }
       .work-writeup-left { width: auto; min-width: auto; flex-direction: row; gap: 8px; }
       .work-writeup-right { max-width: 100%; }
-      .work-next-title { font-size: 26px; }
+      .pager-link { font-size: 24px; }
     }
   </style>
 
@@ -231,10 +229,12 @@ const rows: Row[] = [
       </div>
     </section>
 
-    <a class="work-next" href="https://www.gast.studio/work/swarovski-x-ariana-grande">
-      <span class="work-next-label">Next project</span>
-      <span class="work-next-title">Swarovski x Ariana Grande <span class="work-next-arrow">&rarr;</span></span>
-    </a>
+    <nav class="work-pager">
+      <a class="pager-link" href="https://www.gast.studio/work/swarovski-x-ariana-grande">
+        Swarovski x Ariana Grande
+        <svg class="pager-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>
+      </a>
+    </nav>
   </div>
 
   <script>
