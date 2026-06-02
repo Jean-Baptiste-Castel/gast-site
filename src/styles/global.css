@@ -47,16 +47,17 @@ body {
   text-decoration: none;
 }
 .nav-logo img {
-  height: 48px;
+  height: 58px;
   width: auto;
 }
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 36px;
   align-items: center;
 }
 .nav-link {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 300;
   line-height: 1;
   color: var(--headline);
   text-decoration: none;
@@ -66,7 +67,9 @@ body {
   opacity: 0.6;
 }
 .nav-link.active {
-  opacity: 0.4;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
 }
 
 /* ── Footer (centered social icons) ── */
