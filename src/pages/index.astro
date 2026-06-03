@@ -72,6 +72,17 @@ const tiles: Tile[] = [
   { t: 'vid', p: 'floyd', id: 'PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003_lldbov' },
   { t: 'sq', p: 'flane', u: 'e06d3121-8a86-4244-99fc-793e9c14b735/30.gif' },
 ];
+
+// Real source dimensions per tile (from Squarespace) so each tile reserves its exact
+// size; a tile whose media is missing shows a grey box of the correct size.
+const ars = [
+  '540/960', '600/338', '540/719', '540/960', '1370/1715', '800/1200', '1728/2160',
+  '2160/2700', '1370/1715', '2500/3333', '2160/2700', '1728/2160', '4500/5625', '600/338',
+  '600/338', '800/450', '1536/1920', '1024/1536', '800/450', '800/1198', '676/859',
+  '2880/5120', '896/1344', '600/338', '1920/1080', '600/750', '500/889', '600/338',
+  '2500/3333', '1728/2160', '800/800', '720/720', '500/889', '320/569', '1728/2160',
+  '800/335', '800/335', '500/889', '800/335',
+];
 ---
 
 <BaseLayout title="CGI & Creative Direction Studio, Amsterdam">
@@ -79,16 +90,12 @@ const tiles: Tile[] = [
     .home { width: 100vw; margin-left: calc(50% - 50vw); padding: 0 clamp(10px, 3vw, 56px) clamp(40px, 6vw, 90px); }
     .home-grid { display: flex; gap: 10px; max-width: 2200px; margin: 0 auto; align-items: flex-start; }
     .home-col { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-    .home-tile { display: block; position: relative; overflow: hidden; background: #141414; line-height: 0; }
-    .home-tile img { width: 100%; height: auto; display: block; }
-    .home-tile video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
-    .home-tile .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .home-tile.is-video { aspect-ratio: 9 / 16; }
-    .home-tile.is-video video { position: absolute; inset: 0; height: 100%; opacity: 0; transition: opacity 0.4s ease; }
+    /* Each tile reserves its real size; grey background = the "missing" box if media fails. */
+    .home-tile { display: block; position: relative; overflow: hidden; background: #3a3a3a; line-height: 0; }
+    .home-tile img, .home-tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .home-tile.is-video video { opacity: 0; transition: opacity 0.4s ease; }
     .home-tile.is-video.playing video { opacity: 1; }
 
-    /* Migration aid: keep every tile a visible labeled block (remove when migration done) */
-    .home-tile { min-height: 200px; }
     .tile-label {
       position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
       padding: 6px 8px;
@@ -106,8 +113,8 @@ const tiles: Tile[] = [
 
   <div class="home">
     <div class="home-grid" id="home-grid">
-      {tiles.map((m) => (
-        <a class:list={["home-tile", { 'is-video': m.t === 'vid' }]} href={projectUrl(m.p)} aria-label={m.p}>
+      {tiles.map((m, i) => (
+        <a class:list={["home-tile", { 'is-video': m.t === 'vid' }]} href={projectUrl(m.p)} aria-label={m.p} style={`aspect-ratio:${ars[i]}`}>
           {m.t === 'vid' && (
             <>
               <img class="poster" src={clPoster(m.id)} alt="" decoding="async" loading="lazy" />
