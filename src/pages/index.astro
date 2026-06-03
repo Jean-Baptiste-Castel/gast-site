@@ -96,7 +96,9 @@ const tiles: Tile[] = [
             <img src={clImg(m.id, 800)} srcset={clSet(m.id)} sizes="(max-width:700px) 50vw, 25vw" alt="" decoding="async" loading="lazy" />
           )}
           {m.t === 'sq' && (
-            <img src={fImg(m.u, 800)} srcset={fSet(m.u)} sizes="(max-width:700px) 50vw, 25vw" alt="" decoding="async" loading="lazy" />
+            m.u.endsWith('.gif')
+              ? <img src={`${SQ}${m.u}`} alt="" decoding="async" loading="lazy" />
+              : <img src={fImg(m.u, 800)} srcset={fSet(m.u)} sizes="(max-width:700px) 50vw, 25vw" alt="" decoding="async" loading="lazy" />
           )}
         </a>
       ))}
