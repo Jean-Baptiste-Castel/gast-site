@@ -1,40 +1,159 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
+
+// Home portfolio grid, rebuilt from the Squarespace home in exact tile order.
+// Asset types:
+//   vid = stored Cloudinary video (already migrated)
+//   cl  = stored Cloudinary image (already migrated)
+//   sq  = pulled from Squarespace THROUGH Cloudinary fetch (temporary; replace with
+//         your MP4 / a stored copy before turning Squarespace off)
+const SQ = 'https://images.squarespace-cdn.com/content/v1/6397a67a7842513d84ffeded/';
+const CL = 'https://res.cloudinary.com/dvyflhlls/';
+
+const fImg = (p: string, w: number) => `${CL}image/fetch/f_auto,q_auto,w_${w}/${SQ}${p}`;
+const fSet = (p: string) => [500, 800, 1200].map((w) => `${fImg(p, w)} ${w}w`).join(', ');
+const clImg = (id: string, w: number) => `${CL}image/upload/f_auto,q_auto,w_${w}/${id}`;
+const clSet = (id: string) => [500, 800, 1200].map((w) => `${clImg(id, w)} ${w}w`).join(', ');
+const clVid = (id: string) => `${CL}video/upload/q_auto/f_auto/${id}.mp4`;
+const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_600/${id}.jpg`;
+
+type Tile =
+  | { t: 'vid'; p: string; id: string }
+  | { t: 'cl'; p: string; id: string }
+  | { t: 'sq'; p: string; u: string };
+
+const projectUrl = (p: string) => `https://www.gast.studio/work/${p}`;
+
+const tiles: Tile[] = [
+  { t: 'vid', p: 'floyd', id: 'BLUE_PIT_9.16_Web_auqt06' },
+  { t: 'sq', p: 'hermes', u: '1695673620347-2GZ6RYKXU81595OV3DSK/ezgif.com-video-to-gif.gif' },
+  { t: 'sq', p: 'jacques-marie-mage', u: '41f58d9a-e878-4433-b5cc-fb548aa1912f/CREST_ANIMATION_9-16-ezgif.com-rotate.gif' },
+  { t: 'sq', p: 'swarovski-x-ariana-grande', u: '69a6a7b4-36e6-471d-bf70-7935a8328362/ezgif.com-optimize+%281%29.gif' },
+  { t: 'sq', p: 'loop', u: '25eb1d3e-ca4c-469d-b688-2ec485709c7c/image+%284%29-min.png' },
+  { t: 'sq', p: 'ax-mundi', u: '98ccf608-c783-474c-b0d8-eb3b83b513c9/social_jeanbaptistecastel_httpss.mj.runDa0CeGTHPSo_dots_--ar_171256__ab6c5492-1ebd-4076-b601-c4e1c24ed9ca_2-ezgif.com-optimize.gif' },
+  { t: 'cl', p: 'floyd', id: 'floyd_hero_v302' },
+  { t: 'sq', p: 'swarovski-x-ariana-grande', u: '14daf373-5a8e-41ac-b02e-882c915be853/BUTTERFLY_MUSHROOM_05.png' },
+  { t: 'sq', p: 'loop', u: 'd6d7790e-63ab-4c73-b2f9-0c41fc2862a0/image+%28312%29-min.png' },
+  { t: 'sq', p: 'gast', u: '1764541894020-OR20F5I6UX9VLGPBG5SK/ca485a18-8f53-4f96-bbb2-5e27a3b0b4fe.webp' },
+  { t: 'sq', p: 'swarovski-x-ariana-grande', u: 'd7cff0c6-eb4a-4c81-a1b8-840b08f24e3b/TENSION_and_BALANCE_11+%281%29.png' },
+  { t: 'cl', p: 'floyd', id: 'floyd_hero_v14' },
+  { t: 'sq', p: 'floyd', u: 'c6244a90-6aa4-4ff7-ab63-9fcbc468afeb/TREE.png' },
+  { t: 'sq', p: 'so-good-gta', u: '1695674672726-0NPQFGTHUCKPNLUOS796/ezgif.com-video-to-gif+%281%29.gif' },
+  { t: 'sq', p: 'other', u: '1730462930516-ALRAUMLU8F0KOCEDAOGW/HERO_HP_NO_ALPHA_PREVIEW_V0020_3-ezgif.com-optimize.gif' },
+  { t: 'sq', p: 'loop', u: 'd032b0d1-0186-409d-9413-e670613683cb/Loop4-ezgif.com-optimize.gif' },
+  { t: 'cl', p: 'floyd', id: 'HERO_SHOT_WHEEL_ONLY_V0039.3_2_s1b1qx' },
+  { t: 'sq', p: 'gast', u: '89be4a27-15c3-4471-a142-32f3e4c1a744/10.png' },
+  { t: 'sq', p: 'jeff-koons', u: 'e6b64db9-0ca9-4931-b61a-1d3f1b730c20/JEFF_KOONS_4K_MASTER_V0042-ezgif.com-optimize+%283%29.gif' },
+  { t: 'sq', p: 'ax-mundi', u: '993b9e2a-2882-4c04-801a-591c19929925/AnimateDiff_00023_1_stab_apo8_rhea13-ezgif.com-optimize.gif' },
+  { t: 'sq', p: 'loop', u: '4fedcb09-996a-45d8-9fdc-e337810859f6/image+%2822%29+%281%29-min.png' },
+  { t: 'sq', p: 'gast', u: '3e26ce57-02ef-4b53-9763-790e01d5ade2/25401a28-bc96-4a2ff7-822e-b684a555d4a3.webp' },
+  { t: 'sq', p: 'ax-mundi', u: '5ca8805d-e3e9-44bc-a8a9-bf7e9db7f289/original_3a549f5fcc24ff22e6c620e51064f80a.webp' },
+  { t: 'sq', p: 'the-bronze-age-2', u: '1695676651286-YBB8FQU4NJ9VMBGFCF2F/ezgif.com-video-to-gif+%283%29.gif' },
+  { t: 'sq', p: 'loop', u: '2d4eb551-42fb-4f3e-b139-7dd4ddc62acb/original_5d62c0cd17ba4b0950b1a7fe63145ed1.webp' },
+  { t: 'sq', p: 'gast', u: 'b35e6d1d-0ea2-49ba-8d16-b8e1c06a8956/original_a887d223288fa4ced82e0a34be03574e.gif' },
+  { t: 'vid', p: 'floyd', id: 'ROLL_WHEELS_d2uhvv' },
+  { t: 'sq', p: 'dj-snake-coachella', u: '1713362172453-V90JJKNAM5FTUANAWTUF/16.9HD_METRO-ezgif.com-video-to-gif-converter.gif' },
+  { t: 'sq', p: 'gast', u: '1764541879088-YVG3XMRMI96D7Z1CMUD2/941c47af-cb34-4b61-a7af-7dc0ceb3d113.webp' },
+  { t: 'sq', p: 'loop', u: 'f18831df-0a17-4cfa-ae80-fc7b84356501/1_Main_0003-min.png' },
+  { t: 'sq', p: 'gast', u: '7f00ada7-728e-4932-9843-dc4651d9422a/-1970366263289857060card-ezgif.com-optimize.gif' },
+  { t: 'sq', p: 'floyd', u: '83909f31-990f-4a95-b661-d81269915753/HERO_SHOT_WHEEL_ONLY_V0017.10.jpg' },
+  { t: 'vid', p: 'floyd', id: 'PILE_WHEELS_lqurec' },
+  { t: 'vid', p: 'floyd', id: 'SCROLL_htffzh' },
+  { t: 'sq', p: 'floyd', u: '2b21f3fc-5bf1-4cd9-b7ee-01c752533013/original_6e9c073b211067a23ea41fb8a9509bad.webp' },
+  { t: 'sq', p: 'flane', u: 'da2ee004-2e95-4836-8052-734f0e14254f/29.gif' },
+  { t: 'sq', p: 'flane', u: '712c56f4-077c-4a0d-8f32-e02d03ab40d9/5.gif' },
+  { t: 'vid', p: 'floyd', id: 'PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003_lldbov' },
+  { t: 'sq', p: 'flane', u: 'e06d3121-8a86-4244-99fc-793e9c14b735/30.gif' },
+];
 ---
 
-<BaseLayout title="Home">
-  <main class="home">
-    <section class="hero">
-      <h1>Creative studio<br>for CGI & motion.</h1>
-      <p>Based in Amsterdam.</p>
-    </section>
-  </main>
-</BaseLayout>
+<BaseLayout title="CGI & Creative Direction Studio, Amsterdam">
+  <style>
+    .home { width: 100vw; margin-left: calc(50% - 50vw); padding: 0 clamp(10px, 3vw, 56px) clamp(40px, 6vw, 90px); }
+    .home-grid { display: flex; gap: 10px; max-width: 2200px; margin: 0 auto; align-items: flex-start; }
+    .home-col { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+    .home-tile { display: block; position: relative; overflow: hidden; background: #141414; line-height: 0; }
+    .home-tile img { width: 100%; height: auto; display: block; }
+    .home-tile video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
+    .home-tile .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .home-tile.is-video { aspect-ratio: 9 / 16; }
+    .home-tile.is-video video { position: absolute; inset: 0; height: 100%; opacity: 0; transition: opacity 0.4s ease; }
+    .home-tile.is-video.playing video { opacity: 1; }
+  </style>
 
-<style>
-  .home {
-    min-height: calc(100vh - 160px);
-    display: flex;
-    align-items: center;
-    padding: 0 var(--page-pad);
-  }
-  .hero h1 {
-    font-size: 48px;
-    line-height: 1.1;
-    color: var(--headline);
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-  .hero p {
-    font-size: 16px;
-    line-height: 1.4;
-    color: var(--body);
-  }
+  <div class="home">
+    <div class="home-grid" id="home-grid">
+      {tiles.map((m) => (
+        <a class:list={["home-tile", { 'is-video': m.t === 'vid' }]} href={projectUrl(m.p)} aria-label={m.p}>
+          {m.t === 'vid' && (
+            <>
+              <img class="poster" src={clPoster(m.id)} alt="" decoding="async" loading="lazy" />
+              <video muted loop playsinline preload="none" data-src={clVid(m.id)}></video>
+            </>
+          )}
+          {m.t === 'cl' && (
+            <img src={clImg(m.id, 800)} srcset={clSet(m.id)} sizes="(max-width:700px) 50vw, 25vw" alt="" decoding="async" loading="lazy" />
+          )}
+          {m.t === 'sq' && (
+            <img src={fImg(m.u, 800)} srcset={fSet(m.u)} sizes="(max-width:700px) 50vw, 25vw" alt="" decoding="async" loading="lazy" />
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
 
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 32px;
+  <script>
+    const grid = document.getElementById('home-grid');
+    const allTiles = Array.from(grid ? grid.querySelectorAll('.home-tile') : []);
+
+    function columnCount() {
+      const w = window.innerWidth;
+      if (w < 700) return 2;
+      if (w < 1100) return 3;
+      return 4;
     }
-  }
-</style>
+
+    let current = 0;
+    function layout() {
+      if (!grid) return;
+      const n = columnCount();
+      if (n === current) return;
+      current = n;
+      grid.innerHTML = '';
+      const cols = [];
+      for (let i = 0; i < n; i++) {
+        const c = document.createElement('div');
+        c.className = 'home-col';
+        cols.push(c);
+        grid.appendChild(c);
+      }
+      // round-robin keeps the original reading order across columns
+      allTiles.forEach((t, i) => cols[i % n].appendChild(t));
+    }
+    layout();
+    let rt;
+    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layout, 150); });
+
+    // lazy autoplay videos
+    const vids = document.querySelectorAll('.home-tile.is-video');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          const cell = e.target as HTMLElement;
+          const v = cell.querySelector('video') as HTMLVideoElement;
+          if (!v) return;
+          if (e.isIntersecting) {
+            if (!v.src) v.src = v.dataset.src || '';
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+            cell.classList.add('playing');
+          } else {
+            v.pause();
+          }
+        });
+      }, { rootMargin: '300px 0px' });
+      vids.forEach((c) => io.observe(c));
+    }
+  </script>
+</BaseLayout>
