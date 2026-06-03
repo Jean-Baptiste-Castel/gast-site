@@ -36,6 +36,8 @@ const linkFor = (h: string) => {
 };
 const isExternal = (link: string) => link.startsWith('http') && !link.includes('gast.studio');
 const nameFor = (u: string) => decodeURIComponent(u.split('/').pop() || '').replace(/\+/g, ' ');
+// relative height (height per unit width) used for shortest-column masonry packing
+const hRatio = (d: string) => { const [w, h] = d.split('x').map(Number); return (h / w).toFixed(4); };
 ---
 
 <BaseLayout title="CGI & Creative Direction Studio, Amsterdam">
@@ -69,7 +71,7 @@ const nameFor = (u: string) => decodeURIComponent(u.split('/').pop() || '').repl
         const link = linkFor(m.h);
         const needs = m.t === 'g' && !vid;
         return (
-          <a class:list={["home-tile", { 'is-video': !!vid }]} href={link || undefined} target={link && isExternal(link) ? '_blank' : undefined} rel={link && isExternal(link) ? 'noopener' : undefined} style={`aspect-ratio:${m.d.replace('x', '/')}`} aria-label={m.h || undefined}>
+          <a class:list={["home-tile", { 'is-video': !!vid }]} href={link || undefined} target={link && isExternal(link) ? '_blank' : undefined} rel={link && isExternal(link) ? 'noopener' : undefined} style={`aspect-ratio:${m.d.replace('x', '/')}`} data-h={hRatio(m.d)} aria-label={m.h || undefined}>
             {vid ? (
               <>
                 <img class="poster" src={clPoster(vid)} alt="" decoding="async" loading="lazy" />
@@ -116,7 +118,14 @@ const nameFor = (u: string) => decodeURIComponent(u.split('/').pop() || '').repl
         cols.push(c);
         grid.appendChild(c);
       }
-      allTiles.forEach((t, i) => cols[i % n].appendChild(t));
+      // shortest-column packing (true masonry, matches Squarespace's arrangement)
+      const heights = new Array(n).fill(0);
+      allTiles.forEach((t) => {
+        let mi = 0;
+        for (let k = 1; k < n; k++) { if (heights[k] < heights[mi]) mi = k; }
+        cols[mi].appendChild(t);
+        heights[mi] += parseFloat((t as HTMLElement).dataset.h || '1') + 0.08; // +gap allowance
+      });
     }
     layout();
     let rt;
