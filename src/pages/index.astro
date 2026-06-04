@@ -29,6 +29,22 @@ const videoFor = (u: string) => {
   for (const k in VMAP) { if (u.includes(k)) return VMAP[k]; }
   return null;
 };
+// gif source -> compressed MP4 served from this site (/public/videos). Verified against the source clips.
+const LOCALVID: Record<string, string> = {
+  'CREST_ANIMATION_9-16': '/videos/home_jacques.mp4',
+  'JEFF_KOONS_4K_MASTER': '/videos/home_jeffkoons.mp4',
+  'Adhesive_Liquid': '/videos/home_henkel.mp4',
+  'NIKE_Kling3_2026-03-20': '/videos/home_nikekling.mp4',
+  'BASKET_ROT': '/videos/home_basketrot.mp4',
+  'FIX2': '/videos/home_fix2.mp4',
+  'AnimateDiff_00023_1_stab': '/videos/home_axmundi.mp4',
+  'SCREEN_NOISE': '/videos/home_screennoise.mp4',
+  'Noodle_Motion': '/videos/home_noodle.mp4',
+};
+const localVideoFor = (u: string) => {
+  for (const k in LOCALVID) { if (u.includes(k)) return LOCALVID[k]; }
+  return null;
+};
 const linkFor = (h: string) => {
   if (!h || h.includes('squarespace.com')) return '';
   if (h.startsWith('/')) return 'https://www.gast.studio' + h;
@@ -68,11 +84,14 @@ const hRatio = (d: string) => { const [w, h] = d.split('x').map(Number); return 
     <div class="home-grid" id="home-grid">
       {tiles.map((m) => {
         const vid = m.t === 'g' ? videoFor(m.u) : null;
+        const lvid = m.t === 'g' && !vid ? localVideoFor(m.u) : null;
         const link = linkFor(m.h);
-        const needs = m.t === 'g' && !vid;
+        const needs = m.t === 'g' && !vid && !lvid;
         return (
-          <a class:list={["home-tile", { 'is-video': !!vid }]} href={link || undefined} target={link && isExternal(link) ? '_blank' : undefined} rel={link && isExternal(link) ? 'noopener' : undefined} style={`aspect-ratio:${m.d.replace('x', '/')}`} data-h={hRatio(m.d)} aria-label={m.h || undefined}>
-            {vid ? (
+          <a class:list={["home-tile", { 'is-video': !!(vid || lvid) }]} href={link || undefined} target={link && isExternal(link) ? '_blank' : undefined} rel={link && isExternal(link) ? 'noopener' : undefined} style={`aspect-ratio:${m.d.replace('x', '/')}`} data-h={hRatio(m.d)} aria-label={m.h || undefined}>
+            {lvid ? (
+              <video muted loop playsinline preload="none" data-src={lvid}></video>
+            ) : vid ? (
               <>
                 <img class="poster" src={clPoster(vid)} alt="" decoding="async" loading="lazy" />
                 <video muted loop playsinline preload="none" data-src={clVid(vid)}></video>
