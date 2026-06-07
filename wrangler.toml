@@ -1,0 +1,9 @@
+name = "gast-site"
+compatibility_date = "2025-06-01"
+
+# Static-asset (no Worker script) deploy: serve the Astro build output in ./dist.
+# Cloudflare build pipeline: build command `npm run build` -> dist, then `npx wrangler deploy`
+# uploads everything in ./dist and serves it on the workers.dev URL.
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
