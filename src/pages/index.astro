@@ -1,171 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
-import tiles from '../data/home-tiles.json';
 
-// Full home portfolio grid, rebuilt from the Squarespace home in exact order (105 tiles).
-// t: 'g' = animated gif (served raw from Squarespace for now, or a Cloudinary video if we have one)
-//    's' = still image (served through Cloudinary fetch)
-// h: link (/work/.., /store/.., external) or '' (no link)
-// d: "WxH" source dimensions -> tile reserves exact size; grey box if media missing.
-const SQ = 'https://images.squarespace-cdn.com/content/v1/6397a67a7842513d84ffeded/';
-const CL = 'https://res.cloudinary.com/dvyflhlls/';
-
-const fImg = (u: string, w: number) => `${CL}image/fetch/f_auto,q_auto,w_${w}/${SQ}${u}`;
-const fSet = (u: string) => [400, 800, 1400].map((w) => `${fImg(u, w)} ${w}w`).join(', ');
-const clVid = (id: string) => `${CL}video/upload/q_auto/f_auto/${id}.mp4`;
-const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_600/${id}.jpg`;
-
-// gif source -> already-uploaded Cloudinary video (better quality + lighter)
-const VMAP: Record<string, string> = {
-  'BLUE_PIT_9.16-ezgif': 'BLUE_PIT_9.16_Web_auqt06',
-  'ROLL_WHEELS-ezgif': 'ROLL_WHEELS_d2uhvv',
-  'PILE_WHEELS-ezgif': 'PILE_WHEELS_lqurec',
-  'SCROLL-ezgif': 'SCROLL_htffzh',
-  'PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003-ezgif': 'PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003_lldbov',
-  'RED-ezgif.com-video-to-gif-converter': 'RED_jvthwt',
-};
-const videoFor = (u: string) => {
-  for (const k in VMAP) { if (u.includes(k)) return VMAP[k]; }
-  return null;
-};
-// gif source -> compressed MP4 served from this site (/public/videos). Verified against the source clips.
-const LOCALVID: Record<string, string> = {
-  'CREST_ANIMATION_9-16': '/videos/home_jacques.mp4',
-  'JEFF_KOONS_4K_MASTER': '/videos/home_jeffkoons.mp4',
-  'Adhesive_Liquid': '/videos/home_henkel.mp4',
-  'NIKE_Kling3_2026-03-20': '/videos/home_nikekling.mp4',
-  'BASKET_ROT': '/videos/home_basketrot.mp4',
-  'FIX2': '/videos/home_fix2.mp4',
-  'AnimateDiff_00023_1_stab': '/videos/home_axmundi.mp4',
-  'SCREEN_NOISE': '/videos/home_screennoise.mp4',
-  'Noodle_Motion': '/videos/home_noodle.mp4',
-};
-const localVideoFor = (u: string) => {
-  for (const k in LOCALVID) { if (u.includes(k)) return LOCALVID[k]; }
-  return null;
-};
-const linkFor = (h: string) => {
-  if (!h || h.includes('squarespace.com')) return '';
-  if (h.startsWith('/')) return 'https://www.gast.studio' + h;
-  return h;
-};
-const isExternal = (link: string) => link.startsWith('http') && !link.includes('gast.studio');
-const nameFor = (u: string) => decodeURIComponent(u.split('/').pop() || '').replace(/\+/g, ' ');
-// relative height (height per unit width) used for shortest-column masonry packing
-const hRatio = (d: string) => { const [w, h] = d.split('x').map(Number); return (h / w).toFixed(4); };
+// Homepage — renders /layout.json (the manifest saved by Grid Lab, 💾 Save)
+// with the lab's own packer, ported read-only in /public/home-grid.js.
+// To update the homepage design: curate in Grid Lab → Save → copy
+// CODE/home-grid/layout.json to public/layout.json → push.
 ---
 
 <BaseLayout title="CGI & Creative Direction Studio, Amsterdam">
-  <style>
-    .home { width: 100vw; margin-left: calc(50% - 50vw); padding: 0 clamp(10px, 3vw, 56px) clamp(40px, 6vw, 90px); }
-    .home-grid { display: flex; gap: 10px; max-width: 2200px; margin: 0 auto; align-items: flex-start; }
-    .home-col { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-    .home-tile { display: block; width: 100%; position: relative; overflow: hidden; background: #3a3a3a; line-height: 0; }
-    .home-tile img, .home-tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    .home-tile.is-video video { opacity: 0; transition: opacity 0.4s ease; }
-    .home-tile.is-video.playing video { opacity: 1; }
+  <style is:global>
+    /* full-bleed board (escapes .page max-width), same geometry as the lab */
+    .home-wrap { width: 100vw; margin-left: calc(50% - 50vw); }
+    #board { position: relative; margin: 14px 16px 60px; }
 
-    /* Migration aid (remove when migration done) */
-    .tile-label {
-      position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
-      padding: 6px 8px; font-size: 11px; line-height: 1.3; font-weight: 400;
-      color: #fff; background: rgba(0,0,0,0.6); word-break: break-all; pointer-events: none;
+    #board .it {
+      position: absolute; display: block; overflow: hidden; background: #111;
+      background-size: cover; background-position: center;
+      text-decoration: none;
     }
-    .tile-label.needs { background: rgba(120,20,20,0.78); }
-    .tile-label .mp4 {
-      display: inline-block; margin-right: 6px; padding: 1px 5px;
-      font-size: 9px; font-weight: 700; letter-spacing: 0.04em;
-      background: #ff3b30; color: #fff; border-radius: 2px; vertical-align: middle;
+    #board .it img, #board .it video {
+      position: absolute; display: block; pointer-events: none; max-width: none;
+    }
+    #board .it img { opacity: 0; transition: opacity .35s ease; }
+    #board .it.ld img { opacity: 1; }
+    #board .it video { opacity: 0; transition: opacity .4s ease; z-index: 1; }
+    #board .it.playing video { opacity: 1; }
+
+    /* hover project title (Grid Lab v2.6: slide up from bottom-left, auto-contrast) */
+    #board .it .ttl {
+      position: absolute; left: 10px; bottom: 9px; z-index: 2; pointer-events: none;
+      font: 400 12px/1.3 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      color: rgba(228,228,228,.95); letter-spacing: .03em;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .28s ease, transform .34s cubic-bezier(.2,.7,.3,1);
+    }
+    #board .it .ttl.dark { color: rgba(70,70,70,.95); }
+    #board .it:hover .ttl { opacity: 1; transform: translateY(0); }
+
+    /* failure guard: an asset that errors shows a small red note */
+    #board .it.err::after {
+      content: 'MEDIA MISSING'; position: absolute; bottom: 6px; left: 6px; z-index: 3;
+      background: rgba(127,29,29,.9); color: #fecaca;
+      font: 700 8px/1 ui-monospace, Menlo, monospace; letter-spacing: .08em;
+      padding: 4px 6px; border-radius: 3px; pointer-events: none;
     }
   </style>
 
-  <div class="home">
-    <div class="home-grid" id="home-grid">
-      {tiles.map((m) => {
-        const vid = m.t === 'g' ? videoFor(m.u) : null;
-        const lvid = m.t === 'g' && !vid ? localVideoFor(m.u) : null;
-        const link = linkFor(m.h);
-        const needs = m.t === 'g' && !vid && !lvid;
-        return (
-          <a class:list={["home-tile", { 'is-video': !!(vid || lvid) }]} href={link || undefined} target={link && isExternal(link) ? '_blank' : undefined} rel={link && isExternal(link) ? 'noopener' : undefined} style={`aspect-ratio:${m.d.replace('x', '/')}`} data-h={hRatio(m.d)} aria-label={m.h || undefined}>
-            {lvid ? (
-              <video muted loop playsinline preload="none" data-src={lvid}></video>
-            ) : vid ? (
-              <>
-                <img class="poster" src={clPoster(vid)} alt="" decoding="async" loading="lazy" />
-                <video muted loop playsinline preload="none" data-src={clVid(vid)}></video>
-              </>
-            ) : m.t === 's' ? (
-              <img src={fImg(m.u, 800)} srcset={fSet(m.u)} sizes="(max-width:700px) 50vw, 25vw" alt="" decoding="async" loading="lazy" />
-            ) : (
-              <img src={`${SQ}${m.u}`} alt="" decoding="async" loading="lazy" />
-            )}
-            <span class:list={["tile-label", { needs }]}>
-              {needs && <b class="mp4">NEEDS MP4</b>}
-              {nameFor(m.u)}
-            </span>
-          </a>
-        );
-      })}
-    </div>
+  <div class="home-wrap">
+    <div id="board"></div>
   </div>
 
-  <script>
-    const grid = document.getElementById('home-grid');
-    const allTiles = Array.from(grid ? grid.querySelectorAll('.home-tile') : []);
-
-    function columnCount() {
-      const w = window.innerWidth;
-      if (w < 700) return 2;
-      if (w < 1100) return 3;
-      return 4;
-    }
-
-    let current = 0;
-    function layout() {
-      if (!grid) return;
-      const n = columnCount();
-      if (n === current) return;
-      current = n;
-      grid.innerHTML = '';
-      const cols = [];
-      for (let i = 0; i < n; i++) {
-        const c = document.createElement('div');
-        c.className = 'home-col';
-        c.style.cssText = 'flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;';
-        cols.push(c);
-        grid.appendChild(c);
-      }
-      // shortest-column packing (true masonry, matches Squarespace's arrangement)
-      const heights = new Array(n).fill(0);
-      allTiles.forEach((t) => {
-        let mi = 0;
-        for (let k = 1; k < n; k++) { if (heights[k] < heights[mi]) mi = k; }
-        cols[mi].appendChild(t);
-        heights[mi] += parseFloat((t as HTMLElement).dataset.h || '1') + 0.08; // +gap allowance
-      });
-    }
-    layout();
-    let rt;
-    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layout, 150); });
-
-    const vids = document.querySelectorAll('.home-tile.is-video');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          const cell = e.target as HTMLElement;
-          const v = cell.querySelector('video') as HTMLVideoElement;
-          if (!v) return;
-          if (e.isIntersecting) {
-            if (!v.src) v.src = v.dataset.src || '';
-            const p = v.play();
-            if (p && p.catch) p.catch(() => {});
-            cell.classList.add('playing');
-          } else { v.pause(); }
-        });
-      }, { rootMargin: '300px 0px' });
-      vids.forEach((c) => io.observe(c));
-    }
-  </script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script is:inline src="/home-grid.js"></script>
 </BaseLayout>

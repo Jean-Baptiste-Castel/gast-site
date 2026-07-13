@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Not migrated yet">
+  <style>
+    .nf { padding: 120px 20px 160px; text-align: center; }
+    .nf h1 { color: #ebebeb; font-size: 22px; font-weight: 500; margin-bottom: 16px; }
+    .nf p { color: #737373; font-size: 14px; line-height: 1.6; }
+    .nf code { color: #4d4d4d; font-size: 12px; }
+    .nf a { color: #ebebeb; text-decoration: underline; }
+  </style>
+  <div class="nf">
+    <h1>Page not migrated yet</h1>
+    <p>This page does not exist on the new site so far.<br>
+      <code id="nf-path"></code></p>
+    <p><a href="/">Back to home</a></p>
+  </div>
+  <script is:inline>
+    document.getElementById('nf-path').textContent = location.pathname;
+  </script>
+</BaseLayout>

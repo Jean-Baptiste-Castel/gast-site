@@ -1,0 +1,3590 @@
+{
+  "version": "gridlab-2.6",
+  "saved": "2026-07-07T15:24:53.579Z",
+  "density": 100,
+  "colorAssist": true,
+  "cropPolicy": "auto-minimal (max 10% per axis) unless per-image limits or lock",
+  "items": [
+    {
+      "rank": 1,
+      "kind": "cv",
+      "id": "BLUE_PIT_9.16_Web_auqt06.mp4",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 240,
+      "sizeMin": 162,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.462,
+        "l": 0.312
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 2,
+      "kind": "cf",
+      "id": "ecb06fbfbc98aed8555f0ebdcf346a23",
+      "ratio": 1.7751,
+      "href": "https://www.gast.studio/work/hermes",
+      "title": "Hermes",
+      "titleCustom": null,
+      "number": null,
+      "size": 154,
+      "sizeMin": 114,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.295,
+        "l": 0.709
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 3,
+      "kind": "cf",
+      "id": "b1bb03bf2b35440847b817fec7205133",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio/work/jeff-koons",
+      "title": "Jeff Koons",
+      "titleCustom": null,
+      "number": null,
+      "size": 232,
+      "sizeMin": 190,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.019,
+        "l": 0.415
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0
+      },
+      "lockedFullFrame": true,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 4,
+      "kind": "cf",
+      "id": "987bfac015f748b0097868cb40628ede",
+      "ratio": 0.751,
+      "href": "https://www.gast.studio/work/jacques-marie-mage",
+      "title": "Jacques Marie Mage",
+      "titleCustom": null,
+      "number": null,
+      "size": 204,
+      "sizeMin": 96,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 345,
+        "s": 0.915,
+        "l": 0.146
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 5,
+      "kind": "cf",
+      "id": "c50f9bbc0f883bf421fbdcd7a89ced07",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio/store/p/stem-vase",
+      "title": "Stem Vase",
+      "titleCustom": null,
+      "number": null,
+      "size": 133,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.104,
+        "l": 0.837
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 6,
+      "kind": "cv",
+      "id": "SWAROVSKI_AG_VIDEO_1_a1ub8u.mp4",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio/work/swarovski-x-ariana-grande",
+      "title": "Swarovski X Ariana Grande",
+      "titleCustom": null,
+      "number": null,
+      "size": 220,
+      "sizeMin": 134,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 165,
+        "s": 0.258,
+        "l": 0.836
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 7,
+      "kind": "ci",
+      "id": "image_4_-min_juam4o.webp",
+      "ratio": 0.7988,
+      "href": "https://www.gast.studio/work/loop",
+      "title": "Loop",
+      "titleCustom": null,
+      "number": null,
+      "size": 124,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 255,
+        "s": 0.074,
+        "l": 0.736
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 8,
+      "kind": "ci",
+      "id": "migrated/STILL_HERO_GOLD_V302_0021-min.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 126,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.959,
+        "l": 0.118
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 9,
+      "kind": "cf",
+      "id": "87cd0e319d070540c85300c3f8060e92",
+      "ratio": 1.7763,
+      "href": "https://www.gast.studio",
+      "title": "№ 1",
+      "titleCustom": null,
+      "number": 1,
+      "size": 105,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.106,
+        "l": 0.462
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 10,
+      "kind": "ci",
+      "id": "migrated/BUTTERFLY_MUSHROOM_05.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/swarovski-x-ariana-grande",
+      "title": "Swarovski X Ariana Grande",
+      "titleCustom": null,
+      "number": null,
+      "size": 156,
+      "sizeMin": 94,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 165,
+        "s": 0.352,
+        "l": 0.792
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 11,
+      "kind": "ci",
+      "id": "image_312_-min_hiatzr.webp",
+      "ratio": 0.7988,
+      "href": "https://www.gast.studio/work/loop",
+      "title": "Loop",
+      "titleCustom": null,
+      "number": null,
+      "size": 123,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.071,
+        "l": 0.641
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0
+      },
+      "lockedFullFrame": true,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 12,
+      "kind": "ci",
+      "id": "migrated/ab33bbce-30b8-4ed5-b3bd-27999cd750c3.webp",
+      "ratio": 0.6667,
+      "href": "https://www.gast.studio/store/p/puffer-vase-2",
+      "title": "Puffer Vase 2",
+      "titleCustom": null,
+      "number": null,
+      "size": 143,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 345,
+        "s": 0.414,
+        "l": 0.432
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.15773533969010725,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 13,
+      "kind": "cf",
+      "id": "a676d157aa4659250a8f85627ebbd783",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/store/p/twigs-bowl",
+      "title": "Twigs Bowl",
+      "titleCustom": null,
+      "number": null,
+      "size": 81,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.036,
+        "l": 0.825
+      },
+      "cropLimits": {
+        "l": 0.09104821644498184,
+        "t": 0.25947253901560624,
+        "r": 0.09104821644498184,
+        "b": 0.25947253901560624
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 14,
+      "kind": "cf",
+      "id": "47cfefd56a0a300b9c56830fb2d5d662",
+      "ratio": 1.7751,
+      "href": "https://www.gast.studio/work/dj-snake-coachella",
+      "title": "Dj Snake Coachella",
+      "titleCustom": null,
+      "number": null,
+      "size": 177,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 75,
+        "s": 0.267,
+        "l": 0.28
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 15,
+      "kind": "ci",
+      "id": "migrated/ca485a18-8f53-4f96-bbb2-5e27a3b0b4fe.webp",
+      "ratio": 0.7501,
+      "href": "https://www.gast.studio/work/gast",
+      "title": "Gast",
+      "titleCustom": null,
+      "number": null,
+      "size": 105,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.014,
+        "l": 0.555
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 16,
+      "kind": "ci",
+      "id": "1_Main_0015_v4jem7.png",
+      "ratio": 0.8852,
+      "href": "https://www.gast.studio",
+      "title": "№ 2",
+      "titleCustom": null,
+      "number": 2,
+      "size": 140,
+      "sizeMin": 86,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.001,
+        "l": 0.902
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 17,
+      "kind": "ci",
+      "id": "TENSION_and_BALANCE_11_1_mt4iad.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/swarovski-x-ariana-grande",
+      "title": "Swarovski X Ariana Grande",
+      "titleCustom": null,
+      "number": null,
+      "size": 121,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.32,
+        "l": 0.693
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 18,
+      "kind": "ci",
+      "id": "migrated/STILL_HERO_GOLD_V14-min.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 240,
+      "sizeMin": 196,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.997,
+        "l": 0.507
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.10200509770603228,
+        "r": 0.05,
+        "b": 0.10200509770603228
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 19,
+      "kind": "ci",
+      "id": "migrated/TREE.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 173,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.391,
+        "l": 0.815
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 20,
+      "kind": "cf",
+      "id": "a439778b1eb1a683f30c7b8c55a36fca",
+      "ratio": 1.7751,
+      "href": "https://www.gast.studio/work/so-good-gta",
+      "title": "So Good Gta",
+      "titleCustom": null,
+      "number": null,
+      "size": 169,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.348,
+        "l": 0.137
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0
+      },
+      "lockedFullFrame": true,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 21,
+      "kind": "cf",
+      "id": "6eb1ad484158a03666b0b89f100be1f5",
+      "ratio": 0.6667,
+      "href": "https://www.gast.studio/work/ax-mundi",
+      "title": "Ax Mundi",
+      "titleCustom": null,
+      "number": null,
+      "size": 83,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "analogous",
+      "dominantColor": {
+        "h": 195,
+        "s": 0.127,
+        "l": 0.551
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 22,
+      "kind": "ci",
+      "id": "migrated/photo_2025-10-07_12.41.43.webp",
+      "ratio": 0.7203,
+      "href": "https://www.gast.studio",
+      "title": "№ 3",
+      "titleCustom": null,
+      "number": 3,
+      "size": 104,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.338,
+        "l": 0.131
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 23,
+      "kind": "cf",
+      "id": "359246fffb56e6e7a6ea4eb99a3f4dc7",
+      "ratio": 1.7751,
+      "href": "https://www.gast.studio/work/other",
+      "title": "Other",
+      "titleCustom": null,
+      "number": null,
+      "size": 196,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.635,
+        "l": 0.884
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "X",
+        "pct": 5
+      }
+    },
+    {
+      "rank": 24,
+      "kind": "cf",
+      "id": "718785cf88d56503c11bd551293e3350",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio/work/loop",
+      "title": "Loop",
+      "titleCustom": null,
+      "number": null,
+      "size": 130,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.915,
+        "l": 0.257
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 25,
+      "kind": "cf",
+      "id": "cb689ad9ed1ee87a89889ef26eb38845",
+      "ratio": 1.7751,
+      "href": "https://www.gast.studio/work/the-bronze-age-2",
+      "title": "The Bronze Age 2",
+      "titleCustom": null,
+      "number": null,
+      "size": 192,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.398,
+        "l": 0.218
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 26,
+      "kind": "ci",
+      "id": "migrated/UPSCALED2.webp",
+      "ratio": 0.7501,
+      "href": "https://www.gast.studio/store/p/noodle-vase",
+      "title": "Noodle Vase",
+      "titleCustom": null,
+      "number": null,
+      "size": 142,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.387,
+        "l": 0.632
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 27,
+      "kind": "cf",
+      "id": "cd1a88a6cd5b9cf992a77e57ae9706b7",
+      "ratio": 1,
+      "href": "https://www.gast.studio",
+      "title": "№ 4",
+      "titleCustom": null,
+      "number": 4,
+      "size": 132,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.167,
+        "l": 0.122
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 28,
+      "kind": "ci",
+      "id": "migrated/HERO_SHOT_WHEEL_ONLY_V0039.3_2.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 148,
+      "sizeMin": 76,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": true,
+      "colorHarmony": "analogous",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.256,
+        "l": 0.361
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.07839220922013462,
+        "r": 0.05,
+        "b": 0.07839220922013462
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 29,
+      "kind": "ci",
+      "id": "migrated/10.webp",
+      "ratio": 0.6667,
+      "href": "https://www.gast.studio/work/gast",
+      "title": "Gast",
+      "titleCustom": null,
+      "number": null,
+      "size": 165,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.518,
+        "l": 0.348
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0.10338239910790142,
+        "r": 0,
+        "b": 0.10338239910790142
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 30,
+      "kind": "cf",
+      "id": "29a756eac9ae911dab2687ea17501bde",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 5",
+      "titleCustom": null,
+      "number": 5,
+      "size": 181,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.391,
+        "l": 0.523
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 31,
+      "kind": "cf",
+      "id": "2aa9863392bfe641b84c7f5d1e0c9fe6",
+      "ratio": 0.5627,
+      "href": "https://www.gast.studio",
+      "title": "№ 6",
+      "titleCustom": null,
+      "number": 6,
+      "size": 131,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 255,
+        "s": 0.064,
+        "l": 0.844
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 32,
+      "kind": "cf",
+      "id": "c150473884c9ce5a105e349c717d202a",
+      "ratio": 0.6678,
+      "href": "https://www.gast.studio/work/ax-mundi",
+      "title": "Ax Mundi",
+      "titleCustom": null,
+      "number": null,
+      "size": 125,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.405,
+        "l": 0.076
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 33,
+      "kind": "ci",
+      "id": "migrated/39-min.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/store/p/noodle-vase",
+      "title": "Noodle Vase",
+      "titleCustom": null,
+      "number": null,
+      "size": 120,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.255,
+        "l": 0.373
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 7
+      }
+    },
+    {
+      "rank": 34,
+      "kind": "cf",
+      "id": "c82d00ad05a644dd493a41690d058ecf",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 7",
+      "titleCustom": null,
+      "number": 7,
+      "size": 104,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 75,
+        "s": 0.675,
+        "l": 0.386
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 35,
+      "kind": "ci",
+      "id": "migrated/1_Main_00057RED2_0054.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 8",
+      "titleCustom": null,
+      "number": 8,
+      "size": 103,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 345,
+        "s": 0.085,
+        "l": 0.789
+      },
+      "cropLimits": {
+        "l": 0.10179227941176472,
+        "t": 0.17184808022763534,
+        "r": 0.10179227941176472,
+        "b": 0.17184808022763534
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 13
+      }
+    },
+    {
+      "rank": 36,
+      "kind": "ci",
+      "id": "image_22_1_-min_dxgnk8.webp",
+      "ratio": 0.787,
+      "href": "https://www.gast.studio/work/loop",
+      "title": "Loop",
+      "titleCustom": null,
+      "number": null,
+      "size": 141,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.777,
+        "l": 0.163
+      },
+      "cropLimits": {
+        "l": 0.01607901444350046,
+        "t": 0.020460662701784198,
+        "r": 0.01607901444350046,
+        "b": 0.020460662701784198
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 37,
+      "kind": "ci",
+      "id": "migrated/25401a28-bc96-4a2ff7-822e-b684a555d4a3.webp",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio/work/gast",
+      "title": "Gast",
+      "titleCustom": null,
+      "number": null,
+      "size": 103,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.114,
+        "l": 0.114
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.13482717305672268,
+        "r": 0.05,
+        "b": 0.13482717305672268
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 38,
+      "kind": "ci",
+      "id": "migrated/68.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/store/p/puffer-vase-2",
+      "title": "Puffer Vase 2",
+      "titleCustom": null,
+      "number": null,
+      "size": 110,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.284,
+        "l": 0.466
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 39,
+      "kind": "ci",
+      "id": "migrated/original_3a549f5fcc24ff22e6c620e51064f80a.webp",
+      "ratio": 0.6667,
+      "href": "https://www.gast.studio/work/ax-mundi",
+      "title": "Ax Mundi",
+      "titleCustom": null,
+      "number": null,
+      "size": 95,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.333,
+        "l": 0.25
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 40,
+      "kind": "cf",
+      "id": "e6fdefee846fcb351fc3db3bdf42a49b",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio/store/p/twigs-bowl",
+      "title": "Twigs Bowl",
+      "titleCustom": null,
+      "number": null,
+      "size": 103,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.026,
+        "l": 0.756
+      },
+      "cropLimits": {
+        "l": 0.15468425252375306,
+        "t": 0.05,
+        "r": 0.15468425252375306,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "X",
+        "pct": 12
+      }
+    },
+    {
+      "rank": 41,
+      "kind": "ci",
+      "id": "migrated/original_5d62c0cd17ba4b0950b1a7fe63145ed1.webp",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio/work/loop",
+      "title": "Loop",
+      "titleCustom": null,
+      "number": null,
+      "size": 84,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 15,
+        "s": 0,
+        "l": 0.038
+      },
+      "cropLimits": {
+        "l": 0.2859758435582822,
+        "t": 0.05,
+        "r": 0.2859758435582822,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 42,
+      "kind": "cf",
+      "id": "2cdf7ef7d56cfece6f87733403dca491",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/gast",
+      "title": "Gast",
+      "titleCustom": null,
+      "number": null,
+      "size": 109,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.641,
+        "l": 0.606
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 43,
+      "kind": "cf",
+      "id": "1854113bd7c7141c4ccdc68abe466265",
+      "ratio": 0.5624,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 102,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.204,
+        "l": 0.852
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.14937695078031213,
+        "r": 0.05,
+        "b": 0.14937695078031213
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 44,
+      "kind": "cf",
+      "id": "c3058f4aebe5964e306115fcba27831f",
+      "ratio": 1,
+      "href": "https://www.gast.studio/store/p/puffer-vase-2",
+      "title": "Puffer Vase 2",
+      "titleCustom": null,
+      "number": null,
+      "size": 79,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 225,
+        "s": 0.086,
+        "l": 0.672
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 45,
+      "kind": "ci",
+      "id": "migrated/941c47af-cb34-4b61-a7af-7dc0ceb3d113.webp",
+      "ratio": 0.7501,
+      "href": "https://www.gast.studio/work/gast",
+      "title": "Gast",
+      "titleCustom": null,
+      "number": null,
+      "size": 139,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 345,
+        "s": 0.851,
+        "l": 0.264
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 46,
+      "kind": "ci",
+      "id": "migrated/photo_2025-10-07_12.43.21.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 9",
+      "titleCustom": null,
+      "number": 9,
+      "size": 109,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.581,
+        "l": 0.405
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 47,
+      "kind": "cf",
+      "id": "ef8a52e756d4b6d8ea4ef2c19db2a92f",
+      "ratio": 0.7498,
+      "href": "https://www.gast.studio",
+      "title": "№ 10",
+      "titleCustom": null,
+      "number": 10,
+      "size": 102,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.68,
+        "l": 0.121
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 48,
+      "kind": "ci",
+      "id": "migrated/1_Main_00057chrome8_0070.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 11",
+      "titleCustom": null,
+      "number": 11,
+      "size": 63,
+      "sizeMin": 40,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.001,
+        "l": 0.073
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 49,
+      "kind": "ci",
+      "id": "migrated/STILL_HERO_GOLD_V28_0021-min.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 12",
+      "titleCustom": null,
+      "number": 12,
+      "size": 78,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.592,
+        "l": 0.044
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.0935659509202454,
+        "r": 0.05,
+        "b": 0.0935659509202454
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 50,
+      "kind": "cf",
+      "id": "a122c26f60e43626bde417c9ca22667f",
+      "ratio": 2.3881,
+      "href": "https://www.gast.studio/work/flane",
+      "title": "Flane",
+      "titleCustom": null,
+      "number": null,
+      "size": 185,
+      "sizeMin": 118,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 345,
+        "s": 0.508,
+        "l": 0.334
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 51,
+      "kind": "ci",
+      "id": "migrated/2024HNY.webp",
+      "ratio": 1.225,
+      "href": "https://www.gast.studio",
+      "title": "№ 13",
+      "titleCustom": null,
+      "number": 13,
+      "size": 102,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.917,
+        "l": 0.255
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 52,
+      "kind": "ci",
+      "id": "migrated/HAZY3_0070-min.webp",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio",
+      "title": "№ 14",
+      "titleCustom": null,
+      "number": 14,
+      "size": 109,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.635,
+        "l": 0.78
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 7
+      }
+    },
+    {
+      "rank": 53,
+      "kind": "ci",
+      "id": "STILL_HERO_GOLD_V2.16_yeg33y.png",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 15",
+      "titleCustom": null,
+      "number": 15,
+      "size": 200,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.222,
+        "l": 0.415
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 54,
+      "kind": "ci",
+      "id": "migrated/1_Main_0003-min.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/loop",
+      "title": "Loop",
+      "titleCustom": null,
+      "number": null,
+      "size": 77,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "triadic",
+      "dominantColor": {
+        "h": 255,
+        "s": 0.31,
+        "l": 0.569
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 55,
+      "kind": "cf",
+      "id": "63a7569154c2c9e2e3d55565136ce5be",
+      "ratio": 1,
+      "href": "https://www.gast.studio/work/gast",
+      "title": "Gast",
+      "titleCustom": null,
+      "number": null,
+      "size": 101,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.898,
+        "l": 0.478
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.1998939158498685,
+        "r": 0.05,
+        "b": 0.1998939158498685
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 5
+      }
+    },
+    {
+      "rank": 56,
+      "kind": "cf",
+      "id": "bf5e43077647de52532af2f2580d773c",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/store",
+      "title": "№ 16",
+      "titleCustom": null,
+      "number": 16,
+      "size": 101,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.11,
+        "l": 0.336
+      },
+      "cropLimits": {
+        "l": 0.10246083739287237,
+        "t": 0.05,
+        "r": 0.10246083739287237,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 57,
+      "kind": "cf",
+      "id": "fe3c9af61a22a5172fd2ca4442c4fd7c",
+      "ratio": 2.2594,
+      "href": "https://www.gast.studio",
+      "title": "№ 17",
+      "titleCustom": null,
+      "number": 17,
+      "size": 76,
+      "sizeMin": 40,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 255,
+        "s": 0.281,
+        "l": 0.391
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 58,
+      "kind": "ci",
+      "id": "migrated/1_Main_00008_00002.webp",
+      "ratio": 1.7776,
+      "href": "https://www.gast.studio",
+      "title": "№ 18",
+      "titleCustom": null,
+      "number": 18,
+      "size": 66,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 75,
+        "s": 0.416,
+        "l": 0.607
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 59,
+      "kind": "cf",
+      "id": "c169b214da296565532811e8105ba5df",
+      "ratio": 0.5624,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 204,
+      "sizeMin": 152,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.421,
+        "l": 0.647
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 60,
+      "kind": "ci",
+      "id": "migrated/Screenshot_2024-11-09_at_20.55.00.webp",
+      "ratio": 0.9243,
+      "href": "https://www.gast.studio",
+      "title": "№ 19",
+      "titleCustom": null,
+      "number": 19,
+      "size": 84,
+      "sizeMin": 40,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 195,
+        "s": 0.23,
+        "l": 0.575
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 61,
+      "kind": "cf",
+      "id": "e423fff2bd040231d5b67c7d472d2b6a",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 20",
+      "titleCustom": null,
+      "number": 20,
+      "size": 75,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 75,
+        "s": 0.523,
+        "l": 0.557
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 62,
+      "kind": "ci",
+      "id": "migrated/1_Main_00057.5.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/store",
+      "title": "№ 21",
+      "titleCustom": null,
+      "number": 21,
+      "size": 101,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.182,
+        "l": 0.325
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 63,
+      "kind": "cf",
+      "id": "c08cefed679eaec37f8d4ec9ab23b0da",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio",
+      "title": "№ 22",
+      "titleCustom": null,
+      "number": 22,
+      "size": 100,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.61,
+        "l": 0.11
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 64,
+      "kind": "cf",
+      "id": "d5b819dba573fb240dd2ac0ecf8e2c3d",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 23",
+      "titleCustom": null,
+      "number": 23,
+      "size": 108,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.234,
+        "l": 0.033
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 65,
+      "kind": "ci",
+      "id": "migrated/1_Main_0002578_0110.webp",
+      "ratio": 1.25,
+      "href": "https://www.gast.studio",
+      "title": "№ 24",
+      "titleCustom": null,
+      "number": 24,
+      "size": 61,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.037,
+        "l": 0.533
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 66,
+      "kind": "ci",
+      "id": "migrated/HERO_SHOT_WHEEL_ONLY_V0018.16.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 25",
+      "titleCustom": null,
+      "number": 25,
+      "size": 100,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 345,
+        "s": 0.542,
+        "l": 0.592
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 67,
+      "kind": "cf",
+      "id": "272eb82ace434ba555498893d6128680",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 26",
+      "titleCustom": null,
+      "number": 26,
+      "size": 74,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.232,
+        "l": 0.871
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0
+      },
+      "lockedFullFrame": true,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 68,
+      "kind": "cf",
+      "id": "60873ca651c5d1bb7edbb476f9e926a7",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 27",
+      "titleCustom": null,
+      "number": 27,
+      "size": 100,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.513,
+        "l": 0.062
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 69,
+      "kind": "ci",
+      "id": "image_12_-min_npynpy.webp",
+      "ratio": 0.7916,
+      "href": "https://www.gast.studio",
+      "title": "№ 28",
+      "titleCustom": null,
+      "number": 28,
+      "size": 108,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.279,
+        "l": 0.1
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 70,
+      "kind": "cf",
+      "id": "ce6870e1c413d7e8bce8e2b445e203c8",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 29",
+      "titleCustom": null,
+      "number": 29,
+      "size": 138,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.879,
+        "l": 0.203
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 71,
+      "kind": "cf",
+      "id": "82eb22eee80bd37203ee3224d30b167a",
+      "ratio": 2.3881,
+      "href": "https://www.gast.studio/work/flane",
+      "title": "Flane",
+      "titleCustom": null,
+      "number": null,
+      "size": 108,
+      "sizeMin": 40,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": false,
+      "placedAsFiller": true,
+      "colorHarmony": "on-neutral",
+      "dominantColor": {
+        "h": 255,
+        "s": 0.378,
+        "l": 0.4
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 72,
+      "kind": "cf",
+      "id": "f039f627c65607c0d5dfcae2f771162c",
+      "ratio": 0.5567,
+      "href": "https://www.gast.studio",
+      "title": "№ 30",
+      "titleCustom": null,
+      "number": 30,
+      "size": 99,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 0,
+        "s": 0,
+        "l": 0.5
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 73,
+      "kind": "ci",
+      "id": "migrated/HERO_SHOT_WHEEL_ONLY_V0017.10.webp",
+      "ratio": 1,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 73,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "on-neutral",
+      "dominantColor": {
+        "h": 195,
+        "s": 0.257,
+        "l": 0.786
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 74,
+      "kind": "ci",
+      "id": "migrated/photo_2025-10-07_12.41.50.webp",
+      "ratio": 0.7203,
+      "href": "https://www.gast.studio",
+      "title": "№ 31",
+      "titleCustom": null,
+      "number": 31,
+      "size": 108,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.413,
+        "l": 0.233
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "X",
+        "pct": 6
+      }
+    },
+    {
+      "rank": 75,
+      "kind": "cf",
+      "id": "e55674df7e981c1c69d34c71712e0f18",
+      "ratio": 0.5624,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 99,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.536,
+        "l": 0.296
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 76,
+      "kind": "ci",
+      "id": "migrated/1_Main_00019_0287.webp",
+      "ratio": 1.25,
+      "href": "https://www.gast.studio",
+      "title": "№ 32",
+      "titleCustom": null,
+      "number": 32,
+      "size": 60,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.001,
+        "l": 0.517
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 77,
+      "kind": "cf",
+      "id": "330d5b925bd188028e4262bd37fcbca8",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/store",
+      "title": "№ 33",
+      "titleCustom": null,
+      "number": 33,
+      "size": 99,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.344,
+        "l": 0.39
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 78,
+      "kind": "cf",
+      "id": "ccf4bf6263cfa35e54d79f11a9017a79",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 34",
+      "titleCustom": null,
+      "number": 34,
+      "size": 85,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "analogous",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.274,
+        "l": 0.506
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 79,
+      "kind": "ci",
+      "id": "migrated/photo_2025-10-07_12.43.46.webp",
+      "ratio": 0.7164,
+      "href": "https://www.gast.studio",
+      "title": "№ 35",
+      "titleCustom": null,
+      "number": 35,
+      "size": 99,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.082,
+        "l": 0.176
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 80,
+      "kind": "ci",
+      "id": "migrated/1_Main_0006-min.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 36",
+      "titleCustom": null,
+      "number": 36,
+      "size": 137,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.189,
+        "l": 0.075
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0.23128525831353922,
+        "r": 0,
+        "b": 0.23128525831353922
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 46
+      }
+    },
+    {
+      "rank": 81,
+      "kind": "ci",
+      "id": "migrated/WIDE_SHOT_V0012.webp",
+      "ratio": 1,
+      "href": "https://www.gast.studio",
+      "title": "№ 37",
+      "titleCustom": null,
+      "number": 37,
+      "size": 64,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "analogous",
+      "dominantColor": {
+        "h": 15,
+        "s": 0.679,
+        "l": 0.05
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.14144571125424188,
+        "r": 0.05,
+        "b": 0.14144571125424188
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 82,
+      "kind": "cf",
+      "id": "531089980718723376c9e77b80fa901f",
+      "ratio": 0.8859,
+      "href": "https://www.gast.studio",
+      "title": "№ 38",
+      "titleCustom": null,
+      "number": 38,
+      "size": 127,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 0,
+        "s": 0,
+        "l": 0.5
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 83,
+      "kind": "ci",
+      "id": "migrated/Screenshot_2024-01-19_at_13.06.33.webp",
+      "ratio": 0.9025,
+      "href": "https://www.gast.studio",
+      "title": "№ 39",
+      "titleCustom": null,
+      "number": 39,
+      "size": 108,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 195,
+        "s": 0.7,
+        "l": 0.355
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 2
+      }
+    },
+    {
+      "rank": 84,
+      "kind": "cf",
+      "id": "f1d4ea0a64f9151a4e0cbe17e581d38f",
+      "ratio": 0.5627,
+      "href": "https://www.gast.studio",
+      "title": "№ 40",
+      "titleCustom": null,
+      "number": 40,
+      "size": 72,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "analogous",
+      "dominantColor": {
+        "h": 45,
+        "s": 0.323,
+        "l": 0.689
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0,
+        "r": 0.05,
+        "b": 0
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 85,
+      "kind": "cf",
+      "id": "120243250f5a0b59adcab770048374d5",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio",
+      "title": "№ 41",
+      "titleCustom": null,
+      "number": 41,
+      "size": 71,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 225,
+        "s": 0.693,
+        "l": 0.237
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 86,
+      "kind": "ci",
+      "id": "migrated/original_6e9c073b211067a23ea41fb8a9509bad.webp",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio/work/floyd",
+      "title": "Floyd",
+      "titleCustom": null,
+      "number": null,
+      "size": 98,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 75,
+        "s": 0.029,
+        "l": 0.826
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 87,
+      "kind": "cf",
+      "id": "5512b2118861edd87e423f864ea58776",
+      "ratio": 1,
+      "href": "https://glider.fi/",
+      "title": "Glider",
+      "titleCustom": null,
+      "number": null,
+      "size": 70,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "analogous",
+      "dominantColor": {
+        "h": 165,
+        "s": 0.175,
+        "l": 0.671
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "X",
+        "pct": 8
+      }
+    },
+    {
+      "rank": 88,
+      "kind": "cf",
+      "id": "deac5e160f8b284b82819661000de6a3",
+      "ratio": 0.7747,
+      "href": "https://www.gast.studio",
+      "title": "№ 42",
+      "titleCustom": null,
+      "number": 42,
+      "size": 98,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 255,
+        "s": 0.106,
+        "l": 0.169
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "Y",
+        "pct": 9
+      }
+    },
+    {
+      "rank": 89,
+      "kind": "cf",
+      "id": "4c1c0df38f7d21ad3d1edb5e58d42f34",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 43",
+      "titleCustom": null,
+      "number": 43,
+      "size": 136,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.143,
+        "l": 0.827
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 90,
+      "kind": "ci",
+      "id": "migrated/dfhf_20260211_160114_d37f7835-79a1-4cad-bb0e-d69faeb16bb7.webp",
+      "ratio": 0.8327,
+      "href": "https://www.gast.studio",
+      "title": "№ 44",
+      "titleCustom": null,
+      "number": 44,
+      "size": 162,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0,
+        "l": 0.668
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0.16382771599446422,
+        "r": 0,
+        "b": 0.16382771599446422
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 91,
+      "kind": "cf",
+      "id": "fd44105d6b6854027288e50b610e898d",
+      "ratio": 1.7778,
+      "href": "https://www.gast.studio",
+      "title": "№ 45",
+      "titleCustom": null,
+      "number": 45,
+      "size": 126,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.463,
+        "l": 0.095
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 92,
+      "kind": "cf",
+      "id": "1217604806294aa354b0c40cf01034d1",
+      "ratio": 1.7822,
+      "href": "https://www.gast.studio",
+      "title": "№ 46",
+      "titleCustom": null,
+      "number": 46,
+      "size": 129,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 100,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 225,
+        "s": 0.475,
+        "l": 0.734
+      },
+      "cropLimits": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0
+      },
+      "lockedFullFrame": true,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 93,
+      "kind": "cf",
+      "id": "ca8d4c3ddbdb3263eb4530fb497a4282",
+      "ratio": 2.3881,
+      "href": "https://www.gast.studio",
+      "title": "№ 47",
+      "titleCustom": null,
+      "number": 47,
+      "size": 98,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.218,
+        "l": 0.373
+      },
+      "cropLimits": {
+        "l": 0.13905291411042953,
+        "t": 0.05,
+        "r": 0.13905291411042953,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": {
+        "axis": "X",
+        "pct": 10
+      }
+    },
+    {
+      "rank": 94,
+      "kind": "cf",
+      "id": "3ad30f7e4be64a22ce240fe59cbed385",
+      "ratio": 2.3881,
+      "href": "https://www.gast.studio/work/flane",
+      "title": "Flane",
+      "titleCustom": null,
+      "number": null,
+      "size": 69,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 0,
+        "s": 0,
+        "l": 0.5
+      },
+      "cropLimits": {
+        "l": 0.0917478484341383,
+        "t": 0.05,
+        "r": 0.0917478484341383,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 95,
+      "kind": "cf",
+      "id": "087bf7ae370e09ffaf67fe9fe6e09ce3",
+      "ratio": 1.0076,
+      "href": "https://www.gast.studio",
+      "title": "№ 48",
+      "titleCustom": null,
+      "number": 48,
+      "size": 240,
+      "sizeMin": 182,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 0,
+        "s": 0,
+        "l": 0.5
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 96,
+      "kind": "ci",
+      "id": "migrated/shot5_preview0000_2.webp",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 49",
+      "titleCustom": null,
+      "number": 49,
+      "size": 138,
+      "sizeMin": 54,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": true,
+      "colorHarmony": "neutral",
+      "dominantColor": {
+        "h": 225,
+        "s": 0.02,
+        "l": 0.836
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.13249916123466257,
+        "r": 0.05,
+        "b": 0.13249916123466257
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 97,
+      "kind": "cf",
+      "id": "98665499d46ed6af6c181f60ecb443d6",
+      "ratio": 0.8,
+      "href": "https://www.gast.studio",
+      "title": "№ 50",
+      "titleCustom": null,
+      "number": 50,
+      "size": 97,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.037,
+        "l": 0.758
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 98,
+      "kind": "cf",
+      "id": "c20c6078424200edd39b6e62e41b56cf",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 51",
+      "titleCustom": null,
+      "number": 51,
+      "size": 124,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.118,
+        "l": 0.31
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 99,
+      "kind": "cf",
+      "id": "1cdb6734be3a16a530a23dfd12520c7f",
+      "ratio": 0.7781,
+      "href": "https://www.gast.studio",
+      "title": "№ 52",
+      "titleCustom": null,
+      "number": 52,
+      "size": 107,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.028,
+        "l": 0.509
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 100,
+      "kind": "cf",
+      "id": "e6e4037cc77c35d32bfbdb7d9833f38d",
+      "ratio": 2.3881,
+      "href": "https://www.gast.studio",
+      "title": "№ 53",
+      "titleCustom": null,
+      "number": 53,
+      "size": 97,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.581,
+        "l": 0.627
+      },
+      "cropLimits": {
+        "l": 0.11625552832895059,
+        "t": 0.05,
+        "r": 0.11625552832895059,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 101,
+      "kind": "ci",
+      "id": "migrated/Screenshot_2024-11-09_at_21.21.20.webp",
+      "ratio": 1.1274,
+      "href": "https://www.gast.studio",
+      "title": "№ 54",
+      "titleCustom": null,
+      "number": 54,
+      "size": 67,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": true,
+      "placedAsFiller": true,
+      "colorHarmony": "complement",
+      "dominantColor": {
+        "h": 225,
+        "s": 0.161,
+        "l": 0.614
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 102,
+      "kind": "ci",
+      "id": "Lilith_Shot_01_Carl_v03_hq44pp.webp",
+      "ratio": 2.3881,
+      "href": "https://www.gast.studio",
+      "title": "№ 55",
+      "titleCustom": null,
+      "number": 55,
+      "size": 96,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.529,
+        "l": 0.349
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 103,
+      "kind": "ci",
+      "id": "migrated/19.webp",
+      "ratio": 0.5625,
+      "href": "https://www.gast.studio",
+      "title": "№ 56",
+      "titleCustom": null,
+      "number": 56,
+      "size": 96,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 45,
+        "s": 0.373,
+        "l": 0.578
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 104,
+      "kind": "cf",
+      "id": "3b75da54b5b40dfdc9eb809fad4fb6e3",
+      "ratio": 0.6,
+      "href": "https://www.gast.studio",
+      "title": "№ 57",
+      "titleCustom": null,
+      "number": 57,
+      "size": 107,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.028,
+        "l": 0.733
+      },
+      "cropLimits": null,
+      "lockedFullFrame": null,
+      "phoneFull": false,
+      "appliedCrop": null
+    },
+    {
+      "rank": 105,
+      "kind": "ci",
+      "id": "05_EXPRESSIVE_CHARACTER_SHOT_05_Carl_v003_1_oefco5.webp",
+      "ratio": 2.3894,
+      "href": "https://www.gast.studio",
+      "title": "№ 58",
+      "titleCustom": null,
+      "number": 58,
+      "size": 96,
+      "sizeMin": null,
+      "phone": {
+        "size": null,
+        "full": false
+      },
+      "sizePhone": null,
+      "placementBlend": 20,
+      "pool": false,
+      "placedAsFiller": false,
+      "colorHarmony": null,
+      "dominantColor": {
+        "h": 15,
+        "s": 0.961,
+        "l": 0.359
+      },
+      "cropLimits": {
+        "l": 0.05,
+        "t": 0.05,
+        "r": 0.05,
+        "b": 0.05
+      },
+      "lockedFullFrame": false,
+      "phoneFull": false,
+      "appliedCrop": null
+    }
+  ]
+}

@@ -20,14 +20,14 @@ const { title, activePage = '' } = Astro.props;
 <body>
 
 <nav class="nav">
-  <a href="https://www.gast.studio/" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="/gast-wordmark-white.png" alt="Gast">
   </a>
   <div class="nav-links">
-    <a href="https://www.gast.studio/work" class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
-    <a href="https://www.gast.studio/store" class="nav-link">Store</a>
-    <a href="https://www.gast.studio/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
-    <a href="https://www.gast.studio/contact" class="nav-link">Contact</a>
+    <a href="/work" class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
+    <a href="/store" class="nav-link">Store</a>
+    <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+    <a href="/contact" class="nav-link">Contact</a>
   </div>
 </nav>
 
