@@ -34,14 +34,15 @@ body {
   margin: 0 auto;
 }
 
-/* ── Nav ── */
+/* ── Nav (Figma node 755-2 / 791:3: 1440x121, pad 40, logo 100x58,
+      Arimo 14 #EBEBEB, gap 40, active = white + underline) ── */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 2200px;
-  margin: 0 auto;
-  padding: 36px clamp(16px, 3vw, 56px);
+  height: 121px;
+  padding: 0 40px;
+  background: var(--bg);
 }
 .nav-logo {
   display: flex;
@@ -49,18 +50,19 @@ body {
   text-decoration: none;
 }
 .nav-logo img {
+  width: 100px;
   height: 58px;
-  width: auto;
 }
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 40px;
   align-items: center;
 }
 .nav-link {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1;
+  font-family: 'Arimo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
   color: var(--headline);
   text-decoration: none;
   transition: opacity 0.2s;
@@ -69,9 +71,10 @@ body {
   opacity: 0.6;
 }
 .nav-link.active {
+  color: #ffffff;
   text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: from-font;
+  text-underline-position: from-font;
 }
 
 /* ── Footer (centered social icons) ── */
@@ -106,8 +109,20 @@ body {
   :root {
     --page-pad: 20px;
   }
+  /* Figma mobile nav (796:3): 375x67, pad 20, logo 45x26, links 12px gap 12 */
   .nav {
-    padding: 22px clamp(16px, 5vw, 56px);
+    height: 67px;
+    padding: 0 20px;
+  }
+  .nav-logo img {
+    width: 45px;
+    height: 26px;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-link {
+    font-size: 12px;
   }
   .footer {
     padding: 56px var(--page-pad) 48px;
