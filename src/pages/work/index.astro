@@ -21,6 +21,7 @@ function coverUrl(slug: string): string | null {
   if (c.t === 'cli') return `${CL}image/upload/f_auto,q_auto,w_1200/${c.id}`;
   if (c.t === 'clvid') return `${CL}video/upload/so_3,f_auto,q_auto,w_1200/${c.id}.jpg`;
   if (c.t === 'vgif') return `${CL}video/upload/du_4,w_800,h_500,c_fill,fps_12/e_loop/${c.id}.gif`;
+  if (c.t === 'local') return c.id; /* gif served from this site (no size limit) */
   return null;
 }
 const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : (P[s]?.name || s));
