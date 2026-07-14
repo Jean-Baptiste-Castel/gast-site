@@ -20,7 +20,7 @@ function coverUrl(slug: string): string | null {
   if (c.t === 'clgif') return `${CL}image/upload/${c.id}.gif`;
   if (c.t === 'cli') return `${CL}image/upload/f_auto,q_auto,w_1200/${c.id}`;
   if (c.t === 'clvid') return `${CL}video/upload/so_3,f_auto,q_auto,w_1200/${c.id}.jpg`;
-  if (c.t === 'vgif') return `${CL}video/upload/du_4,w_480,fps_10/e_loop/${c.id}.gif`;
+  if (c.t === 'vgif') return `${CL}video/upload/du_4,w_800,fps_12/e_loop/${c.id}.gif`;
   return null;
 }
 const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : (P[s]?.name || s));
