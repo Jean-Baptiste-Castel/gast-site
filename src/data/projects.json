@@ -25,6 +25,16 @@
      "t": "clvid",
      "id": "SWAROVSKI_AG_VIDEO_1_a1ub8u",
      "d": "9x16"
+    },
+    {
+     "t": "cli",
+     "id": "TENSION_and_BALANCE_11_1_mt4iad.webp",
+     "d": "4x5"
+    },
+    {
+     "t": "cli",
+     "id": "migrated/BUTTERFLY_MUSHROOM_05.webp",
+     "d": "4x5"
     }
    ]
   },
@@ -34,9 +44,15 @@
    "seo": "Hermes CGI Character Animation | Gast Studio Amsterdam",
    "items": [
     {
-     "t": "cf",
-     "id": "a06592e607d286d099aa8ddc676162c9",
-     "d": "9x16"
+     "t": "clvid",
+     "id": "Hermes_Final_AllVideos_WithLogos_wc9xgr",
+     "d": "16x9"
+    },
+    {
+     "t": "miss",
+     "name": "Hermes native video (Squarespace faf9a92e, 28.7s 16:9) - export & upload",
+     "d": "16x9",
+     "feat": true
     }
    ]
   },
@@ -81,11 +97,15 @@
    "items": [
     {
      "t": "miss",
-     "name": "dj-snake-coachella native video"
+     "name": "DJ Snake LED wide video (Squarespace ad3a84a7, 33s) - export & upload",
+     "feat": true,
+     "d": "6761x1000"
     },
     {
      "t": "miss",
-     "name": "dj-snake-coachella native video"
+     "name": "DJ Snake main video (Squarespace 5b1fe8db, 1m49s) - export & upload",
+     "feat": true,
+     "d": "1791x1000"
     },
     {
      "t": "cli",
@@ -1021,7 +1041,9 @@
    "items": [
     {
      "t": "miss",
-     "name": "other native video"
+     "name": "Tacit native video (Squarespace) - export & upload",
+     "feat": true,
+     "d": "16x9"
     }
    ]
   }

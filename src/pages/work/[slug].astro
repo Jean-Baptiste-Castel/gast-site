@@ -42,7 +42,7 @@ const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt';
 type Block = { kind: 'grid'; items: any[] } | { kind: 'media'; item: any };
 const blocks: Block[] = [];
 for (const it of data.items) {
-  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'miss') {
+  if (it.t === 'cli' || it.t === 'clgif' || (it.t === 'miss' && !it.feat)) {
     const last = blocks[blocks.length - 1];
     if (last && last.kind === 'grid') last.items.push(it);
     else blocks.push({ kind: 'grid', items: [it] });

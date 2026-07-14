@@ -76,7 +76,12 @@
     h = ('' + h).trim();
     if (!h) return null;
     var m = h.match(/^https?:\/\/(www\.)?gast\.studio(\/[^\s]*)?$/i);
-    if (m) return m[2] || '/';
+    if (m) {
+      var path = m[2] || '/';
+      /* store lives on Shopify now */
+      if (path.indexOf('/store') === 0) return 'https://vbxikz-33.myshopify.com';
+      return path;
+    }
     return h;
   }
   function isExternal(h) { return /^https?:\/\//i.test(h); }

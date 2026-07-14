@@ -58,6 +58,7 @@
         for (var c = 0; c < parts[p].length; c++) {
           var sp = document.createElement('span');
           sp.className = 'char-fx';
+          sp.style.position = 'relative'; /* inline: Astro-scoped CSS can't reach JS-created spans */
           sp.textContent = parts[p][c];
           wrapper.appendChild(sp);
         }
@@ -69,6 +70,7 @@
       for (var i = 0; i < text.length; i++) {
         var sp2 = document.createElement('span');
         sp2.className = 'char-fx';
+        sp2.style.position = 'relative';
         sp2.textContent = text[i];
         el.appendChild(sp2);
       }
