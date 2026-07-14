@@ -24,7 +24,15 @@ function coverUrl(slug: string): string | null {
   return null;
 }
 const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : (P[s]?.name || s));
-const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: coverUrl(slug) }));
+// 'cfvid' covers render as real Stream videos (homepage quality) instead of gif thumbs
+const entries = order.map((slug: string) => {
+  const c = covers[slug] || {};
+  return {
+    slug, name: nameOf(slug),
+    cover: c.t === 'cfvid' ? null : coverUrl(slug),
+    vid: c.t === 'cfvid' ? c.id : null,
+  };
+});
 ---
 
 <BaseLayout title="CGI & Motion Design Projects | Amsterdam | Gast Studio" activePage="work">
@@ -35,10 +43,41 @@ const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: 
     .wcard { display: block; text-decoration: none; }
     .wcover { display: block; position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #101010; }
     .wcover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .3s; }
+    .wcover video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s; z-index: 1; }
+    .wcover.playing video { opacity: 1; }
     .wname { display: block; margin-top: 14px; font-size: clamp(16px, 1.6vw, 22px); font-weight: 400; color: var(--headline); letter-spacing: .01em; }
     .wcard:hover .wname { opacity: .6; }
     @media (max-width: 700px) { .wgrid { grid-template-columns: 1fr; } }
   </style>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script is:inline>
+    // Video covers: lazy HLS autoplay in view (homepage quality)
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          var v = e.target.querySelector('video[data-hls]');
+          if (!v) return;
+          if (e.isIntersecting) {
+            if (!v.dataset.started) {
+              v.dataset.started = '1';
+              var src = v.dataset.hls;
+              if (window.Hls && window.Hls.isSupported()) {
+                var h = new window.Hls({ autoStartLoad: true, maxBufferLength: 8 });
+                h.loadSource(src); h.attachMedia(v);
+              } else { v.src = src; }
+            }
+            var p = v.play(); if (p && p.catch) p.catch(function () {});
+            e.target.classList.add('playing');
+          } else { v.pause(); }
+        });
+      }, { rootMargin: '300px 0px' });
+      document.querySelectorAll('.wcover').forEach(function (c) {
+        if (c.querySelector('video[data-hls]')) io.observe(c);
+      });
+    });
+  </script>
 
   <div class="work-index">
     <div class="wgrid">
@@ -47,6 +86,10 @@ const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: 
           <span class="wcover">
             {e.cover && <img src={e.cover} alt={e.name} decoding="async" loading="lazy"
               onerror="if(this.src.includes('thumbnail.gif')){this.onerror=null;this.src=this.src.split('/thumbnails/')[0]+'/thumbnails/thumbnail.jpg?width=900';}" />}
+            {e.vid && <>
+              <img src={`https://${CF_SUB}/${e.vid}/thumbnails/thumbnail.jpg?time=1s&width=900`} alt={e.name} decoding="async" loading="lazy" />
+              <video muted loop playsinline preload="none" data-hls={`https://${CF_SUB}/${e.vid}/manifest/video.m3u8`}></video>
+            </>}
           </span>
           <span class="wname">{e.name}</span>
         </a>
