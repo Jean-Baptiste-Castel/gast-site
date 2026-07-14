@@ -1,481 +1,550 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
+// EXACT copy of the live Squarespace About page (CODE/squarespace-about-page.html):
+// PART A CSS + PART B HTML + PART C JS verbatim (asset URLs pointed at /public).
+// The Chrome displacement fix (displacement-fix.js header injection) is loaded after,
+// exactly like on the live site. Do not restyle here - edit the source file instead.
 ---
 
-<BaseLayout title="About" activePage="about">
-  <style>
-    /* ── Typography ── */
-    .label {
-      font-size: 11px;
-      line-height: 1;
-      color: var(--label);
-    }
-    .headline {
-      font-size: 28px;
-      line-height: 1;
-      font-weight: 400;
-      color: var(--headline);
-      text-wrap: balance;
-    }
-    .body-text {
-      font-size: 14px;
-      line-height: 1;
-      font-weight: 400;
-      color: var(--body);
-      text-wrap: pretty;
-    }
-    .body-narrow {
-      max-width: var(--body-max);
-    }
+<BaseLayout title="CGI & Creative Direction for Luxury Brands | Amsterdam" activePage="about">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet" />
+  <style is:global>
 
-    /* ── Swiss Grid Section Layout ── */
-    .section {
-      display: flex;
-      padding: var(--page-pad);
-      gap: 0;
-    }
-    .section-left {
-      width: var(--left-col);
-      min-width: var(--left-col);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      padding-top: 2px;
-    }
-    .section-right {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
+/* Gast About Page - Scoped Styles */
+.gast-about *,
+.gast-about *::before,
+.gast-about *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* ── Capabilities Grid ── */
-    .capabilities-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    .capability {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .capability h3 {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--headline);
-      line-height: 1;
-    }
-    .capability p {
-      font-size: 14px;
-      line-height: 1;
-      color: var(--body);
-      text-wrap: pretty;
-    }
+.gast-about {
+  --ga-bg: #0A0A0A;
+  --ga-headline: #EBEBEB;
+  --ga-body: #737373;
+  --ga-label: #4D4D4D;
+  --ga-tag-border: #212121;
+  --ga-left-col: 240px;
+  --ga-page-pad: 120px;
+  --ga-body-max: 640px;
 
-    /* ── Industries ── */
-    .industries-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .industries-tags span {
-      font-size: 11px;
-      line-height: 1;
-      padding: 8px 16px;
-      border: 1px solid var(--tag-border);
-      border-radius: 100px;
-      color: var(--body);
-    }
+  font-family: 'Arimo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ga-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 1440px;
+  margin: 0 auto;
+}
 
-    /* ── Trusted By / Logo Scroll ── */
-    .trusted-section {
-      padding: 60px var(--page-pad);
-    }
-    .trusted-inner {
-      display: flex;
-      gap: 0;
-    }
-    .trusted-left {
-      width: var(--left-col);
-      min-width: var(--left-col);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      padding-top: 2px;
-    }
-    .trusted-scroll {
-      flex: 1;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      cursor: grab;
-      mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
-    }
-    .trusted-scroll::-webkit-scrollbar {
-      display: none;
-    }
-    .trusted-scroll.is-dragging {
-      cursor: grabbing;
-    }
-    .logo-track {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      width: max-content;
-      padding: 4px 0;
-    }
-    .logo-track img {
-      width: auto;
-      flex-shrink: 0;
-      filter: brightness(0) invert(1);
-      opacity: 0.4;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      user-select: none;
-    }
+/* Typography */
+.gast-about .ga-label {
+  font-size: 11px;
+  line-height: 1;
+  color: var(--ga-label);
+}
+.gast-about .ga-headline {
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--ga-headline);
+  text-wrap: balance;
+}
+.gast-about .ga-body-text {
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--ga-body);
+  text-wrap: pretty;
+}
+.gast-about .ga-body-narrow {
+  max-width: var(--ga-body-max);
+}
 
-    /* ── Quote ── */
-    .quote-section {
-      padding: 120px 200px;
-      display: flex;
-      justify-content: center;
-    }
-    .quote-text {
-      font-size: 28px;
-      line-height: 1;
-      font-weight: 400;
-      color: var(--headline);
-      max-width: 800px;
-      text-align: center;
-      text-wrap: balance;
-    }
+/* Swiss Grid Section Layout */
+.gast-about .ga-section {
+  display: flex;
+  padding: var(--ga-page-pad);
+  gap: 0;
+}
+.gast-about .ga-section-left {
+  width: var(--ga-left-col);
+  min-width: var(--ga-left-col);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+.gast-about .ga-section-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
 
-    /* ── Studio Section ── */
-    .studio-content {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-    .studio-text {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    .team-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .team-group h3 {
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--headline);
-      line-height: 1;
-    }
-    .team-group .team-label {
-      font-size: 11px;
-      line-height: 1;
-      color: var(--label);
-    }
-    .team-group p:last-child {
-      font-size: 14px;
-      line-height: 1;
-      color: var(--body);
-      max-width: 420px;
-      text-wrap: pretty;
-    }
-    .studio-images {
-      display: flex;
-      gap: 10px;
-      height: 234px;
-    }
-    .studio-images img {
-      height: 100%;
-      width: auto;
-      object-fit: cover;
-      display: block;
-    }
+/* Capabilities Grid */
+.gast-about .ga-capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.gast-about .ga-capability {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gast-about .ga-capability h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ga-headline);
+  line-height: 1;
+}
+.gast-about .ga-capability p {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ga-body);
+  text-wrap: pretty;
+}
 
-    /* ── Founder ── */
-    .founder-content {
-      display: flex;
-      gap: 60px;
-      align-items: flex-start;
-    }
-    .founder-text {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .founder-bio {
-      font-size: 14px;
-      line-height: 1;
-      color: var(--label);
-      text-wrap: pretty;
-    }
-    .founder-portrait {
-      width: 183px;
-      min-width: 183px;
-      height: 234px;
-      overflow: hidden;
-    }
-    .founder-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+/* Industries */
+.gast-about .ga-industries-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gast-about .ga-industries-tags span {
+  font-size: 11px;
+  line-height: 1;
+  padding: 8px 16px;
+  border: 1px solid var(--ga-tag-border);
+  border-radius: 100px;
+  color: var(--ga-body);
+}
 
-    /* ── Gast.obj ── */
-    .gastobj-content {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .badges {
-      display: flex;
-      gap: 8px;
-    }
-    .badge {
-      display: flex;
-      align-items: center;
-      padding: 8px 16px;
-      border: 1px solid var(--tag-border);
-      border-radius: 100px;
-    }
-    .badge .label {
-      color: var(--body);
-    }
+/* Trusted By / Logo Scroll */
+.gast-about .ga-trusted-section {
+  padding: 60px var(--ga-page-pad);
+}
+.gast-about .ga-trusted-inner {
+  display: flex;
+  gap: 0;
+}
+.gast-about .ga-trusted-left {
+  width: var(--ga-left-col);
+  min-width: var(--ga-left-col);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+.gast-about .ga-trusted-scroll {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
+}
+.gast-about .ga-trusted-scroll::-webkit-scrollbar {
+  display: none;
+}
+.gast-about .ga-trusted-scroll.is-dragging {
+  cursor: grabbing;
+}
+.gast-about .ga-logo-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  padding: 4px 0;
+}
+.gast-about .ga-logo-track img {
+  width: auto;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  opacity: 0.4;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  user-select: none;
+}
 
-    /* ── Final CTA ── */
-    .cta-section {
-      padding: 120px 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
-    }
-    .cta-section .headline {
-      max-width: 800px;
-      text-align: center;
-    }
-    .cta-body {
-      font-size: 14px;
-      line-height: 1;
-      color: var(--body);
-      text-align: center;
-      max-width: 600px;
-      text-wrap: pretty;
-    }
-    .cta-buttons {
-      display: flex;
-      gap: 12px;
-    }
-    .cta-btn {
-      font-size: 11px;
-      line-height: 1;
-      font-family: 'Arimo', sans-serif;
-      padding: 10px 20px;
-      border-radius: 100px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .cta-btn:hover {
-      opacity: 0.8;
-    }
-    .cta-btn-primary {
-      color: var(--bg);
-      background: var(--headline);
-      border: 1px solid var(--headline);
-    }
-    .cta-btn-secondary {
-      color: var(--headline);
-      background: transparent;
-      border: 1px solid var(--tag-border);
-    }
-    .cta-email {
-      font-size: 11px;
-      line-height: 1;
-      color: var(--body);
-      text-decoration: none;
-      text-align: center;
-    }
-    .cta-email:hover {
-      color: var(--headline);
-    }
+/* Quote */
+.gast-about .ga-quote-section {
+  padding: 120px 200px;
+  display: flex;
+  justify-content: center;
+}
+.gast-about .ga-quote-text {
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--ga-headline);
+  max-width: 800px;
+  text-align: center;
+  text-wrap: balance;
+}
 
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-      .section {
-        flex-direction: column;
-        padding: 40px var(--page-pad);
-        gap: 16px;
-      }
-      .section-left {
-        width: auto;
-        min-width: auto;
-        flex-direction: row;
-        gap: 8px;
-      }
-      .section-right {
-        width: 100%;
-      }
-      .headline {
-        font-size: 22px;
-      }
-      .body-narrow {
-        max-width: 100%;
-      }
-      .capabilities-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .team-group p:last-child {
-        max-width: 100%;
-      }
-      .studio-images {
-        height: 250px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x proximity;
-        scrollbar-width: none;
-      }
-      .studio-images::-webkit-scrollbar {
-        display: none;
-      }
-      .studio-images img {
-        height: 100%;
-        width: auto;
-        min-width: 0;
-        flex-shrink: 0;
-        scroll-snap-align: start;
-      }
-      .studio-images .img-facade { order: 1; }
-      .studio-images .img-desk   { order: 2; }
-      .studio-images .img-pc     { order: 3; }
-      .studio-images .img-office { order: 4; }
-      .founder-content {
-        flex-direction: column;
-        gap: 40px;
-      }
-      .founder-portrait {
-        width: 100%;
-        min-width: 100%;
-        height: 440px;
-      }
-      .quote-section {
-        padding: 40px var(--page-pad);
-      }
-      .quote-text {
-        font-size: 22px;
-        text-align: left;
-      }
-      .trusted-section {
-        padding: 40px var(--page-pad);
-      }
-      .trusted-inner {
-        flex-direction: column;
-        gap: 16px;
-      }
-      .trusted-left {
-        width: auto;
-        min-width: auto;
-        flex-direction: row;
-        gap: 8px;
-      }
-      .cta-section {
-        padding: 40px var(--page-pad);
-      }
-      .cta-section .headline {
-        text-align: left;
-      }
-      .cta-body {
-        text-align: left;
-      }
-      .badges {
-        flex-wrap: wrap;
-      }
-    }
+/* Studio Section */
+.gast-about .ga-studio-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.gast-about .ga-studio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.gast-about .ga-team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.gast-about .ga-team-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gast-about .ga-team-group h3 {
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ga-headline);
+  line-height: 1;
+}
+.gast-about .ga-team-group .ga-team-label {
+  font-size: 11px;
+  line-height: 1;
+  color: var(--ga-label);
+}
+.gast-about .ga-team-group p:last-child {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ga-body);
+  max-width: 420px;
+  text-wrap: pretty;
+}
+.gast-about .ga-studio-images {
+  display: flex;
+  gap: 10px;
+  height: 234px;
+}
+.gast-about .ga-studio-images img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  display: block;
+}
 
-    /* ── Mouse text displacement (see /displacement.js) ── */
-    .char-fx {
-      position: relative;
-      left: 0;
-    }
+/* Founder */
+.gast-about .ga-founder-content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+.gast-about .ga-founder-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.gast-about .ga-founder-bio {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ga-label);
+  text-wrap: pretty;
+}
+.gast-about .ga-founder-portrait {
+  width: 183px;
+  min-width: 183px;
+  height: 234px;
+  overflow: hidden;
+}
+.gast-about .ga-founder-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gast.obj */
+.gast-about .ga-gastobj-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.gast-about .ga-badges {
+  display: flex;
+  gap: 8px;
+}
+.gast-about .ga-badge {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--ga-tag-border);
+  border-radius: 100px;
+}
+.gast-about .ga-badge .ga-label {
+  color: var(--ga-body);
+}
+
+/* Final CTA */
+.gast-about .ga-cta-section {
+  padding: 120px 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.gast-about .ga-cta-section .ga-headline {
+  max-width: 800px;
+  text-align: center;
+}
+.gast-about .ga-cta-body {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ga-body);
+  text-align: center;
+  max-width: 600px;
+  text-wrap: pretty;
+}
+.gast-about .ga-cta-buttons {
+  display: flex;
+  gap: 12px;
+}
+.gast-about .ga-cta-btn {
+  font-size: 11px;
+  line-height: 1;
+  font-family: 'Arimo', sans-serif;
+  padding: 10px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gast-about .ga-cta-btn:hover {
+  opacity: 0.8;
+}
+.gast-about .ga-cta-btn-primary {
+  color: var(--ga-bg);
+  background: var(--ga-headline);
+  border: 1px solid var(--ga-headline);
+}
+.gast-about .ga-cta-btn-secondary {
+  color: var(--ga-headline);
+  background: transparent;
+  border: 1px solid var(--ga-tag-border);
+}
+.gast-about .ga-cta-email {
+  font-size: 11px;
+  line-height: 1;
+  color: var(--ga-body);
+  text-decoration: none;
+  text-align: center;
+}
+.gast-about .ga-cta-email:hover {
+  color: var(--ga-headline);
+}
+.gast-about .ga-arena-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  color: var(--ga-body);
+  text-decoration: none;
+  font-size: 11px;
+  line-height: 1;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+.gast-about .ga-arena-link:hover {
+  opacity: 1;
+}
+.gast-about .ga-arena-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE - Mobile (max-width: 768px)
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .gast-about {
+    --ga-page-pad: 20px;
+  }
+
+  .gast-about .ga-section {
+    flex-direction: column;
+    padding: 40px var(--ga-page-pad);
+    gap: 16px;
+  }
+  .gast-about .ga-section-left {
+    width: auto;
+    min-width: auto;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .gast-about .ga-section-right {
+    width: 100%;
+  }
+
+  .gast-about .ga-headline {
+    font-size: 22px;
+  }
+  .gast-about .ga-body-narrow {
+    max-width: 100%;
+  }
+
+  .gast-about .ga-capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .gast-about .ga-team-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .gast-about .ga-team-group p:last-child {
+    max-width: 100%;
+  }
+
+  .gast-about .ga-studio-images {
+    height: 250px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .gast-about .ga-studio-images::-webkit-scrollbar {
+    display: none;
+  }
+  .gast-about .ga-studio-images img {
+    height: 100%;
+    width: auto;
+    min-width: 0;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  .gast-about .ga-studio-images .ga-img-facade { order: 1; }
+  .gast-about .ga-studio-images .ga-img-desk   { order: 2; }
+  .gast-about .ga-studio-images .ga-img-pc     { order: 3; }
+  .gast-about .ga-studio-images .ga-img-office  { order: 4; }
+
+  .gast-about .ga-founder-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .gast-about .ga-founder-portrait {
+    width: 100%;
+    min-width: 100%;
+    height: 440px;
+  }
+
+  .gast-about .ga-quote-section {
+    padding: 40px var(--ga-page-pad);
+  }
+  .gast-about .ga-quote-text {
+    font-size: 22px;
+    text-align: left;
+  }
+
+  .gast-about .ga-trusted-section {
+    padding: 40px var(--ga-page-pad);
+  }
+  .gast-about .ga-trusted-inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .gast-about .ga-trusted-left {
+    width: auto;
+    min-width: auto;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .gast-about .ga-cta-section {
+    padding: 40px var(--ga-page-pad);
+  }
+  .gast-about .ga-cta-section .ga-headline {
+    text-align: left;
+  }
+  .gast-about .ga-cta-body {
+    text-align: left;
+  }
+
+  .gast-about .ga-badges {
+    flex-wrap: wrap;
+  }
+}
+
   </style>
 
-  <!-- ── Hero ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">About</span>
+<div class="gast-about">
+
+  <!-- Hero -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">About</span>
     </div>
-    <div class="section-right">
-      <h1 class="headline">Creative direction and visual production for brands that compete on perception.</h1>
-      <p class="body-text body-narrow">Gast Studio is a creative studio based in Amsterdam. In a landscape crowded with content, story is what makes people feel something and remember it. We direct, design, and produce that story across CGI, film, motion, AI, and object design, for brands that compete on perception.</p>
-      <p class="body-text body-narrow">We are a small team by design. The people shaping the creative direction are the same people overseeing production through delivery. That proximity between thinking and making is what keeps the work precise.</p>
+    <div class="ga-section-right">
+      <h1 class="ga-headline">Creative direction and visual production for brands that compete on perception.</h1>
+      <p class="ga-body-text ga-body-narrow">Gast Studio is a creative studio based in Amsterdam. In a landscape crowded with content, story is what makes people feel something and remember it. We direct, design, and produce that story across CGI, film, motion, AI, and object design, for brands that compete on perception.</p>
+      <p class="ga-body-text ga-body-narrow">We are a small team by design. The people shaping the creative direction are the same people overseeing production through delivery. That proximity between thinking and making is what keeps the work precise.</p>
     </div>
   </section>
 
-  <!-- ── 01 - Philosophy ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">01</span>
-      <span class="label">philosophy</span>
+  <!-- 01 - Philosophy -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">01</span>
+      <span class="ga-label">philosophy</span>
     </div>
-    <div class="section-right">
-      <h2 class="headline">The thinking comes first. The craft makes it real.</h2>
-      <p class="body-text body-narrow">Our foundation is CGI, and seven years in, the technical capability runs deep. But the tools on any given brief, whether 3D, motion, generative AI, or design, are shaped by what the work needs to achieve. Not by what we happen to specialise in. The medium serves the idea.</p>
-      <p class="body-text body-narrow">Every frame is directed with the same standard: make the product feel like the best version of the brand it belongs to. Work that elevates perception, earns attention, and performs commercially. That is the brief we hold ourselves to, whether the client writes it or not.</p>
+    <div class="ga-section-right">
+      <h2 class="ga-headline">The thinking comes first. The craft makes it real.</h2>
+      <p class="ga-body-text ga-body-narrow">Our foundation is CGI, and seven years in, the technical capability runs deep. But the tools on any given brief, whether 3D, motion, generative AI, or design, are shaped by what the work needs to achieve. Not by what we happen to specialise in. The medium serves the idea.</p>
+      <p class="ga-body-text ga-body-narrow">Every frame is directed with the same standard: make the product feel like the best version of the brand it belongs to. Work that elevates perception, earns attention, and performs commercially. That is the brief we hold ourselves to, whether the client writes it or not.</p>
     </div>
   </section>
 
-  <!-- ── 02 - Capabilities ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">02</span>
-      <span class="label">capabilities</span>
+  <!-- 02 - Capabilities -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">02</span>
+      <span class="ga-label">capabilities</span>
     </div>
-    <div class="section-right">
-      <h2 class="headline">From concept through final delivery. One team, one vision.</h2>
-      <p class="body-text body-narrow">The scope of each project is shaped by the brief, not a fixed service menu. These are the disciplines we work across.</p>
-      <div class="capabilities-grid">
-        <div class="capability">
+    <div class="ga-section-right">
+      <h2 class="ga-headline">From concept through final delivery. One team, one vision.</h2>
+      <p class="ga-body-text ga-body-narrow">The scope of each project is shaped by the brief, not a fixed service menu. These are the disciplines we work across.</p>
+      <div class="ga-capabilities-grid">
+        <div class="ga-capability">
           <h3>Creative Direction</h3>
           <p>Concept development, visual strategy, and art direction from first conversation through final delivery. Whether you need a creative partner or an execution team, we adapt to where you need us.</p>
         </div>
-        <div class="capability">
+        <div class="ga-capability">
           <h3>CGI &amp; AI</h3>
           <p>Photorealistic product imagery, environments, and visual effects combined with generative AI tools. Seven years of 3D craft, continuously expanded with new technology.</p>
         </div>
-        <div class="capability">
+        <div class="ga-capability">
           <h3>Film &amp; Motion</h3>
           <p>Hero product films, campaign animations, and moving image. Directed for the formats and platforms where your audience pays attention.</p>
         </div>
-        <div class="capability">
+        <div class="ga-capability">
           <h3>Object Design &amp; Production</h3>
           <p>Products designed and physically produced, for retail, gifting, or merch. We make our own objects and yours, through a global network of manufacturers.</p>
         </div>
-        <div class="capability">
+        <div class="ga-capability">
           <h3>Visual Identity &amp; Design</h3>
           <p>Brand assets, campaign layouts, and visual systems when the project calls for it. Always in service of the larger creative direction.</p>
         </div>
-        <div class="capability">
+        <div class="ga-capability">
           <h3>Strategy &amp; Campaign</h3>
           <p>We work alongside your team to define the right creative approach for a specific product, brand, and moment. Data, positioning, and creative thinking before a single frame is produced.</p>
         </div>
@@ -483,16 +552,16 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- ── 03 - Industries ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">03</span>
-      <span class="label">industries</span>
+  <!-- 03 - Industries -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">03</span>
+      <span class="ga-label">industries</span>
     </div>
-    <div class="section-right">
-      <h2 class="headline">We work with brands where perception is the product.</h2>
-      <p class="body-text body-narrow">Most of our work is for brands where how the product is presented directly affects how it is valued. The categories shift, but the principle is the same: visual quality is not decoration. It is commercial strategy.</p>
-      <div class="industries-tags">
+    <div class="ga-section-right">
+      <h2 class="ga-headline">We work with brands where perception is the product.</h2>
+      <p class="ga-body-text ga-body-narrow">Most of our work is for brands where how the product is presented directly affects how it is valued. The categories shift, but the principle is the same: visual quality is not decoration. It is commercial strategy.</p>
+      <div class="ga-industries-tags">
         <span>Luxury</span>
         <span>Fashion</span>
         <span>Watches</span>
@@ -507,15 +576,15 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- ── 04 - Trusted by (Logo Scroll) ── -->
-  <div class="trusted-section">
-    <div class="trusted-inner">
-      <div class="trusted-left">
-        <span class="label">04</span>
-        <span class="label">trusted by</span>
+  <!-- 04 - Trusted by (Logo Scroll) -->
+  <div class="ga-trusted-section">
+    <div class="ga-trusted-inner">
+      <div class="ga-trusted-left">
+        <span class="ga-label">04</span>
+        <span class="ga-label">trusted by</span>
       </div>
-      <div class="trusted-scroll" id="logoScroll">
-        <div class="logo-track" id="logoTrack">
+      <div class="ga-trusted-scroll" id="gaLogoScroll">
+        <div class="ga-logo-track" id="gaLogoTrack">
           <img src="/logos/swarovski.svg" alt="Swarovski" style="height:18px">
           <img src="/logos/nike.svg" alt="Nike" style="height:26px">
           <img src="/logos/dior.svg" alt="Dior" style="height:18px">
@@ -550,211 +619,266 @@ import '../styles/global.css';
     </div>
   </div>
 
-  <!-- ── Quote ── -->
-  <div class="quote-section">
-    <p class="quote-text">The goal was never to be noticed.<br>It was to be felt, and then remembered.</p>
+  <!-- Quote -->
+  <div class="ga-quote-section">
+    <p class="ga-quote-text">The goal was never to be noticed.<br>It was to be felt, and then remembered.</p>
   </div>
 
-  <!-- ── 05 - Studio ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">05</span>
-      <span class="label">studio</span>
+  <!-- 05 - Studio -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">05</span>
+      <span class="ga-label">studio</span>
     </div>
-    <div class="section-right">
-      <div class="studio-content">
-        <div class="studio-text">
-          <h2 class="headline">Based in Amsterdam. Small by intention.</h2>
-          <p class="body-text body-narrow">Gast Studio is a core team of CGI and AI artists working from Singel 260 in Amsterdam. For each project, we bring in specialists from a network of artists, animators, designers, and technicians built over years of collaboration.</p>
-          <p class="body-text body-narrow">The size is deliberate. Senior attention on every project, a single creative vision from start to finish, and the flexibility to scale when a brief requires it.</p>
-          <div class="team-grid">
-            <div class="team-group">
+    <div class="ga-section-right">
+      <div class="ga-studio-content">
+        <div class="ga-studio-text">
+          <h2 class="ga-headline">Based in Amsterdam. Small by intention.</h2>
+          <p class="ga-body-text ga-body-narrow">Gast Studio is a core team of CGI and AI artists working from Singel 260 in Amsterdam. For each project, we bring in specialists from a network of artists, animators, designers, and technicians built over years of collaboration.</p>
+          <p class="ga-body-text ga-body-narrow">The size is deliberate. Senior attention on every project, a single creative vision from start to finish, and the flexibility to scale when a brief requires it.</p>
+          <div class="ga-team-grid">
+            <div class="ga-team-group">
               <h3>Core</h3>
-              <p class="team-label">Studio team</p>
+              <p class="ga-team-label">Studio team</p>
               <p>Creative direction, CGI, AI, and production. The permanent team that shapes and delivers every project.</p>
             </div>
-            <div class="team-group">
+            <div class="ga-team-group">
               <h3>Network</h3>
-              <p class="team-label">Project specialists</p>
+              <p class="ga-team-label">Project specialists</p>
               <p>3D artists, animators, motion designers, and technical specialists. Assembled per brief from a trusted roster.</p>
             </div>
           </div>
         </div>
-        <div class="studio-images">
-          <img src="/images/studio-office.png" alt="Gast Studio office" class="img-office">
-          <img src="/images/studio-facade.png" alt="Studio facade" class="img-facade">
-          <img src="/images/studio-desk.png" alt="Studio desk" class="img-desk">
-          <img src="/images/studio-pc.png" alt="Studio workstation" class="img-pc">
+        <div class="ga-studio-images">
+          <img src="/images/studio-office.png" alt="Gast Studio office" class="ga-img-office">
+          <img src="/images/studio-facade.png" alt="Studio facade" class="ga-img-facade">
+          <img src="/images/studio-desk.png" alt="Studio desk" class="ga-img-desk">
+          <img src="/images/studio-pc.png" alt="Studio workstation" class="ga-img-pc">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 06 - Founder ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">06</span>
-      <span class="label">founder</span>
+  <!-- 06 - Founder -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">06</span>
+      <span class="ga-label">founder</span>
     </div>
-    <div class="section-right">
-      <div class="founder-content">
-        <div class="founder-text">
-          <h2 class="headline">Jean-Baptiste</h2>
-          <p class="founder-bio">Jean-Baptiste is a French designer, creative director, and CGI artist based in Amsterdam, and the founder of Gast Studio. He came to CGI through narrative and design, not the other way around, and the studio still works that way: taste leads, craft follows. He built the team around that idea and directs its creative work, collaborating with houses like Dior, Hermes, Valentino, and Renault. It's a studio where commercial thinking and visual craft are never separate skills.</p>
+    <div class="ga-section-right">
+      <div class="ga-founder-content">
+        <div class="ga-founder-text">
+          <h2 class="ga-headline">Jean-Baptiste</h2>
+          <p class="ga-founder-bio">Jean-Baptiste is a French designer, creative director, and CGI artist based in Amsterdam, and the founder of Gast Studio. He came to CGI through narrative and design, not the other way around, and the studio still works that way: taste leads, craft follows. He built the team around that idea and directs its creative work, collaborating with houses like Dior, Hermes, Valentino, and Renault. It's a studio where commercial thinking and visual craft are never separate skills.</p>
         </div>
-        <div class="founder-portrait">
+        <div class="ga-founder-portrait">
           <img src="/images/portrait.png" alt="Jean-Baptiste, founder of Gast Studio">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 07 - Gast.obj ── -->
-  <section class="section">
-    <div class="section-left">
-      <span class="label">07</span>
-      <span class="label">gast.obj</span>
+  <!-- 07 - Gast.obj -->
+  <section class="ga-section">
+    <div class="ga-section-left">
+      <span class="ga-label">07</span>
+      <span class="ga-label">gast.obj</span>
     </div>
-    <div class="section-right">
-      <div class="gastobj-content">
-        <h2 class="headline">Objects that started on screen.</h2>
-        <p class="body-text body-narrow">Alongside client work, Gast Studio designs and produces physical objects under Gast.obj. Vases, bowls, and sculptural pieces that translate digital form into manufactured artifacts, exploring the tension between CGI's material language and traditional craft.</p>
-        <p class="body-text body-narrow">Exhibited at Salone del Mobile in Milan and Saatchi Gallery in London. Sold through select stockists worldwide.</p>
-        <div class="badges">
-          <div class="badge"><span class="label">Salone del Mobile</span></div>
-          <div class="badge"><span class="label">Saatchi Gallery</span></div>
-          <div class="badge"><span class="label">Global Stockists</span></div>
+    <div class="ga-section-right">
+      <div class="ga-gastobj-content">
+        <h2 class="ga-headline">Objects that started on screen.</h2>
+        <p class="ga-body-text ga-body-narrow">Alongside client work, Gast Studio designs and produces physical objects under Gast.obj. Vases, bowls, and sculptural pieces that translate digital form into manufactured artifacts, exploring the tension between CGI's material language and traditional craft.</p>
+        <p class="ga-body-text ga-body-narrow">Exhibited at Salone del Mobile in Milan and Saatchi Gallery in London. Sold through select stockists worldwide.</p>
+        <div class="ga-badges">
+          <div class="ga-badge">
+            <span class="ga-label">Salone del Mobile</span>
+          </div>
+          <div class="ga-badge">
+            <span class="ga-label">Saatchi Gallery</span>
+          </div>
+          <div class="ga-badge">
+            <span class="ga-label">Global Stockists</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Final CTA ── -->
-  <div class="cta-section">
-    <h2 class="headline">Let's talk about what you are working on.</h2>
-    <p class="cta-body">For projects, collaborations, or to discuss how we can work together. We are direct, we are fast, and we will tell you honestly whether we are the right fit.</p>
-    <div class="cta-buttons">
-      <a href="/contact" class="cta-btn cta-btn-primary">Get in touch</a>
-      <a href="/book" class="cta-btn cta-btn-secondary">Book a call</a>
+  <!-- Final CTA -->
+  <div class="ga-cta-section">
+    <h2 class="ga-headline">Let's talk about what you are working on.</h2>
+    <p class="ga-cta-body">For projects, collaborations, or to discuss how we can work together. We are direct, we are fast, and we will tell you honestly whether we are the right fit.</p>
+    <div class="ga-cta-buttons">
+      <a href="/contact" class="ga-cta-btn ga-cta-btn-primary">Get in touch</a>
+      <a href="/contact" class="ga-cta-btn ga-cta-btn-secondary">Book a call</a>
     </div>
-    <a href="mailto:contact@gast.studio" class="cta-email">Or email directly: contact@gast.studio</a>
+    <span class="ga-cta-email" id="ga-email-link"></span>
   </div>
 
-  <script>
-    // Logo scroll: never-stop smooth auto-scroll + drag + trackpad
-    (function() {
-      var container = document.getElementById('logoScroll');
-      var track = document.getElementById('logoTrack');
-      if (!container || !track) return;
+</div>
 
-      var baseSpeed = 0.5;
-      var minSpeed = 0.15;
-      var currentSpeed = baseSpeed;
-      var targetSpeed = baseSpeed;
-      var isDragging = false;
-      var dragStartX = 0;
-      var dragScrollStart = 0;
-      var lastDragX = 0;
-      var dragVelocity = 0;
-      var resumeTimer = null;
-      var interacting = false;
-      var lastWheelTime = 0;
+  <script is:inline>
 
-      function getHalfWidth() { return track.scrollWidth / 2; }
+// Logo scroll: never-stop smooth auto-scroll + drag + trackpad
+(function() {
+  var container = document.getElementById('gaLogoScroll');
+  var track = document.getElementById('gaLogoTrack');
+  if (!container || !track) return;
 
-      function wrapScroll() {
-        var half = getHalfWidth();
-        if (half <= 0) return;
-        while (container.scrollLeft >= half) container.scrollLeft -= half;
-        while (container.scrollLeft < 0) container.scrollLeft += half;
-      }
+  var baseSpeed = 0.5;
+  var minSpeed = 0.15;
+  var currentSpeed = baseSpeed;
+  var targetSpeed = baseSpeed;
+  var isDragging = false;
+  var dragStartX = 0;
+  var dragScrollStart = 0;
+  var lastDragX = 0;
+  var dragVelocity = 0;
+  var resumeTimer = null;
+  var interacting = false;
+  var lastWheelTime = 0;
 
-      function step() {
-        currentSpeed += (targetSpeed - currentSpeed) * 0.05;
-        if (!isDragging && Math.abs(dragVelocity) > 0.1) {
-          container.scrollLeft -= dragVelocity;
-          dragVelocity *= 0.94;
-        } else if (!isDragging) {
-          dragVelocity = 0;
-        }
-        if (isDragging) {
-          container.scrollLeft += minSpeed;
-        } else {
-          container.scrollLeft += Math.max(currentSpeed, minSpeed);
-        }
-        wrapScroll();
-        requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
+  function getHalfWidth() {
+    return track.scrollWidth / 2;
+  }
 
-      function beginInteraction() {
-        interacting = true;
-        targetSpeed = minSpeed;
-        clearTimeout(resumeTimer);
-      }
-      function endInteraction() {
-        interacting = false;
-        clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(function() { targetSpeed = baseSpeed; }, 800);
-      }
+  function wrapScroll() {
+    var half = getHalfWidth();
+    if (half <= 0) return;
+    while (container.scrollLeft >= half) {
+      container.scrollLeft -= half;
+    }
+    while (container.scrollLeft < 0) {
+      container.scrollLeft += half;
+    }
+  }
 
-      container.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        dragStartX = e.pageX;
-        lastDragX = e.pageX;
-        dragScrollStart = container.scrollLeft;
-        dragVelocity = 0;
-        beginInteraction();
-        container.classList.add('is-dragging');
-        e.preventDefault();
-      });
-      window.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-        container.scrollLeft = dragScrollStart - (e.pageX - dragStartX);
-        dragVelocity = e.pageX - lastDragX;
-        lastDragX = e.pageX;
-        wrapScroll();
-      });
-      window.addEventListener('mouseup', function() {
-        if (isDragging) {
-          isDragging = false;
-          container.classList.remove('is-dragging');
+  function step() {
+    currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+    if (!isDragging && Math.abs(dragVelocity) > 0.1) {
+      container.scrollLeft -= dragVelocity;
+      dragVelocity *= 0.94;
+    } else if (!isDragging) {
+      dragVelocity = 0;
+    }
+    if (isDragging) {
+      container.scrollLeft += minSpeed;
+    } else {
+      container.scrollLeft += Math.max(currentSpeed, minSpeed);
+    }
+    wrapScroll();
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+
+  function beginInteraction() {
+    interacting = true;
+    targetSpeed = minSpeed;
+    clearTimeout(resumeTimer);
+  }
+
+  function endInteraction() {
+    interacting = false;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function() {
+      targetSpeed = baseSpeed;
+    }, 800);
+  }
+
+  container.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    dragStartX = e.pageX;
+    lastDragX = e.pageX;
+    dragScrollStart = container.scrollLeft;
+    dragVelocity = 0;
+    beginInteraction();
+    container.classList.add('is-dragging');
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    var dx = e.pageX - dragStartX;
+    container.scrollLeft = dragScrollStart - dx;
+    dragVelocity = e.pageX - lastDragX;
+    lastDragX = e.pageX;
+    wrapScroll();
+  });
+
+  window.addEventListener('mouseup', function() {
+    if (isDragging) {
+      isDragging = false;
+      container.classList.remove('is-dragging');
+      endInteraction();
+    }
+  });
+
+  container.addEventListener('wheel', function(e) {
+    if (Math.abs(e.deltaX) > 0) {
+      container.scrollLeft += e.deltaX;
+      beginInteraction();
+      lastWheelTime = Date.now();
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function() {
+        if (Date.now() - lastWheelTime >= 300) {
           endInteraction();
         }
-      });
-      container.addEventListener('wheel', function(e) {
-        if (Math.abs(e.deltaX) > 0) {
-          container.scrollLeft += e.deltaX;
-          beginInteraction();
-          lastWheelTime = Date.now();
-          clearTimeout(resumeTimer);
-          resumeTimer = setTimeout(function() {
-            if (Date.now() - lastWheelTime >= 300) endInteraction();
-          }, 400);
-          wrapScroll();
-          e.preventDefault();
-        }
-      }, { passive: false });
-      container.addEventListener('touchstart', function(e) {
-        isDragging = true;
-        dragStartX = e.touches[0].pageX;
-        lastDragX = e.touches[0].pageX;
-        dragScrollStart = container.scrollLeft;
-        dragVelocity = 0;
-        beginInteraction();
-      }, { passive: true });
-      container.addEventListener('touchmove', function(e) {
-        if (!isDragging) return;
-        container.scrollLeft = dragScrollStart - (e.touches[0].pageX - dragStartX);
-        dragVelocity = e.touches[0].pageX - lastDragX;
-        lastDragX = e.touches[0].pageX;
-        wrapScroll();
-      }, { passive: false });
-      container.addEventListener('touchend', function() {
-        isDragging = false;
-        endInteraction();
-      });
-    })();
+      }, 400);
+      wrapScroll();
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchstart', function(e) {
+    isDragging = true;
+    dragStartX = e.touches[0].pageX;
+    lastDragX = e.touches[0].pageX;
+    dragScrollStart = container.scrollLeft;
+    dragVelocity = 0;
+    beginInteraction();
+  }, { passive: true });
+
+  container.addEventListener('touchmove', function(e) {
+    if (!isDragging) return;
+    var dx = e.touches[0].pageX - dragStartX;
+    container.scrollLeft = dragScrollStart - dx;
+    dragVelocity = e.touches[0].pageX - lastDragX;
+    lastDragX = e.touches[0].pageX;
+    wrapScroll();
+  }, { passive: false });
+
+  container.addEventListener('touchend', function() {
+    isDragging = false;
+    endInteraction();
+  });
+})();
+
+// Email obfuscation: builds the address at runtime so scrapers can't harvest it
+(function() {
+  var el = document.getElementById('ga-email-link');
+  if (!el) return;
+  var u = 'contact';
+  var d = 'gast.studio';
+  var addr = u + '@' + d;
+  var link = document.createElement('a');
+  link.href = 'ma' + 'il' + 'to:' + addr;
+  link.className = 'ga-cta-email';
+  link.textContent = 'Or email directly: ' + addr;
+  el.parentNode.replaceChild(link, el);
+})();
+
   </script>
-  <script is:inline src="/displacement.js"></script>
+  <script is:inline src="/displacement-sq.js"></script>
+  <script is:inline src="/displacement-fix.js"></script>
+  <style is:global>
+    /* header-injection extras (see squarespace-header-injection-notes.md) */
+    span.char-span, span.char-fx { position: relative; }
+    .line-wrapper { display: inline; }
+    @media (max-width: 768px) {
+      .gast-about .ga-trusted-scroll { overflow: hidden; }
+      .gast-about .ga-founder-portrait { height: auto; overflow: visible; width: 50%; min-width: 50%; }
+      .gast-about .ga-founder-portrait img { object-fit: contain; width: 100%; height: auto; }
+      .gast-about .ga-founder-content { gap: 24px; }
+    }
+  </style>
 </BaseLayout>

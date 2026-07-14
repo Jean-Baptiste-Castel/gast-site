@@ -28,7 +28,8 @@ const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: 
 
 <BaseLayout title="CGI & Motion Design Projects | Amsterdam | Gast Studio" activePage="work">
   <style>
-    .work-index { max-width: 2200px; margin: 0 auto; padding: clamp(8px,2vw,40px) clamp(16px,3vw,46px) clamp(56px,8vw,120px); }
+    /* full-bleed: escape the 1440px .page container, like the live site */
+    .work-index { width: 100vw; margin-left: calc(50% - 50vw); padding: clamp(8px,2vw,40px) clamp(16px,3vw,46px) clamp(56px,8vw,120px); }
     .wgrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,64px) clamp(16px,2.4vw,36px); }
     .wcard { display: block; text-decoration: none; }
     .wcover { display: block; position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #101010; }

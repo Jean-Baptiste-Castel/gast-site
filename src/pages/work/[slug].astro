@@ -44,7 +44,7 @@ const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt';
 type Block = { kind: 'grid'; items: any[] } | { kind: 'media'; item: any };
 const blocks: Block[] = [];
 for (const it of data.items) {
-  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'cf' || (it.t === 'miss' && !it.feat)) {
+  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'cf' || (it.t === 'clvid' && !it.feat) || (it.t === 'miss' && !it.feat)) {
     const last = blocks[blocks.length - 1];
     if (last && last.kind === 'grid') last.items.push(it);
     else blocks.push({ kind: 'grid', items: [it] });
@@ -142,6 +142,11 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
                 ? <>
                     <img class="poster" src={cfPoster(m.id)} alt="" decoding="async" loading="lazy" />
                     <video muted loop playsinline preload="none" data-hls={`https://${CF_SUB}/${m.id}/manifest/video.m3u8`}></video>
+                  </>
+                : m.t === 'clvid'
+                ? <>
+                    <img class="poster" src={clPoster(m.id)} alt="" decoding="async" loading="lazy" />
+                    <video muted loop playsinline preload="none" data-mp4={clVid(m.id)}></video>
                   </>
                 : <span class="miss-name">{m.name}</span>}
             </div>
@@ -262,17 +267,21 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
       const ioHls = new IntersectionObserver(function (es) {
         es.forEach(function (e) {
           const tile = e.target;
-          const v = tile.querySelector('video[data-hls]');
+          const v = tile.querySelector('video[data-hls], video[data-mp4]');
           if (!v) return;
           if (e.isIntersecting) {
             if (!v.dataset.started) {
               v.dataset.started = '1';
-              const src = v.dataset.hls || '';
-              if (window.Hls && window.Hls.isSupported()) {
-                const h = new window.Hls({ autoStartLoad: true, maxBufferLength: 8 });
-                h.loadSource(src); h.attachMedia(v);
+              if (v.dataset.mp4) {
+                v.src = v.dataset.mp4;
               } else {
-                v.src = src;
+                const src = v.dataset.hls || '';
+                if (window.Hls && window.Hls.isSupported()) {
+                  const h = new window.Hls({ autoStartLoad: true, maxBufferLength: 8 });
+                  h.loadSource(src); h.attachMedia(v);
+                } else {
+                  v.src = src;
+                }
               }
             }
             const p = v.play(); if (p && p.catch) p.catch(function () {});
@@ -281,7 +290,7 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
         });
       }, { rootMargin: '350px 0px' });
       document.querySelectorAll('.ptile').forEach(function (t) {
-        if (t.querySelector('video[data-hls]')) ioHls.observe(t);
+        if (t.querySelector('video[data-hls], video[data-mp4]')) ioHls.observe(t);
       });
     }
 

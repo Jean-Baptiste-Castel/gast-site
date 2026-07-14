@@ -33,7 +33,7 @@
     {
      "t": "clvid",
      "id": "SWAROVSKI_AG_VIDEO_1_a1ub8u",
-     "d": "9x16"
+     "d": "1x1"
     },
     {
      "t": "cli",
@@ -55,7 +55,8 @@
     {
      "t": "clvid",
      "id": "Hermes_Final_AllVideos_WithLogos_wc9xgr",
-     "d": "16x9"
+     "d": "16x9",
+     "feat": true
     },
     {
      "t": "miss",
@@ -73,7 +74,8 @@
     {
      "t": "clvid",
      "id": "JEFF_KOONS_4K_MASTER_V004_COMPRESSED_nhfhej",
-     "d": "9x16"
+     "d": "16x9",
+     "feat": true
     }
    ]
   },
@@ -1777,8 +1779,8 @@
    "id": "47cfefd56a0a300b9c56830fb2d5d662"
   },
   "nike": {
-   "t": "cf",
-   "id": "f039f627c65607c0d5dfcae2f771162c"
+   "t": "clgif",
+   "id": "migrated/fire-ezgif.com-video-to-gif-converter_gif"
   },
   "loop": {
    "t": "cli",
