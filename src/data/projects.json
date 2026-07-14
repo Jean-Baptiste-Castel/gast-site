@@ -59,8 +59,8 @@
      "feat": true
     },
     {
-     "t": "miss",
-     "name": "Hermes native video (Squarespace faf9a92e, 28.7s 16:9) - export & upload",
+     "t": "cf",
+     "id": "cc2bd3ae05974b43521f66c2884ce0ed",
      "d": "16x9",
      "feat": true
     }
@@ -378,9 +378,9 @@
      "id": "image_4_-min_juam4o.webp"
     },
     {
-     "t": "miss",
-     "d": "800x450",
-     "name": "TEST-ezgif.com-optimize+(1).gif"
+     "t": "lgif",
+     "id": "/media/loop_test.gif",
+     "d": "800x450"
     },
     {
      "t": "cli",
@@ -632,9 +632,9 @@
      "id": "a86949b2d3065162e0668ca7b52d5f5f"
     },
     {
-     "t": "miss",
-     "d": "800x335",
-     "name": "4.gif"
+     "t": "lgif",
+     "id": "/media/flane_4.gif",
+     "d": "800x335"
     },
     {
      "t": "cf",
@@ -1293,8 +1293,8 @@
      "d": "2500x2500"
     },
     {
-     "t": "miss",
-     "name": "ScreenRecording_11-10-202517-00-08_1-ezgif.com-video-to-gif-converter.gif (gif >10MB) - export as MP4",
+     "t": "lgif",
+     "id": "/media/gastobj_screenrec.gif",
      "d": "540x635"
     },
     {
@@ -1333,8 +1333,8 @@
      "d": "2500x2500"
     },
     {
-     "t": "miss",
-     "name": "Stemvase2-ezgif.com-optimize.gif (gif >10MB) - export as MP4",
+     "t": "lgif",
+     "id": "/media/gastobj_stemvase2.gif",
      "d": "720x1280"
     },
     {
@@ -1363,8 +1363,8 @@
      "d": "540x674"
     },
     {
-     "t": "miss",
-     "name": "IMG_0936-ezgif.com-optimize.gif (gif >10MB) - export as MP4",
+     "t": "lgif",
+     "id": "/media/gastobj_img0936.gif",
      "d": "540x960"
     },
     {
@@ -1483,8 +1483,8 @@
      "d": "3000x3000"
     },
     {
-     "t": "miss",
-     "name": "VASE_WAVE_03-ezgif.com-video-to-gif-converter.gif (gif >10MB) - export as MP4",
+     "t": "lgif",
+     "id": "/media/gastobj_vasewave.gif",
      "d": "360x640"
     },
     {
@@ -1586,10 +1586,10 @@
      "d": "1778x1000"
     },
     {
-     "t": "miss",
-     "feat": true,
-     "name": "native video (Squarespace 9d94ba6f, 8s) - export & upload",
-     "d": "1778x1000"
+     "t": "cf",
+     "id": "89de2aa71c367b055617abe1af4f56a4",
+     "d": "16x9",
+     "feat": true
     },
     {
      "t": "miss",
@@ -1611,10 +1611,10 @@
    "seo": "Eschenlauer Sinic 2024 | Gast Studio",
    "items": [
     {
-     "t": "miss",
-     "feat": true,
-     "name": "native video (Squarespace 052df7f1, 16s) - export & upload",
-     "d": "562x1000"
+     "t": "cf",
+     "id": "6dcb928506ee2932938c91ab159238dc",
+     "d": "1080x1920",
+     "feat": true
     },
     {
      "t": "miss",
@@ -1726,10 +1726,10 @@
      "d": "2048x1280"
     },
     {
-     "t": "miss",
-     "feat": true,
-     "name": "native video (Squarespace f2fa147a, 14s) - export & upload",
-     "d": "1843x1000"
+     "t": "cf",
+     "id": "652ed1daa014a9bddc03acefc2678649",
+     "d": "1990x1080",
+     "feat": true
     },
     {
      "t": "miss",

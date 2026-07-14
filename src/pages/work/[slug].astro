@@ -44,7 +44,7 @@ const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt';
 type Block = { kind: 'grid'; items: any[] } | { kind: 'media'; item: any };
 const blocks: Block[] = [];
 for (const it of data.items) {
-  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'cf' || (it.t === 'clvid' && !it.feat) || (it.t === 'miss' && !it.feat)) {
+  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'lgif' || it.t === 'cf' || (it.t === 'clvid' && !it.feat) || (it.t === 'miss' && !it.feat)) {
     const last = blocks[blocks.length - 1];
     if (last && last.kind === 'grid') last.items.push(it);
     else blocks.push({ kind: 'grid', items: [it] });
@@ -138,6 +138,8 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
                 ? <img src={clImg(m.id, 1000)} srcset={clSet(m.id)} sizes="(max-width:768px) 100vw, 33vw" alt="" decoding="async" loading="lazy" />
                 : m.t === 'clgif'
                 ? <img src={`${CL}image/upload/${m.id}.gif`} alt="" decoding="async" loading="lazy" />
+                : m.t === 'lgif'
+                ? <img src={m.id} alt="" decoding="async" loading="lazy" />
                 : m.t === 'cf'
                 ? <>
                     <img class="poster" src={cfPoster(m.id)} alt="" decoding="async" loading="lazy" />
