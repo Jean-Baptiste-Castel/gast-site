@@ -16,7 +16,7 @@ const CL = 'https://res.cloudinary.com/dvyflhlls/';
 function coverUrl(slug: string): string | null {
   const c = covers[slug];
   if (!c) return null;
-  if (c.t === 'cf') return `https://${CF_SUB}/${c.id}/thumbnails/thumbnail.gif?time=0s&duration=4s&width=640&fps=12`;
+  if (c.t === 'cf') return `https://${CF_SUB}/${c.id}/thumbnails/thumbnail.gif?time=0s&duration=4s&width=320&fps=12`;
   if (c.t === 'clgif') return `${CL}image/upload/${c.id}.gif`;
   if (c.t === 'cli') return `${CL}image/upload/f_auto,q_auto,w_1200/${c.id}`;
   if (c.t === 'clvid') return `${CL}video/upload/so_0,f_auto,q_auto,w_1200/${c.id}.jpg`;
@@ -43,7 +43,8 @@ const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: 
       {entries.map((e) => (
         <a class="wcard" href={`/work/${e.slug}`} aria-label={e.name}>
           <span class="wcover">
-            {e.cover && <img src={e.cover} alt={e.name} decoding="async" loading="lazy" />}
+            {e.cover && <img src={e.cover} alt={e.name} decoding="async" loading="lazy"
+              onerror="if(this.src.includes('thumbnail.gif')){this.onerror=null;this.src=this.src.split('/thumbnails/')[0]+'/thumbnails/thumbnail.jpg?width=900';}" />}
           </span>
           <span class="wname">{e.name}</span>
         </a>
