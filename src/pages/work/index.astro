@@ -24,13 +24,18 @@ function coverUrl(slug: string): string | null {
   return null;
 }
 const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : (P[s]?.name || s));
-// 'cfvid' covers render as real Stream videos (homepage quality) instead of gif thumbs
+// 'cfvid' (Stream) and 'cvvid' (Cloudinary) covers render as real videos,
+// cropped by the tile (object-fit cover hides top/bottom), instead of gif thumbs.
 const entries = order.map((slug: string) => {
   const c = covers[slug] || {};
+  const isVid = c.t === 'cfvid' || c.t === 'cvvid';
   return {
     slug, name: nameOf(slug),
-    cover: c.t === 'cfvid' ? null : coverUrl(slug),
-    vid: c.t === 'cfvid' ? c.id : null,
+    cover: isVid ? null : coverUrl(slug),
+    hls: c.t === 'cfvid' ? `https://${CF_SUB}/${c.id}/manifest/video.m3u8` : null,
+    mp4: c.t === 'cvvid' ? `${CL}video/upload/q_auto/f_auto/${c.id}.mp4` : null,
+    poster: c.t === 'cfvid' ? `https://${CF_SUB}/${c.id}/thumbnails/thumbnail.jpg?time=1s&width=900`
+          : c.t === 'cvvid' ? `${CL}video/upload/so_3,f_auto,q_auto,w_900/${c.id}.jpg` : null,
   };
 });
 ---
@@ -57,16 +62,20 @@ const entries = order.map((slug: string) => {
       if (!('IntersectionObserver' in window)) return;
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) {
-          var v = e.target.querySelector('video[data-hls]');
+          var v = e.target.querySelector('video[data-hls], video[data-mp4]');
           if (!v) return;
           if (e.isIntersecting) {
             if (!v.dataset.started) {
               v.dataset.started = '1';
-              var src = v.dataset.hls;
-              if (window.Hls && window.Hls.isSupported()) {
-                var h = new window.Hls({ autoStartLoad: true, maxBufferLength: 8 });
-                h.loadSource(src); h.attachMedia(v);
-              } else { v.src = src; }
+              if (v.dataset.mp4) {
+                v.src = v.dataset.mp4;
+              } else {
+                var src = v.dataset.hls;
+                if (window.Hls && window.Hls.isSupported()) {
+                  var h = new window.Hls({ autoStartLoad: true, maxBufferLength: 8 });
+                  h.loadSource(src); h.attachMedia(v);
+                } else { v.src = src; }
+              }
             }
             var p = v.play(); if (p && p.catch) p.catch(function () {});
             e.target.classList.add('playing');
@@ -86,9 +95,11 @@ const entries = order.map((slug: string) => {
           <span class="wcover">
             {e.cover && <img src={e.cover} alt={e.name} decoding="async" loading="lazy"
               onerror="if(this.src.includes('thumbnail.gif')){this.onerror=null;this.src=this.src.split('/thumbnails/')[0]+'/thumbnails/thumbnail.jpg?width=900';}" />}
-            {e.vid && <>
-              <img src={`https://${CF_SUB}/${e.vid}/thumbnails/thumbnail.jpg?time=1s&width=900`} alt={e.name} decoding="async" loading="lazy" />
-              <video muted loop playsinline preload="none" data-hls={`https://${CF_SUB}/${e.vid}/manifest/video.m3u8`}></video>
+            {(e.hls || e.mp4) && <>
+              <img src={e.poster} alt={e.name} decoding="async" loading="lazy" />
+              {e.hls
+                ? <video muted loop playsinline preload="none" data-hls={e.hls}></video>
+                : <video muted loop playsinline preload="none" data-mp4={e.mp4}></video>}
             </>}
           </span>
           <span class="wname">{e.name}</span>
