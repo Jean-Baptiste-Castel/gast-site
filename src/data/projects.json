@@ -33,17 +33,17 @@
     {
      "t": "clvid",
      "id": "SWAROVSKI_AG_VIDEO_1_a1ub8u",
-     "d": "1x1"
+     "d": "9x16"
     },
     {
      "t": "cli",
      "id": "TENSION_and_BALANCE_11_1_mt4iad.webp",
-     "d": "4x5"
+     "d": "9x16"
     },
     {
      "t": "cli",
      "id": "migrated/BUTTERFLY_MUSHROOM_05.webp",
-     "d": "4x5"
+     "d": "9x16"
     }
    ]
   },
@@ -1763,7 +1763,7 @@
    "id": "migrated/cover_floyd_gif"
   },
   "swarovski-x-ariana-grande": {
-   "t": "clvid",
+   "t": "vgif",
    "id": "SWAROVSKI_AG_VIDEO_1_a1ub8u"
   },
   "hermes": {
