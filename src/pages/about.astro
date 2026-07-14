@@ -412,6 +412,12 @@ import '../styles/global.css';
         flex-wrap: wrap;
       }
     }
+
+    /* ── Mouse text displacement (see /displacement.js) ── */
+    .char-fx {
+      position: relative;
+      left: 0;
+    }
   </style>
 
   <!-- ── Hero ── -->
@@ -750,4 +756,5 @@ import '../styles/global.css';
       });
     })();
   </script>
+  <script is:inline src="/displacement.js"></script>
 </BaseLayout>

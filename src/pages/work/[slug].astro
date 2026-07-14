@@ -6,13 +6,14 @@ import projects from '../../data/projects.json';
 // Data-driven project page. Mirrors the Floyd layout (full-bleed gallery + writeup + pager)
 // but is generated from src/data/projects.json so every project shares one template.
 //
-// Media types in the data:
-//   's'     still  -> Cloudinary fetch of the Squarespace URL (origin Squarespace until full migration)
-//   'g'     gif    -> raw Squarespace gif (Cloudinary free plan blocks animated-gif transforms)
+// Media types in the data (HARD RULE: nothing may reference Squarespace —
+// only stored Cloudinary assets, Cloudflare Stream, YouTube, or a flagged gap):
+//   'cli'   still  -> stored Cloudinary image (public_id in `id`)
+//   'clgif' gif    -> stored Cloudinary animated gif, delivered RAW (free plan blocks gif transforms)
 //   'clvid' video  -> stored Cloudinary video (already migrated)
 //   'cf'    video  -> Cloudflare Stream embed (already migrated)
 //   'yt'    video  -> YouTube embed
-//   'sqvid' video  -> native Squarespace video, NOT yet migrated (poster placeholder + flag)
+//   'miss'  gap    -> media not yet re-uploaded: grey block + original filename in `name`
 export function getStaticPaths() {
   return Object.keys((projects as any).projects).map((slug) => ({ params: { slug }, props: { slug } }));
 }
@@ -22,13 +23,10 @@ const data = (projects as any).projects[slug];
 const order: string[] = (projects as any).order;
 const CF_SUB: string = (projects as any).cfSub;
 
-const SQ = 'https://images.squarespace-cdn.com/content/v1/6397a67a7842513d84ffeded/';
 const CL = 'https://res.cloudinary.com/dvyflhlls/';
 
-const fImg = (u: string, w: number) => `${CL}image/fetch/f_auto,q_auto,w_${w}/${SQ}${u}`;
-const fSet = (u: string) => [600, 1000, 1600].map((w) => `${fImg(u, w)} ${w}w`).join(', ');
-const fFull = (url: string, w: number) => `${CL}image/fetch/f_auto,q_auto,w_${w}/${url}`;
-const sqGif = (u: string) => `${SQ}${u}`;
+const clImg = (id: string, w: number) => `${CL}image/upload/f_auto,q_auto,w_${w}/${id}`;
+const clSet = (id: string) => [600, 1000, 1600].map((w) => `${clImg(id, w)} ${w}w`).join(', ');
 const clVid = (id: string) => `${CL}video/upload/q_auto/f_auto/${id}.mp4`;
 const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_900/${id}.jpg`;
 const ytPoster = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
@@ -38,18 +36,25 @@ const cfEmbed = (id: string) => `https://${CF_SUB}/${id}/iframe?autoplay=true&mu
 
 const ar = (d: string) => { const [w, h] = (d || '16x9').split('x').map(Number); return w && h ? `${w}/${h}` : '16/9'; };
 const hRatio = (d: string) => { const [w, h] = (d || '1x1').split('x').map(Number); return w && h ? (h / w).toFixed(4) : '1'; };
-const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt' || t === 'sqvid';
+const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt';
 
-// Group consecutive images into masonry blocks; videos render as their own feature block.
+// Group consecutive images (and gaps) into masonry blocks; videos render as feature blocks.
 type Block = { kind: 'grid'; items: any[] } | { kind: 'media'; item: any };
 const blocks: Block[] = [];
 for (const it of data.items) {
-  if (it.t === 's' || it.t === 'g') {
+  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'miss') {
     const last = blocks[blocks.length - 1];
     if (last && last.kind === 'grid') last.items.push(it);
     else blocks.push({ kind: 'grid', items: [it] });
   } else {
     blocks.push({ kind: 'media', item: it });
+  }
+}
+
+// Build-time HARD-RULE guard: no Squarespace-origin media may remain.
+for (const it of data.items) {
+  if (it.t === 's' || it.t === 'g' || it.t === 'sqvid') {
+    throw new Error(`[${slug}] item still references Squarespace (type '${it.t}'): ${it.u || it.id || ''} — remap it or mark it 'miss'.`);
   }
 }
 
@@ -92,8 +97,17 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
     .ptile { position: relative; width: 100%; overflow: hidden; background: #141414; line-height: 0; }
     .ptile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 
+    /* Missing media: grey block + original filename (media not yet re-uploaded to CDN) */
+    .ptile.miss, .feature-inner.miss { background: #1c1c1c; outline: 1px dashed #333; outline-offset: -1px; }
+    .miss-name {
+      position: absolute; left: 10px; bottom: 9px; z-index: 2; max-width: calc(100% - 20px);
+      font: 400 10px/1.4 ui-monospace, Menlo, monospace; color: #555;
+      word-break: break-all; white-space: normal;
+    }
+
     .work-writeup { max-width: 2200px; margin: 0 auto; padding: clamp(56px,8vw,130px) clamp(10px,3vw,56px) 0; display: flex; gap: 0; }
     .work-writeup-left { width: var(--left-col); min-width: var(--left-col); display: flex; flex-direction: column; gap: 2px; }
+    .work-writeup-text { max-width: 720px; color: var(--body); font-size: 14px; line-height: 1.6; }
     .label { font-size: 11px; line-height: 1.3; color: var(--label); }
     .work-pager { display: flex; justify-content: space-between; align-items: center; max-width: 2200px; margin: 0 auto; padding: clamp(56px,10vw,150px) clamp(10px,3vw,56px); gap: 16px; }
     .pager-link { display: inline-flex; align-items: center; gap: 14px; font-size: clamp(22px,3.6vw,40px); line-height: 1; color: var(--headline); text-decoration: none; transition: opacity .2s; }
@@ -114,16 +128,18 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
       {blocks.map((b) => b.kind === 'grid' ? (
         <div class="pgrid">
           {b.items.map((m: any) => (
-            <div class="ptile" data-h={hRatio(m.d)} style={`aspect-ratio:${ar(m.d)}`}>
-              {m.t === 'g'
-                ? <img src={sqGif(m.u)} alt="" decoding="async" loading="lazy" />
-                : <img src={fImg(m.u, 1000)} srcset={fSet(m.u)} sizes="(max-width:768px) 100vw, 33vw" alt="" decoding="async" loading="lazy" />}
+            <div class:list={["ptile", { miss: m.t === 'miss' }]} data-h={hRatio(m.d)} style={`aspect-ratio:${ar(m.d)}`}>
+              {m.t === 'cli'
+                ? <img src={clImg(m.id, 1000)} srcset={clSet(m.id)} sizes="(max-width:768px) 100vw, 33vw" alt="" decoding="async" loading="lazy" />
+                : m.t === 'clgif'
+                ? <img src={`${CL}image/upload/${m.id}.gif`} alt="" decoding="async" loading="lazy" />
+                : <span class="miss-name">{m.name}</span>}
             </div>
           ))}
         </div>
       ) : (
         <div class="feature">
-          <div class:list={["feature-inner", { 'is-video': b.item.t === 'clvid' }]} style={`aspect-ratio:${ar(b.item.d)}`}>
+          <div class:list={["feature-inner", { 'is-video': b.item.t === 'clvid', miss: b.item.t === 'miss' }]} style={`aspect-ratio:${ar(b.item.d)}`}>
             {b.item.t === 'clvid' && (
               <>
                 <img class="poster" src={clPoster(b.item.id)} alt="" decoding="async" loading="lazy" />
@@ -138,10 +154,10 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
                 <svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7c-.8-2.9-3-5.1-5.9-5.9C55.3.5 34 .5 34 .5S12.7.5 7.4 1.8C4.5 2.6 2.3 4.8 1.5 7.7.2 13 .2 24 .2 24s0 11 1.3 16.3c.8 2.9 3 5.1 5.9 5.9C12.7 47.5 34 47.5 34 47.5s21.3 0 26.6-1.3c2.9-.8 5.1-3 5.9-5.9C67.8 35 67.8 24 67.8 24s0-11-1.3-16.3z" fill="#f00"/><path d="M27 34l18-10-18-10z" fill="#fff"/></svg>
               </button>
             )}
-            {b.item.t === 'sqvid' && (
+            {b.item.t === 'miss' && (
               <>
-                <img src={data.og ? fFull(data.og, 1200) : ''} alt="" decoding="async" loading="lazy" />
                 <span class="pending">Video migrating to CDN</span>
+                <span class="miss-name">{b.item.name}</span>
               </>
             )}
           </div>
@@ -154,6 +170,7 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
         <span class="label">Client: {data.client}</span>
         <span class="label">Concept &amp; CGI: Gast Studio</span>
       </div>
+      {data.writeup && <p class="work-writeup-text">{data.writeup}</p>}
     </section>
 
     <nav class="work-pager">

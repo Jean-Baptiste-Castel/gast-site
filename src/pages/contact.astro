@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+// Contact page. The old Squarespace page had a hosted form; a static site
+// needs a form backend (Formspree/Basin/CF Worker) — until that's chosen,
+// email is the CTA. Copy mirrors the live page + about-page CTA.
+---
+
+<BaseLayout title="Contact | CGI & Animation Studio Amsterdam" activePage="contact">
+  <style>
+    .contact { max-width: 2200px; margin: 0 auto; padding: clamp(56px,10vw,140px) clamp(16px,3vw,56px); min-height: 55vh; }
+    .contact .label { font-size: 11px; color: var(--label); display: block; margin-bottom: 28px; }
+    .contact h1 {
+      color: var(--headline); font-weight: 500; letter-spacing: -0.01em;
+      font-size: clamp(28px, 4.6vw, 56px); line-height: 1.05; max-width: 18em; margin-bottom: 48px;
+    }
+    .contact-row { display: flex; gap: clamp(24px, 6vw, 120px); flex-wrap: wrap; }
+    .contact-col { display: flex; flex-direction: column; gap: 6px; min-width: 220px; }
+    .contact-col .k { font-size: 11px; color: var(--label); margin-bottom: 6px; }
+    .contact-col a, .contact-col span { color: var(--body); font-size: 14px; line-height: 1.6; text-decoration: none; }
+    .contact-col a:hover { color: var(--headline); }
+    .cta-btn {
+      display: inline-block; margin-top: 44px; padding: 13px 26px; font-size: 13px;
+      color: #0a0a0a; background: #ebebeb; text-decoration: none; border-radius: 2px;
+    }
+    .cta-btn:hover { opacity: .85; }
+  </style>
+
+  <section class="contact">
+    <span class="label">Contact</span>
+    <h1>For projects, collaborations, wholesale inquiries or simply say hello.</h1>
+    <div class="contact-row">
+      <div class="contact-col">
+        <span class="k">Email</span>
+        <a href="mailto:contact@gast.studio">contact@gast.studio</a>
+      </div>
+      <div class="contact-col">
+        <span class="k">Studio</span>
+        <span>Singel 260<br />Amsterdam, Netherlands</span>
+      </div>
+      <div class="contact-col">
+        <span class="k">Elsewhere</span>
+        <a href="https://www.instagram.com/gast_studio/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/jean-baptiste-castel-b08a0b160/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.are.na/jean-baptiste-castel/channels" target="_blank" rel="noopener">Are.na</a>
+      </div>
+    </div>
+    <a class="cta-btn" href="mailto:contact@gast.studio?subject=Project inquiry">Get in touch</a>
+  </section>
+</BaseLayout>

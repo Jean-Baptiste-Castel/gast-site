@@ -12,14 +12,13 @@ import '../../styles/global.css';
 //   'fetch' : Cloudinary fetch of a Squarespace URL (served + cached by Cloudinary CDN)
 //   'sqgif' : raw Squarespace gif (the 3 oversized loops only)
 //   'vid'   : stored Cloudinary video
-const SQ = 'https://images.squarespace-cdn.com/content/v1/6397a67a7842513d84ffeded/';
 const CL = 'https://res.cloudinary.com/dvyflhlls/';
 
 const clImg = (id: string, w: number) => `${CL}image/upload/f_auto,q_auto,w_${w}/${id}`;
 const clSet = (id: string) => [800, 1400, 2000].map((w) => `${clImg(id, w)} ${w}w`).join(', ');
-const fImg = (u: string, w: number) => `${CL}image/fetch/f_auto,q_auto,w_${w}/${SQ}${u}`;
-const fSet = (u: string) => [800, 1400, 2000].map((w) => `${fImg(u, w)} ${w}w`).join(', ');
-const sqGif = (u: string) => `${SQ}${u}`;
+const CF_SUB = 'customer-p97i3zrfuq59b5ur.cloudflarestream.com';
+const cfPoster = (id: string) => `https://${CF_SUB}/${id}/thumbnails/thumbnail.jpg?height=900`;
+const cfEmbed = (id: string) => `https://${CF_SUB}/${id}/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=metadata`;
 const clVid = (id: string) => `${CL}video/upload/q_auto/f_auto/${id}.mp4`;
 const clPoster = (id: string) => `${CL}video/upload/so_0,f_auto,q_auto,w_800/${id}.jpg`;
 
@@ -27,7 +26,7 @@ type Item =
   | { t: 'cl'; id: string }
   | { t: 'clgif'; id: string }
   | { t: 'fetch'; u: string }
-  | { t: 'sqgif'; u: string }
+  | { t: 'cf'; id: string }
   | { t: 'vid'; id: string };
 
 type Row = { cols: number; ar: number; feature?: boolean; items: Item[] };
@@ -43,34 +42,34 @@ const rows: Row[] = [
     { t: 'cl', id: 'STILL_HERO_GOLD_V2.16_yeg33y' },
   ]},
   { cols: 4, ar: 0.56, feature: true, items: [
-    { t: 'sqgif', u: 'fb1175e8-9678-4c08-a646-7e9325dcee47/HERO_SHOT_PIT_GUN_POV_V012-ezgif.com-optimize.gif' },
+    { t: 'cf', id: 'c3a8515a8960a1cfcf4c182534ad17f5' },
     { t: 'vid', id: 'PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003_lldbov' },
     { t: 'vid', id: 'BLUE_PIT_9.16_Web_auqt06' },
     { t: 'vid', id: 'MainEdit_122_wicm8j' },
   ]},
   { cols: 3, ar: 0.82, items: [
     { t: 'cl', id: 'floyd_hero_v41_0025' },
-    { t: 'fetch', u: '88b6f004-3521-482c-89ed-98081688dd5b/STILL_HERO_GOLD_V41_0021-min.png' },
+    { t: 'cl', id: 'migrated/STILL_HERO_GOLD_V41_0021-min' },
     { t: 'cl', id: 'RACE_tp0zuo' },
   ]},
   { cols: 3, ar: 1.02, items: [
-    { t: 'fetch', u: 'ba77e426-b65b-4287-8cf7-fb2236f944a2/HERO_SHOT_WHEEL_ONLY_V0012.4.png' },
-    { t: 'fetch', u: '83909f31-990f-4a95-b661-d81269915753/HERO_SHOT_WHEEL_ONLY_V0017.10.jpg' },
-    { t: 'fetch', u: '7a1cc29f-5a12-47ae-8ab9-0ff131e91baa/HERO_SHOT_WHEEL_ONLY_V0012.8.png' },
+    { t: 'cl', id: 'migrated/HERO_SHOT_WHEEL_ONLY_V0012.4' },
+    { t: 'cl', id: 'migrated/HERO_SHOT_WHEEL_ONLY_V0017.10' },
+    { t: 'cl', id: 'migrated/HERO_SHOT_WHEEL_ONLY_V0012.8' },
   ]},
   { cols: 3, ar: 0.82, items: [
-    { t: 'fetch', u: 'c65cdc59-fb96-4205-a07b-255a405bb7dd/e.jpg' },
-    { t: 'fetch', u: 'ea1e1cfa-6912-46a9-9047-c841322ce3bf/HERO_SHOT_WHEEL_ONLY_V0018.15.png' },
-    { t: 'fetch', u: '38c187d7-eb4f-4f49-92da-00f45f9344a1/HERO_SHOT_WHEEL_ONLY_V0018.16.png' },
+    { t: 'cl', id: 'migrated/e' },
+    { t: 'cl', id: 'migrated/HERO_SHOT_WHEEL_ONLY_V0018.15' },
+    { t: 'cl', id: 'migrated/HERO_SHOT_WHEEL_ONLY_V0018.16' },
   ]},
   { cols: 3, ar: 0.82, items: [
     { t: 'cl', id: 'HERO_SHOT_WHEEL_ONLY_V0039.3_2_s1b1qx' },
-    { t: 'fetch', u: '6aa37c29-e51a-40dd-abe3-f053b07660a3/240622_wheels_as_bubbles.png' },
-    { t: 'fetch', u: '6271d006-a312-41e9-bab5-ec97e2c8cbc7/STILL_HERO_GOLD_V006%2C2.png' },
+    { t: 'cl', id: 'migrated/240622_wheels_as_bubbles' },
+    { t: 'cl', id: 'migrated/STILL_HERO_GOLD_V006_2' },
   ]},
   { cols: 2, ar: 0.82, items: [
-    { t: 'fetch', u: 'c6244a90-6aa4-4ff7-ab63-9fcbc468afeb/TREE.png' },
-    { t: 'fetch', u: '2795556d-9c39-40d7-80ca-1684a8b7a970/Screenshot+2024-12-27+at+14.08.02.png' },
+    { t: 'cl', id: 'migrated/TREE' },
+    { t: 'cl', id: 'migrated/Screenshot_2024-12-27_at_14.08.02' },
   ]},
   { cols: 3, ar: 0.5625, items: [
     { t: 'vid', id: 'PILE_WHEELS_lqurec' },
@@ -105,12 +104,14 @@ const rows: Row[] = [
       background: #141414;
     }
     .work-cell img,
-    .work-cell video {
+    .work-cell video,
+    .work-cell iframe {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border: 0;
       display: block;
     }
     .work-cell.is-video video { opacity: 0; transition: opacity 0.4s ease; }
@@ -190,19 +191,17 @@ const rows: Row[] = [
                 </div>
               );
             }
-            if (m.t === 'fetch') {
+            if (m.t === 'cf') {
               return (
-                <div class="work-cell">
-                  <img src={fImg(m.u, 1400)} srcset={fSet(m.u)} sizes="(max-width:768px) 100vw, 40vw" alt="" decoding="async" loading="lazy" />
+                <div class="work-cell is-video">
+                  <img class="poster" src={cfPoster(m.id)} alt="" decoding="async" loading="lazy" />
+                  <iframe data-embed={cfEmbed(m.id)} loading="lazy" allow="autoplay; fullscreen" title="Floyd"></iframe>
                 </div>
               );
             }
             if (m.t === 'clgif') {
               // Animated gif stored on Cloudinary; the free plan blocks transforms on it, so deliver raw.
               return <div class="work-cell"><img src={`${CL}image/upload/${m.id}`} alt="" decoding="async" loading="lazy" /></div>;
-            }
-            if (m.t === 'sqgif') {
-              return <div class="work-cell"><img src={sqGif(m.u)} alt="" decoding="async" loading="lazy" /></div>;
             }
             return (
               <div class="work-cell is-video">
@@ -242,6 +241,12 @@ const rows: Row[] = [
         entries.forEach((e) => {
           const cell = e.target as HTMLElement;
           const v = cell.querySelector('video') as HTMLVideoElement;
+          if (!v) {
+            // Cloudflare Stream cell: mount the iframe once, when near view.
+            const f = cell.querySelector('iframe[data-embed]') as HTMLIFrameElement;
+            if (f && e.isIntersecting && !f.src) f.src = f.dataset.embed || '';
+            return;
+          }
           if (e.isIntersecting) {
             if (!v.src) v.src = v.dataset.src || '';
             const p = v.play();
