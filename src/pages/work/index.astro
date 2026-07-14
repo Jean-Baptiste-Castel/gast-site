@@ -3,55 +3,48 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/global.css';
 import projects from '../../data/projects.json';
 
-// Projects index: cover grid of all work pages, in pager order.
-// Covers resolve to the first SAFE media of each project (stored Cloudinary
-// image / Stream thumbnail / Cloudinary video poster) — never Squarespace.
+// Projects index — mirrors the live site: 2 columns, big animated covers,
+// project title BELOW each cover. Order + covers defined in projects.json.
+// Cover types: 'cf' Stream (animated gif thumbnail), 'clgif' raw stored gif,
+// 'cli' stored image, 'clvid' Cloudinary video poster.
 const order: string[] = (projects as any).order;
 const P = (projects as any).projects;
+const covers = (projects as any).covers || {};
 const CF_SUB: string = (projects as any).cfSub;
 const CL = 'https://res.cloudinary.com/dvyflhlls/';
 
-const FLOYD_COVER = `${CL}image/upload/f_auto,q_auto,w_900/floyd_hero_v14`;
-
-function coverOf(slug: string): string | null {
-  if (slug === 'floyd') return FLOYD_COVER;
-  const items = P[slug]?.items || [];
-  for (const it of items) {
-    if (it.t === 'cli') return `${CL}image/upload/f_auto,q_auto,w_900/${it.id}`;
-    if (it.t === 'cf') return `https://${CF_SUB}/${it.id}/thumbnails/thumbnail.jpg?width=900`;
-    if (it.t === 'clvid') return `${CL}video/upload/so_0,f_auto,q_auto,w_900/${it.id}.jpg`;
-    if (it.t === 'yt') return `https://i.ytimg.com/vi/${it.id}/hqdefault.jpg`;
-  }
+function coverUrl(slug: string): string | null {
+  const c = covers[slug];
+  if (!c) return null;
+  if (c.t === 'cf') return `https://${CF_SUB}/${c.id}/thumbnails/thumbnail.gif?time=0s&duration=4s&width=640&fps=12`;
+  if (c.t === 'clgif') return `${CL}image/upload/${c.id}.gif`;
+  if (c.t === 'cli') return `${CL}image/upload/f_auto,q_auto,w_1200/${c.id}`;
+  if (c.t === 'clvid') return `${CL}video/upload/so_0,f_auto,q_auto,w_1200/${c.id}.jpg`;
   return null;
 }
 const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : (P[s]?.name || s));
-const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: coverOf(slug) }));
+const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: coverUrl(slug) }));
 ---
 
-<BaseLayout title="Projects | CGI & Creative Direction Studio, Amsterdam" activePage="work">
+<BaseLayout title="CGI & Motion Design Projects | Amsterdam | Gast Studio" activePage="work">
   <style>
-    .work-index { width: 100vw; margin-left: calc(50% - 50vw); padding: clamp(8px,2vw,32px) clamp(10px,3vw,56px) clamp(56px,8vw,120px); }
-    .wgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 2200px; margin: 0 auto; }
-    .wcard { position: relative; display: block; overflow: hidden; background: #141414; aspect-ratio: 4/3; text-decoration: none; }
-    .wcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.3,1), opacity .3s; }
-    .wcard:hover img { transform: scale(1.03); }
-    .wcard .wname {
-      position: absolute; left: 12px; bottom: 11px; z-index: 2;
-      font-size: 12px; letter-spacing: .03em; color: rgba(228,228,228,.95);
-      opacity: 0; transform: translateY(12px);
-      transition: opacity .28s ease, transform .34s cubic-bezier(.2,.7,.3,1);
-    }
-    .wcard:hover .wname { opacity: 1; transform: translateY(0); }
-    .wcard.nocover .wname { opacity: 1; transform: none; color: #555; }
-    @media (max-width: 900px) { .wgrid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .wgrid { grid-template-columns: 1fr; } .wcard .wname { opacity: 1; transform: none; } }
+    .work-index { max-width: 2200px; margin: 0 auto; padding: clamp(8px,2vw,40px) clamp(16px,3vw,46px) clamp(56px,8vw,120px); }
+    .wgrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,64px) clamp(16px,2.4vw,36px); }
+    .wcard { display: block; text-decoration: none; }
+    .wcover { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #101010; }
+    .wcover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .3s; }
+    .wname { display: block; margin-top: 14px; font-size: clamp(16px, 1.6vw, 22px); font-weight: 400; color: var(--headline); letter-spacing: .01em; }
+    .wcard:hover .wname { opacity: .6; }
+    @media (max-width: 700px) { .wgrid { grid-template-columns: 1fr; } }
   </style>
 
   <div class="work-index">
     <div class="wgrid">
       {entries.map((e) => (
-        <a class:list={["wcard", { nocover: !e.cover }]} href={`/work/${e.slug}`} aria-label={e.name}>
-          {e.cover && <img src={e.cover} alt={e.name} decoding="async" loading="lazy" />}
+        <a class="wcard" href={`/work/${e.slug}`} aria-label={e.name}>
+          <span class="wcover">
+            {e.cover && <img src={e.cover} alt={e.name} decoding="async" loading="lazy" />}
+          </span>
           <span class="wname">{e.name}</span>
         </a>
       ))}
