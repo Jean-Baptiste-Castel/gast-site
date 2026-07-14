@@ -16,10 +16,10 @@ const CL = 'https://res.cloudinary.com/dvyflhlls/';
 function coverUrl(slug: string): string | null {
   const c = covers[slug];
   if (!c) return null;
-  if (c.t === 'cf') return `https://${CF_SUB}/${c.id}/thumbnails/thumbnail.gif?time=0s&duration=4s&width=320&fps=12`;
+  if (c.t === 'cf') return `https://${CF_SUB}/${c.id}/thumbnails/thumbnail.gif?time=2s&duration=4s&width=320&fps=12`;
   if (c.t === 'clgif') return `${CL}image/upload/${c.id}.gif`;
   if (c.t === 'cli') return `${CL}image/upload/f_auto,q_auto,w_1200/${c.id}`;
-  if (c.t === 'clvid') return `${CL}video/upload/so_0,f_auto,q_auto,w_1200/${c.id}.jpg`;
+  if (c.t === 'clvid') return `${CL}video/upload/so_3,f_auto,q_auto,w_1200/${c.id}.jpg`;
   return null;
 }
 const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : (P[s]?.name || s));
