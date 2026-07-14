@@ -39,11 +39,12 @@ const ar = (d: string) => { const [w, h] = (d || '16x9').split('x').map(Number);
 const wRatio = (d: string) => { const [w, h] = (d || '1x1').split('x').map(Number); return w && h ? (w / h).toFixed(4) : '1'; };
 const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt';
 
-// Group consecutive images (and gaps) into masonry blocks; videos render as feature blocks.
+// Group consecutive gallery items into justified blocks; hero videos render as features.
+// 'cf' Stream videos (converted gifs) are INLINE gallery tiles, like on the live site.
 type Block = { kind: 'grid'; items: any[] } | { kind: 'media'; item: any };
 const blocks: Block[] = [];
 for (const it of data.items) {
-  if (it.t === 'cli' || it.t === 'clgif' || (it.t === 'miss' && !it.feat)) {
+  if (it.t === 'cli' || it.t === 'clgif' || it.t === 'cf' || (it.t === 'miss' && !it.feat)) {
     const last = blocks[blocks.length - 1];
     if (last && last.kind === 'grid') last.items.push(it);
     else blocks.push({ kind: 'grid', items: [it] });
@@ -97,7 +98,9 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
     .prow { display: flex; gap: 10px; margin-bottom: 10px; }
     .prow:last-child { margin-bottom: 0; }
     .ptile { position: relative; width: 100%; overflow: hidden; background: #141414; line-height: 0; }
-    .ptile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ptile img, .ptile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ptile video { opacity: 0; transition: opacity .4s ease; z-index: 1; }
+    .ptile.playing video { opacity: 1; }
 
     /* Missing media: grey block + original filename (media not yet re-uploaded to CDN) */
     .ptile.miss, .feature-inner.miss { background: #1c1c1c; outline: 1px dashed #333; outline-offset: -1px; }
@@ -135,6 +138,11 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
                 ? <img src={clImg(m.id, 1000)} srcset={clSet(m.id)} sizes="(max-width:768px) 100vw, 33vw" alt="" decoding="async" loading="lazy" />
                 : m.t === 'clgif'
                 ? <img src={`${CL}image/upload/${m.id}.gif`} alt="" decoding="async" loading="lazy" />
+                : m.t === 'cf'
+                ? <>
+                    <img class="poster" src={cfPoster(m.id)} alt="" decoding="async" loading="lazy" />
+                    <video muted loop playsinline preload="none" data-hls={`https://${CF_SUB}/${m.id}/manifest/video.m3u8`}></video>
+                  </>
                 : <span class="miss-name">{m.name}</span>}
             </div>
           ))}
@@ -197,6 +205,7 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
     </nav>
   </div>
 
+  <script is:inline src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
   <script>
     // Justified rows in source order — mirrors the live Squarespace galleries:
     // every row fills the container width, aspect ratios preserved, no reordering.
@@ -215,12 +224,14 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
         const ars = tiles.map(function (t) { return Math.max(0.2, parseFloat(t.dataset.r || '1')); });
         const med = ars.slice().sort(function (a, b) { return a - b; })[Math.floor(ars.length / 2)] || 1;
         const target = Math.max(170, Math.min(600, W / (3.2 * med)));
-        let row = [], sum = 0;
+        let row = [], sum = 0, flushed = 0;
         function flush(isLast) {
           if (!row.length) return;
           const gaps = GAP * (row.length - 1);
           let h = (W - gaps) / sum;
-          if (isLast && h > target * 1.3) h = target * 1.3;
+          /* cap a stubby last row — but a single-row gallery always fills the width */
+          if (isLast && flushed > 0 && h > target * 1.3) h = target * 1.3;
+          flushed++;
           const div = document.createElement('div');
           div.className = 'prow';
           /* inline styles: Astro-scoped CSS can't reach JS-created rows */
@@ -245,6 +256,34 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
     layout();
     let rt;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 150); });
+
+    // Inline Stream tiles: lazy HLS autoplay when in view (like the homepage grid).
+    if ('IntersectionObserver' in window) {
+      const ioHls = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          const tile = e.target;
+          const v = tile.querySelector('video[data-hls]');
+          if (!v) return;
+          if (e.isIntersecting) {
+            if (!v.dataset.started) {
+              v.dataset.started = '1';
+              const src = v.dataset.hls || '';
+              if (window.Hls && window.Hls.isSupported()) {
+                const h = new window.Hls({ autoStartLoad: true, maxBufferLength: 8 });
+                h.loadSource(src); h.attachMedia(v);
+              } else {
+                v.src = src;
+              }
+            }
+            const p = v.play(); if (p && p.catch) p.catch(function () {});
+            tile.classList.add('playing');
+          } else { v.pause(); }
+        });
+      }, { rootMargin: '350px 0px' });
+      document.querySelectorAll('.ptile').forEach(function (t) {
+        if (t.querySelector('video[data-hls]')) ioHls.observe(t);
+      });
+    }
 
     // Cloudinary videos: lazy autoplay when in view.
     if ('IntersectionObserver' in window) {
