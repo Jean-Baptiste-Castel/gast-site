@@ -31,7 +31,7 @@ const entries = order.map((slug: string) => ({ slug, name: nameOf(slug), cover: 
     .work-index { max-width: 2200px; margin: 0 auto; padding: clamp(8px,2vw,40px) clamp(16px,3vw,46px) clamp(56px,8vw,120px); }
     .wgrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,64px) clamp(16px,2.4vw,36px); }
     .wcard { display: block; text-decoration: none; }
-    .wcover { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #101010; }
+    .wcover { display: block; position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #101010; }
     .wcover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .3s; }
     .wname { display: block; margin-top: 14px; font-size: clamp(16px, 1.6vw, 22px); font-weight: 400; color: var(--headline); letter-spacing: .01em; }
     .wcard:hover .wname { opacity: .6; }

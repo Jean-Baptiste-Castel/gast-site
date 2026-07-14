@@ -36,7 +36,7 @@ const cfPoster = (id: string) => `https://${CF_SUB}/${id}/thumbnails/thumbnail.j
 const cfEmbed = (id: string) => `https://${CF_SUB}/${id}/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=metadata`;
 
 const ar = (d: string) => { const [w, h] = (d || '16x9').split('x').map(Number); return w && h ? `${w}/${h}` : '16/9'; };
-const hRatio = (d: string) => { const [w, h] = (d || '1x1').split('x').map(Number); return w && h ? (h / w).toFixed(4) : '1'; };
+const wRatio = (d: string) => { const [w, h] = (d || '1x1').split('x').map(Number); return w && h ? (w / h).toFixed(4) : '1'; };
 const isVideo = (t: string) => t === 'clvid' || t === 'cf' || t === 'yt';
 
 // Group consecutive images (and gaps) into masonry blocks; videos render as feature blocks.
@@ -92,9 +92,10 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
     }
     .play svg { width: 64px; height: 64px; opacity: .92; filter: drop-shadow(0 2px 10px rgba(0,0,0,.5)); }
 
-    /* Image masonry block */
-    .pgrid { display: flex; gap: 10px; align-items: flex-start; }
-    .pcol { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+    /* Image gallery block: justified rows in source order (like the live galleries) */
+    .pgrid { display: block; }
+    .prow { display: flex; gap: 10px; margin-bottom: 10px; }
+    .prow:last-child { margin-bottom: 0; }
     .ptile { position: relative; width: 100%; overflow: hidden; background: #141414; line-height: 0; }
     .ptile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -129,7 +130,7 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
       {blocks.map((b) => b.kind === 'grid' ? (
         <div class="pgrid">
           {b.items.map((m: any) => (
-            <div class:list={["ptile", { miss: m.t === 'miss' }]} data-h={hRatio(m.d)} style={`aspect-ratio:${ar(m.d)}`}>
+            <div class:list={["ptile", { miss: m.t === 'miss' }]} data-r={wRatio(m.d)} style={`aspect-ratio:${ar(m.d)}`}>
               {m.t === 'cli'
                 ? <img src={clImg(m.id, 1000)} srcset={clSet(m.id)} sizes="(max-width:768px) 100vw, 33vw" alt="" decoding="async" loading="lazy" />
                 : m.t === 'clgif'
@@ -140,7 +141,7 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
         </div>
       ) : (
         <div class="feature">
-          <div class:list={["feature-inner", { 'is-video': b.item.t === 'clvid', miss: b.item.t === 'miss' }]} style={`aspect-ratio:${ar(b.item.d)}`}>
+          <div class:list={["feature-inner", { 'is-video': b.item.t === 'clvid', miss: b.item.t === 'miss' }]} style={`aspect-ratio:${ar(b.item.d)}; width:min(1180px, 100%, calc(88vh * ${wRatio(b.item.d)}))`}>
             {b.item.t === 'clvid' && (
               <>
                 <img class="poster" src={clPoster(b.item.id)} alt="" decoding="async" loading="lazy" />
@@ -197,33 +198,51 @@ const nameOf = (s: string) => (s === 'floyd' ? 'Floyd' : ((projects as any).proj
   </div>
 
   <script>
-    // Masonry: shortest-column packing per .pgrid (keeps source order, matches the home grid).
+    // Justified rows in source order — mirrors the live Squarespace galleries:
+    // every row fills the container width, aspect ratios preserved, no reordering.
+    // Target row height adapts to the gallery's median aspect ratio, so pages of
+    // small wide gifs pack tight while portrait sets get 2-3 big tiles per row.
     const grids = Array.from(document.querySelectorAll('.pgrid'));
-    const tiles = grids.map(function (g) { return Array.from(g.children); });
-    let cur = 0;
-    function cols() { const w = window.innerWidth; if (w < 700) return 2; if (w < 1100) return 3; return 4; }
+    const tilesArr = grids.map(function (g) { return Array.from(g.querySelectorAll('.ptile')); });
+    const GAP = 10;
     function layout() {
-      const n = cols(); if (n === cur) return; cur = n;
       grids.forEach(function (grid, gi) {
+        const tiles = tilesArr[gi];
+        if (!tiles.length) return;
+        const W = grid.clientWidth;
+        if (!W) return;
         grid.innerHTML = '';
-        const cs = [];
-        for (let i = 0; i < n; i++) {
-          const c = document.createElement('div');
-          c.style.cssText = 'flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;';
-          cs.push(c); grid.appendChild(c);
+        const ars = tiles.map(function (t) { return Math.max(0.2, parseFloat(t.dataset.r || '1')); });
+        const med = ars.slice().sort(function (a, b) { return a - b; })[Math.floor(ars.length / 2)] || 1;
+        const target = Math.max(170, Math.min(600, W / (3.2 * med)));
+        let row = [], sum = 0;
+        function flush(isLast) {
+          if (!row.length) return;
+          const gaps = GAP * (row.length - 1);
+          let h = (W - gaps) / sum;
+          if (isLast && h > target * 1.3) h = target * 1.3;
+          const div = document.createElement('div');
+          div.className = 'prow';
+          row.forEach(function (e) {
+            e.t.style.width = (h * e.r) + 'px';
+            e.t.style.height = h + 'px';
+            e.t.style.flex = '0 0 auto';
+            div.appendChild(e.t);
+          });
+          grid.appendChild(div);
+          row = []; sum = 0;
         }
-        const h = new Array(n).fill(0);
-        tiles[gi].forEach(function (t) {
-          let mi = 0;
-          for (let k = 1; k < n; k++) { if (h[k] < h[mi]) mi = k; }
-          cs[mi].appendChild(t);
-          h[mi] += parseFloat(t.dataset.h || '1') + 0.08;
+        tiles.forEach(function (t, i) {
+          row.push({ t: t, r: ars[i] });
+          sum += ars[i];
+          if (sum * target >= W - GAP * (row.length - 1)) flush(false);
         });
+        flush(true);
       });
     }
     layout();
     let rt;
-    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { cur = 0; layout(); }, 150); });
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 150); });
 
     // Cloudinary videos: lazy autoplay when in view.
     if ('IntersectionObserver' in window) {
