@@ -76,6 +76,13 @@ body {
   text-decoration-thickness: from-font;
   text-underline-position: from-font;
 }
+/* invisible 44px slot matching the Shopify basket icon, so link
+   positions are identical on site and shop (basket appears here) */
+.nav-cart-slot {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+}
 
 /* ── Footer (centered social icons) ── */
 .footer {
@@ -123,6 +130,11 @@ body {
   }
   .nav-link {
     font-size: 12px;
+  }
+  .nav-cart-slot {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
   }
   .footer {
     padding: 56px var(--page-pad) 48px;

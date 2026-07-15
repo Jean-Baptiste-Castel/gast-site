@@ -28,6 +28,9 @@ const { title, activePage = '' } = Astro.props;
     <a href="https://vbxikz-33.myshopify.com" class="nav-link">Store</a>
     <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
     <a href="/contact" class="nav-link">Contact</a>
+    <!-- reserved slot where the basket icon lives on the Shopify store,
+         so nav links align pixel-perfectly across site and shop -->
+    <span class="nav-cart-slot" aria-hidden="true"></span>
   </div>
 </nav>
 
