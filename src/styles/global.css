@@ -84,6 +84,37 @@ body {
   flex: 0 0 44px;
 }
 
+/* mobile hamburger — hidden on desktop, shown below 990px (same
+   breakpoint the Shopify store switches to its burger). Same icon. */
+.nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  color: var(--headline);
+  cursor: pointer;
+}
+.nav-burger svg { display: block; width: 18px; height: 18px; }
+.nav-drawer { display: none; }
+.nav-drawer-link {
+  font-family: 'Arimo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--headline);
+  text-decoration: none;
+  padding: 13px 0;
+}
+.nav-drawer-link.active {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: from-font;
+}
+
 /* ── Footer (centered social icons) ── */
 .footer {
   display: flex;
@@ -111,12 +142,9 @@ body {
   letter-spacing: -2px;
 }
 
-/* ── Mobile ── */
-@media (max-width: 768px) {
-  :root {
-    --page-pad: 20px;
-  }
-  /* Figma mobile nav (796:3): 375x67, pad 20, logo 45x26, links 12px gap 12 */
+/* ── Mobile: burger nav below 990px (same breakpoint & layout as the
+   Shopify store: 67px bar, logo 45x26 left, hamburger far right) ── */
+@media (max-width: 989px) {
   .nav {
     height: 67px;
     padding: 0 20px;
@@ -125,16 +153,25 @@ body {
     width: 45px;
     height: 26px;
   }
-  .nav-links {
-    gap: 12px;
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .nav-drawer:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 67px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    padding: 6px 20px 22px;
+    z-index: 60;
+    border-top: 1px solid #1a1a1a;
   }
-  .nav-link {
-    font-size: 12px;
-  }
-  .nav-cart-slot {
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-pad: 20px;
   }
   .footer {
     padding: 56px var(--page-pad) 48px;

@@ -32,7 +32,17 @@ const { title, activePage = '' } = Astro.props;
          so nav links align pixel-perfectly across site and shop -->
     <span class="nav-cart-slot" aria-hidden="true"></span>
   </div>
+  <!-- mobile hamburger (same icon as the Shopify store, right side) -->
+  <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M1 .5a.5.5 0 1 0 0 1h15.71a.5.5 0 0 0 0-1zM.5 8a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1A.5.5 0 0 1 .5 8m0 7a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5"/></svg>
+  </button>
 </nav>
+<div class="nav-drawer" id="nav-drawer" hidden>
+  <a href="/work" class:list={["nav-drawer-link", { active: activePage === 'work' }]}>Projects</a>
+  <a href="https://vbxikz-33.myshopify.com" class="nav-drawer-link">Store</a>
+  <a href="/about" class:list={["nav-drawer-link", { active: activePage === 'about' }]}>About</a>
+  <a href="/contact" class="nav-drawer-link">Contact</a>
+</div>
 
 <div class="page">
   <slot />
@@ -47,6 +57,21 @@ const { title, activePage = '' } = Astro.props;
     </a>
     <a href="https://www.are.na/jean-baptiste-castel/channels" target="_blank" rel="noopener" aria-label="Are.na" class="social social-arena">&#10038;&#10038;</a>
   </footer>
+
+<script is:inline>
+  (function () {
+    var b = document.querySelector('.nav-burger');
+    var d = document.getElementById('nav-drawer');
+    if (!b || !d) return;
+    function set(open) {
+      if (open) { d.removeAttribute('hidden'); b.setAttribute('aria-expanded', 'true'); document.documentElement.classList.add('nav-open'); }
+      else { d.setAttribute('hidden', ''); b.setAttribute('aria-expanded', 'false'); document.documentElement.classList.remove('nav-open'); }
+    }
+    b.addEventListener('click', function () { set(d.hasAttribute('hidden')); });
+    d.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 990) set(false); });
+  })();
+</script>
 
 </body>
 </html>
