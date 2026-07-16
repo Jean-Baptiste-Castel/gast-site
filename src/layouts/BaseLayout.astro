@@ -37,11 +37,12 @@ const { title, activePage = '' } = Astro.props;
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M1 .5a.5.5 0 1 0 0 1h15.71a.5.5 0 0 0 0-1zM.5 8a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1A.5.5 0 0 1 .5 8m0 7a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5"/></svg>
   </button>
 </nav>
-<div class="nav-drawer" id="nav-drawer" hidden>
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <a href="/work" class:list={["nav-drawer-link", { active: activePage === 'work' }]}>Projects</a>
   <a href="https://vbxikz-33.myshopify.com" class="nav-drawer-link">Store</a>
   <a href="/about" class:list={["nav-drawer-link", { active: activePage === 'about' }]}>About</a>
   <a href="/contact" class="nav-drawer-link">Contact</a>
+  <span class="nav-drawer-hint" aria-hidden="true">swipe up to close</span>
 </div>
 
 <div class="page">
@@ -63,13 +64,20 @@ const { title, activePage = '' } = Astro.props;
     var b = document.querySelector('.nav-burger');
     var d = document.getElementById('nav-drawer');
     if (!b || !d) return;
-    function set(open) {
-      if (open) { d.removeAttribute('hidden'); b.setAttribute('aria-expanded', 'true'); document.documentElement.classList.add('nav-open'); }
-      else { d.setAttribute('hidden', ''); b.setAttribute('aria-expanded', 'false'); document.documentElement.classList.remove('nav-open'); }
-    }
-    b.addEventListener('click', function () { set(d.hasAttribute('hidden')); });
-    d.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
-    window.addEventListener('resize', function () { if (window.innerWidth >= 990) set(false); });
+    function open()  { d.classList.add('open');  b.setAttribute('aria-expanded', 'true');  b.classList.add('is-open'); d.setAttribute('aria-hidden', 'false'); document.documentElement.classList.add('nav-open'); }
+    function close() { d.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); b.classList.remove('is-open'); d.setAttribute('aria-hidden', 'true');  document.documentElement.classList.remove('nav-open'); }
+    b.addEventListener('click', function () { d.classList.contains('open') ? close() : open(); });
+    d.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 990) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    // swipe up (or flick) to dismiss the panel
+    var startY = null;
+    d.addEventListener('touchstart', function (e) { startY = e.touches[0].clientY; }, { passive: true });
+    d.addEventListener('touchmove', function (e) {
+      if (startY === null) return;
+      if (e.touches[0].clientY - startY < -45) { close(); startY = null; }
+    }, { passive: true });
+    d.addEventListener('touchend', function () { startY = null; });
   })();
 </script>
 
