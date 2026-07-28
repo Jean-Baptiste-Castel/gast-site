@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+// Wholesale request page - about-page design language (Swiss grid, Arimo, dark).
+// Form posts name/email/company to the Google Apps Script endpoint, which
+// appends a row to the "Request" tab of the wholesale_batch_order_leads sheet.
+// The wholesale link itself is then sent personally by Jean-Baptiste (manual).
+---
+
+<BaseLayout title="Wholesale" activePage="">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet" />
+  <style is:global>
+.gast-wr {
+  --gw-bg: #000000;
+  --gw-headline: #EBEBEB;
+  --gw-body: #737373;
+  --gw-label: #4D4D4D;
+  --gw-border: #212121;
+  --gw-left-col: 240px;
+  --gw-page-pad: 120px;
+  --gw-body-max: 640px;
+  font-family: 'Arimo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--gw-body);
+  -webkit-font-smoothing: antialiased;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 55vh;
+}
+.gast-wr .gw-section {
+  display: flex;
+  padding: var(--gw-page-pad);
+  gap: 0;
+}
+.gast-wr .gw-left {
+  width: var(--gw-left-col);
+  min-width: var(--gw-left-col);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+.gast-wr .gw-label {
+  font-size: 11px;
+  line-height: 1;
+  color: var(--gw-label);
+}
+.gast-wr .gw-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.gast-wr .gw-headline {
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--gw-headline);
+  text-wrap: balance;
+}
+.gast-wr .gw-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gw-body);
+  max-width: var(--gw-body-max);
+  text-wrap: pretty;
+}
+.gast-wr form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 420px;
+  margin-top: 8px;
+}
+.gast-wr .gw-field { display: flex; flex-direction: column; gap: 8px; }
+.gast-wr .gw-field label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gw-label);
+}
+.gast-wr .gw-field label .gw-opt { text-transform: none; letter-spacing: 0; }
+.gast-wr .gw-field input {
+  background: transparent;
+  border: 1px solid var(--gw-border);
+  border-radius: 2px;
+  padding: 13px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gw-headline);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.gast-wr .gw-field input:focus { border-color: var(--gw-label); }
+.gast-wr .gw-field input::placeholder { color: #3a3a3a; }
+.gast-wr .gw-hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+.gast-wr button {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 13px 30px;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  font-family: inherit;
+  color: #0a0a0a;
+  background: #ebebeb;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gast-wr button:hover { opacity: 0.85; }
+.gast-wr button:disabled { opacity: 0.5; cursor: default; }
+.gast-wr .gw-note { font-size: 12px; color: var(--gw-label); line-height: 1.5; }
+.gast-wr .gw-note a { color: var(--gw-body); }
+.gast-wr .gw-done { display: none; flex-direction: column; gap: 16px; }
+.gast-wr .gw-done .gw-headline { font-size: 22px; }
+.gast-wr .gw-error { display: none; font-size: 13px; line-height: 1.5; color: #a05252; max-width: 420px; }
+.gast-wr .gw-error a { color: var(--gw-body); }
+@media (max-width: 768px) {
+  .gast-wr { --gw-page-pad: 20px; }
+  .gast-wr .gw-section { flex-direction: column; padding: 40px var(--gw-page-pad); gap: 16px; }
+  .gast-wr .gw-left { width: auto; min-width: 0; flex-direction: row; gap: 8px; }
+  .gast-wr .gw-headline { font-size: 22px; }
+  .gast-wr form { max-width: 100%; }
+}
+  </style>
+
+  <div class="gast-wr">
+    <section class="gw-section">
+      <div class="gw-left">
+        <span class="gw-label">Wholesale</span>
+        <span class="gw-label">Amsterdam</span>
+      </div>
+      <div class="gw-right">
+        <h1 class="gw-headline">Request wholesale access.</h1>
+        <p class="gw-text">We produce our vases in small factory batches and offer them to shops, galleries and stylists at wholesale prices. Leave your details below and we'll personally send you the link to the current wholesale order page.</p>
+
+        <form id="wrform" novalidate>
+          <div class="gw-field">
+            <label for="wr-name">Name</label>
+            <input id="wr-name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="gw-field">
+            <label for="wr-email">E-mail</label>
+            <input id="wr-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="gw-field">
+            <label for="wr-company">Company / brand <span class="gw-opt">(optional)</span></label>
+            <input id="wr-company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="gw-hp" aria-hidden="true">
+            <label for="wr-website">Website</label>
+            <input id="wr-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" id="wr-submit">Request access</button>
+          <p class="gw-note">We only use your details to send you the wholesale link. No newsletter, no sharing.</p>
+        </form>
+
+        <p class="gw-error" id="wr-error">Something went wrong sending your request. Please email us directly at <a href="mailto:contact@gast.studio">contact@gast.studio</a> and we'll send you the link.</p>
+
+        <div class="gw-done" id="wr-done">
+          <p class="gw-headline">Thank you.</p>
+          <p class="gw-text">We've received your request and will personally send the wholesale link to your inbox, usually within a day.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxmQQR3F--aYj3k8YEhHmmWcXBr-NsMqdaeUnV5YMSbpOejVkK8fBRxMC8_0-vKr3Dqzw/exec';
+      var form = document.getElementById('wrform');
+      var btn = document.getElementById('wr-submit');
+      var err = document.getElementById('wr-error');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('wr-name').value.trim();
+        var email = document.getElementById('wr-email').value.trim();
+        if (!name || !email || email.indexOf('@') < 1) {
+          form.reportValidity ? form.reportValidity() : alert('Please fill in your name and e-mail.');
+          if (!name) { document.getElementById('wr-name').focus(); } else { document.getElementById('wr-email').focus(); }
+          return;
+        }
+        err.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        var data = new URLSearchParams();
+        data.append('name', name);
+        data.append('email', email);
+        data.append('company', document.getElementById('wr-company').value.trim());
+        data.append('website', document.getElementById('wr-website').value);
+        fetch(ENDPOINT, { method: 'POST', body: data })
+          .then(function (r) {
+            if (!r.ok) { throw new Error('bad status'); }
+            form.style.display = 'none';
+            document.getElementById('wr-done').style.display = 'flex';
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = 'Request access';
+            err.style.display = 'block';
+          });
+      });
+    })();
+  </script>
+</BaseLayout>
