@@ -15,8 +15,8 @@ import '../styles/global.css';
 .gast-wr {
   --gw-bg: #000000;
   --gw-headline: #EBEBEB;
-  --gw-body: #737373;
-  --gw-label: #4D4D4D;
+  --gw-body: #A6A6A6;
+  --gw-label: #8C8C8C;
   --gw-border: #212121;
   --gw-left-col: 240px;
   --gw-page-pad: 120px;
@@ -84,18 +84,18 @@ import '../styles/global.css';
 }
 .gast-wr .gw-field label .gw-opt { text-transform: none; letter-spacing: 0; }
 .gast-wr .gw-field input {
-  background: transparent;
-  border: 1px solid var(--gw-border);
+  background: #f5f5f5;
+  border: 0;
   border-radius: 2px;
   padding: 13px 12px;
   font-size: 14px;
   font-family: inherit;
-  color: var(--gw-headline);
+  color: #111111;
   outline: none;
-  transition: border-color 0.2s;
+  transition: background 0.2s;
 }
-.gast-wr .gw-field input:focus { border-color: var(--gw-label); }
-.gast-wr .gw-field input::placeholder { color: #3a3a3a; }
+.gast-wr .gw-field input:focus { background: #ffffff; }
+.gast-wr .gw-field input::placeholder { color: #999999; }
 .gast-wr .gw-hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
 .gast-wr button {
   align-self: flex-start;
@@ -117,7 +117,7 @@ import '../styles/global.css';
 .gast-wr .gw-note a { color: var(--gw-body); }
 .gast-wr .gw-done { display: none; flex-direction: column; gap: 16px; }
 .gast-wr .gw-done .gw-headline { font-size: 22px; }
-.gast-wr .gw-error { display: none; font-size: 13px; line-height: 1.5; color: #a05252; max-width: 420px; }
+.gast-wr .gw-error { display: none; font-size: 13px; line-height: 1.5; color: #c96f6f; max-width: 420px; }
 .gast-wr .gw-error a { color: var(--gw-body); }
 .gast-wr .gw-modal-backdrop {
   display: none; position: fixed; inset: 0; z-index: 60;
