@@ -119,6 +119,21 @@ import '../styles/global.css';
 .gast-wr .gw-done .gw-headline { font-size: 22px; }
 .gast-wr .gw-error { display: none; font-size: 13px; line-height: 1.5; color: #a05252; max-width: 420px; }
 .gast-wr .gw-error a { color: var(--gw-body); }
+.gast-wr .gw-modal-backdrop {
+  display: none; position: fixed; inset: 0; z-index: 60;
+  background: rgba(0,0,0,0.75);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.gast-wr .gw-modal-backdrop.open { display: flex; }
+.gast-wr .gw-modal {
+  background: #0a0a0a; border: 1px solid var(--gw-border); border-radius: 2px;
+  max-width: 400px; width: 100%; padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.gast-wr .gw-modal h2 { font-size: 20px; line-height: 1.25; font-weight: 400; color: var(--gw-headline); }
+.gast-wr .gw-modal p { font-size: 14px; line-height: 1.5; color: var(--gw-body); }
+.gast-wr .gw-modal .gw-modal-store { font-size: 12px; color: var(--gw-label); }
+.gast-wr .gw-modal .gw-modal-store a { color: var(--gw-body); }
 @media (max-width: 768px) {
   .gast-wr { --gw-page-pad: 20px; }
   .gast-wr .gw-section { flex-direction: column; padding: 40px var(--gw-page-pad); gap: 16px; }
@@ -148,7 +163,7 @@ import '../styles/global.css';
             <input id="wr-email" name="email" type="email" required autocomplete="email" />
           </div>
           <div class="gw-field">
-            <label for="wr-company">Company / brand <span class="gw-opt">(optional)</span></label>
+            <label for="wr-company">Company / brand</label>
             <input id="wr-company" name="company" type="text" autocomplete="organization" />
           </div>
           <div class="gw-hp" aria-hidden="true">
@@ -167,6 +182,16 @@ import '../styles/global.css';
         </div>
       </div>
     </section>
+
+    <div class="gw-modal-backdrop" id="wr-modal" role="dialog" aria-modal="true" aria-labelledby="wr-modal-title">
+      <div class="gw-modal">
+        <h2 id="wr-modal-title">One detail missing</h2>
+        <p>Wholesale ordering is reserved for shops, galleries and professional stylists. Please add your company or brand name so we know who we're working with.</p>
+        <p>Independent stylist or designer? Your own studio or working name is fine.</p>
+        <p class="gw-modal-store">Just want a vase for yourself? <a href="https://vbxikz-33.myshopify.com" target="_blank" rel="noopener">Visit our store</a>.</p>
+        <button type="button" id="wr-modal-close">Add company details</button>
+      </div>
+    </div>
   </div>
 
   <script is:inline>
@@ -184,13 +209,18 @@ import '../styles/global.css';
           if (!name) { document.getElementById('wr-name').focus(); } else { document.getElementById('wr-email').focus(); }
           return;
         }
+        var company = document.getElementById('wr-company').value.trim();
+        if (!company) {
+          document.getElementById('wr-modal').classList.add('open');
+          return;
+        }
         err.style.display = 'none';
         btn.disabled = true;
         btn.textContent = 'Sending...';
         var data = new URLSearchParams();
         data.append('name', name);
         data.append('email', email);
-        data.append('company', document.getElementById('wr-company').value.trim());
+        data.append('company', company);
         data.append('website', document.getElementById('wr-website').value);
         fetch(ENDPOINT, { method: 'POST', body: data })
           .then(function (r) {
@@ -203,6 +233,14 @@ import '../styles/global.css';
             btn.textContent = 'Request access';
             err.style.display = 'block';
           });
+      });
+      var modal = document.getElementById('wr-modal');
+      document.getElementById('wr-modal-close').addEventListener('click', function () {
+        modal.classList.remove('open');
+        document.getElementById('wr-company').focus();
+      });
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) { modal.classList.remove('open'); }
       });
     })();
   </script>
