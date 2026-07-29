@@ -186,6 +186,7 @@ import '../styles/global.css';
     <div class="gw-modal-backdrop" id="wr-modal" role="dialog" aria-modal="true" aria-labelledby="wr-modal-title">
       <div class="gw-modal">
         <h2 id="wr-modal-title">One detail missing</h2>
+        <p id="wr-modal-junk" style="display:none; color: var(--gw-headline);">A dash or a dot doesn't count. We need the actual name of your shop or brand.</p>
         <p>Wholesale ordering is reserved for shops, galleries and professional stylists. Please add your company or brand name so we know who we're working with.</p>
         <p>Independent stylist or designer? Your own studio or working name is fine.</p>
         <p class="gw-modal-store">Just want a vase for yourself? <a href="https://vbxikz-33.myshopify.com" target="_blank" rel="noopener">Visit our store</a>.</p>
@@ -210,7 +211,15 @@ import '../styles/global.css';
           return;
         }
         var company = document.getElementById('wr-company').value.trim();
-        if (!company) {
+        var letterCount = 0;
+        try {
+          letterCount = (company.match(new RegExp('\\p{L}', 'gu')) || []).length;
+        } catch (err) {
+          letterCount = (company.match(/[a-zA-Z\u00C0-\u024F]/g) || []).length;
+        }
+        var isJunk = company.length > 0 && letterCount < 2;
+        if (!company || isJunk) {
+          document.getElementById('wr-modal-junk').style.display = isJunk ? 'block' : 'none';
           document.getElementById('wr-modal').classList.add('open');
           return;
         }
@@ -237,7 +246,7 @@ import '../styles/global.css';
       var modal = document.getElementById('wr-modal');
       document.getElementById('wr-modal-close').addEventListener('click', function () {
         modal.classList.remove('open');
-        document.getElementById('wr-company').focus();
+        document.getElementById('wr-company').select();
       });
       modal.addEventListener('click', function (e) {
         if (e.target === modal) { modal.classList.remove('open'); }
