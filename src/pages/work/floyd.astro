@@ -27,7 +27,8 @@ type Item =
   | { t: 'clgif'; id: string }
   | { t: 'fetch'; u: string }
   | { t: 'cf'; id: string }
-  | { t: 'vid'; id: string };
+  | { t: 'vid'; id: string }
+  | { t: 'local'; src: string; poster: string };
 
 type Row = { cols: number; ar: number; feature?: boolean; items: Item[] };
 
@@ -42,7 +43,7 @@ const rows: Row[] = [
     { t: 'cl', id: 'STILL_HERO_GOLD_V2.16_yeg33y' },
   ]},
   { cols: 4, ar: 0.56, feature: true, items: [
-    { t: 'cf', id: 'c3a8515a8960a1cfcf4c182534ad17f5' },
+    { t: 'local', src: '/videos/floyd_v002_pit.mp4', poster: '/videos/floyd_v002_pit.jpg' },
     { t: 'vid', id: 'PIT_STOP_HERO_GOLD_W-REDtoBLUE_9.16_V003_lldbov' },
     { t: 'vid', id: 'BLUE_PIT_9.16_Web_auqt06' },
     { t: 'vid', id: 'MainEdit_122_wicm8j' },
@@ -199,6 +200,15 @@ const rows: Row[] = [
                 </div>
               );
             }
+            if (m.t === 'local') {
+              // Self-hosted on Netlify (public/videos).
+              return (
+                <div class="work-cell is-video">
+                  <img class="poster" src={m.poster} alt="" decoding="async" loading="lazy" />
+                  <video muted loop playsinline preload="none" data-src={m.src}></video>
+                </div>
+              );
+            }
             if (m.t === 'clgif') {
               // Animated gif stored on Cloudinary; the free plan blocks transforms on it, so deliver raw.
               return <div class="work-cell"><img src={`${CL}image/upload/${m.id}`} alt="" decoding="async" loading="lazy" /></div>;
@@ -227,7 +237,7 @@ const rows: Row[] = [
     </section>
 
     <nav class="work-pager">
-      <a class="pager-link" href="/work/swarovski-x-ariana-grande">
+      <a class="pager-link" href="https://www.gast.studio/work/swarovski-x-ariana-grande">
         Swarovski x Ariana Grande
         <svg class="pager-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>
       </a>

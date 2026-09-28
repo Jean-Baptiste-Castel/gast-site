@@ -5,6 +5,10 @@ interface Props {
 }
 
 const { title, activePage = '' } = Astro.props;
+// This site is served on Netlify for speed, but the main site lives on Squarespace.
+// Nav always points back to the live domain so visitors never land on the
+// unpublished Netlify home or the raw Shopify store.
+const SITE = 'https://www.gast.studio';
 ---
 
 <!DOCTYPE html>
@@ -20,14 +24,14 @@ const { title, activePage = '' } = Astro.props;
 <body>
 
 <nav class="nav">
-  <a href="/" class="nav-logo">
+  <a href={`${SITE}/`} class="nav-logo">
     <img src="/gast-wordmark-white.png" alt="Gast">
   </a>
   <div class="nav-links">
-    <a href="/work" class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
-    <a href="https://vbxikz-33.myshopify.com" class="nav-link">Store</a>
-    <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
-    <a href="/contact" class="nav-link">Contact</a>
+    <a href={`${SITE}/work`} class:list={["nav-link", { active: activePage === 'work' }]}>Projects</a>
+    <a href={`${SITE}/store`} class="nav-link">Store</a>
+    <a href={`${SITE}/about`} class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+    <a href={`${SITE}/contact`} class="nav-link">Contact</a>
     <!-- reserved slot where the basket icon lives on the Shopify store,
          so nav links align pixel-perfectly across site and shop -->
     <span class="nav-cart-slot" aria-hidden="true"></span>
@@ -38,10 +42,10 @@ const { title, activePage = '' } = Astro.props;
   </button>
 </nav>
 <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
-  <a href="/work" class:list={["nav-drawer-link", { active: activePage === 'work' }]}>Projects</a>
-  <a href="https://vbxikz-33.myshopify.com" class="nav-drawer-link">Store</a>
-  <a href="/about" class:list={["nav-drawer-link", { active: activePage === 'about' }]}>About</a>
-  <a href="/contact" class="nav-drawer-link">Contact</a>
+  <a href={`${SITE}/work`} class:list={["nav-drawer-link", { active: activePage === 'work' }]}>Projects</a>
+  <a href={`${SITE}/store`} class="nav-drawer-link">Store</a>
+  <a href={`${SITE}/about`} class:list={["nav-drawer-link", { active: activePage === 'about' }]}>About</a>
+  <a href={`${SITE}/contact`} class="nav-drawer-link">Contact</a>
   <span class="nav-drawer-hint" aria-hidden="true">swipe up to close</span>
 </div>
 
