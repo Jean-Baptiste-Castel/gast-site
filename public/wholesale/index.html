@@ -42,7 +42,7 @@
       align-items: start;
     }
 
-    .products { display: grid; gap: 28px; }
+    .products { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
 
     .product {
       background-color: var(--grey-800);
@@ -239,6 +239,37 @@
 
     .summary-empty { font-size: 13px; color: var(--grey-600); padding: 6px 0 10px; }
 
+    .summary-group { padding: 8px 0; border-bottom: 1px solid var(--grey-700); }
+    .summary-group:last-child { border-bottom: none; }
+    .summary-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 10px; font-size: 13px; color: var(--white);
+    }
+    .summary-head-price { white-space: nowrap; }
+    .summary-unit { color: var(--grey-500); font-size: 12px; margin-left: 4px; white-space: nowrap; }
+
+    .summary-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--grey-300);
+      padding: 4px 0 0 2px;
+    }
+    .summary-dots { display: flex; gap: 3px; flex-shrink: 0; }
+    .summary-dots .color-dot { width: 10px; height: 10px; }
+    .summary-item-name { flex: 1; min-width: 0; }
+    .summary-item-ref { color: var(--grey-500); white-space: nowrap; }
+    .summary-item-qty { white-space: nowrap; color: var(--white); }
+    .summary-remove {
+      width: 22px; height: 22px; flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--grey-600);
+      border-radius: 50%;
+      color: var(--grey-300);
+      font-size: 13px; line-height: 1;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .summary-remove:hover { border-color: var(--white); color: var(--white); }
+
     .summary-total {
       display: flex; justify-content: space-between;
       border-top: 1px solid var(--grey-700);
@@ -276,12 +307,12 @@
     .footer a { color: var(--grey-300); text-decoration: none; }
 
     @media (max-width: 1100px) {
-      .layout { grid-template-columns: 1fr; }
+      .layout { grid-template-columns: minmax(0, 1fr); }
       .sidebar { position: static; }
     }
 
     @media (max-width: 760px) {
-      .product { grid-template-columns: 1fr; }
+      .product { grid-template-columns: minmax(0, 1fr); }
       .gallery-main { width: 100%; height: 260px; }
       .gallery-thumbs { width: 100%; }
     }
@@ -587,6 +618,59 @@
       return best;
     }
 
+    /* ═══ COLOR NAME (plain-language name for a picked hex) ═══ */
+    function colorName(hex) {
+      let [r, g, b] = hexToRgb(hex).map(v => v / 255);
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      const l = (max + min) / 2;
+      const d = max - min;
+      const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+      let h = 0;
+      if (d !== 0) {
+        if (max === r) h = 60 * (((g - b) / d) % 6);
+        else if (max === g) h = 60 * ((b - r) / d + 2);
+        else h = 60 * ((r - g) / d + 4);
+      }
+      if (h < 0) h += 360;
+
+      if (l < 0.13) return 'Black';
+      if (l > 0.93) return 'White';
+      if (s < 0.12) {
+        if (l > 0.85) return 'Off-white';
+        if (l > 0.6) return 'Light grey';
+        if (l > 0.35) return 'Grey';
+        return 'Charcoal';
+      }
+      if (h >= 15 && h < 50 && l < 0.4) return 'Brown';
+      if (h >= 20 && h < 60 && s < 0.45 && l >= 0.4) return l > 0.8 ? 'Cream' : 'Beige';
+      if (h < 12 || h >= 345) {
+        if (l > 0.72) return 'Pink';
+        return l < 0.33 ? 'Burgundy' : 'Red';
+      }
+      if (h < 42) return l > 0.72 ? 'Peach' : 'Orange';
+      if (h < 66) {
+        if (l > 0.82) return 'Cream';
+        return l < 0.32 ? 'Olive' : 'Yellow';
+      }
+      if (h < 85) return l < 0.32 ? 'Olive' : 'Lime';
+      if (h < 160) {
+        if (l > 0.75) return 'Mint';
+        return l < 0.25 ? 'Dark green' : 'Green';
+      }
+      if (h < 195) return l < 0.3 ? 'Petrol' : 'Turquoise';
+      if (h < 250) {
+        if (l > 0.72) return 'Light blue';
+        return l < 0.3 ? 'Navy' : 'Blue';
+      }
+      if (h < 290) return l > 0.72 ? 'Lilac' : 'Purple';
+      if (h < 320) return l > 0.72 ? 'Pink' : 'Magenta';
+      return l > 0.6 ? 'Pink' : (l < 0.33 ? 'Burgundy' : 'Fuchsia');
+    }
+
+    function customLabel(hex, code) {
+      return `${colorName(hex)} · ${code}`;
+    }
+
     /* ═══ HELPERS ═══ */
     function customQty(product) {
       return (customEntries[product.id] || []).reduce((s, e) => s + (e.qty || 0), 0);
@@ -664,17 +748,17 @@
               <span class="part-label">${p.customParts[0]}</span>
               <input type="color" class="color-picker" value="${e.hex}"
                 oninput="pickCustomEntry('${p.id}', ${i}, this.value, 1)">
-              <span class="pantone-result" id="pantone-result-${p.id}-${i}">Pantone ${e.code}</span>
+              <span class="pantone-result" id="pantone-result-${p.id}-${i}">${customLabel(e.hex, e.code)}</span>
             </div>
             <div class="picker-part">
               <span class="part-label">${p.customParts[1]}</span>
               <input type="color" class="color-picker" value="${e.hex2}"
                 oninput="pickCustomEntry('${p.id}', ${i}, this.value, 2)">
-              <span class="pantone-result" id="pantone-result-${p.id}-${i}-2">Pantone ${e.code2}</span>
+              <span class="pantone-result" id="pantone-result-${p.id}-${i}-2">${customLabel(e.hex2, e.code2)}</span>
             </div>` : `
             <input type="color" class="color-picker" value="${e.hex}"
               oninput="pickCustomEntry('${p.id}', ${i}, this.value, 1)">
-            <span class="pantone-result" id="pantone-result-${p.id}-${i}">Pantone ${e.code}</span>`;
+            <span class="pantone-result" id="pantone-result-${p.id}-${i}">${customLabel(e.hex, e.code)}</span>`;
           return `
           <div class="custom-row">
             ${pickers}
@@ -782,7 +866,15 @@
     }
 
     function removeCustom(productId, index) {
+      clearTimeout(debounceTimer);
       customEntries[productId].splice(index, 1);
+      renderProducts();
+      updateSummary();
+    }
+
+    function removeLine(key) {
+      clearTimeout(debounceTimer);
+      orderQtys[key] = 0;
       renderProducts();
       updateSummary();
     }
@@ -793,12 +885,12 @@
         e.hex2 = hex;
         e.code2 = nearestPantone(hex).code;
         const el = document.getElementById('pantone-result-' + productId + '-' + index + '-2');
-        if (el) el.textContent = 'Pantone ' + e.code2;
+        if (el) el.textContent = customLabel(e.hex2, e.code2);
       } else {
         e.hex = hex;
         e.code = nearestPantone(hex).code;
         const el = document.getElementById('pantone-result-' + productId + '-' + index);
-        if (el) el.textContent = 'Pantone ' + e.code;
+        if (el) el.textContent = customLabel(e.hex, e.code);
       }
       updateSummary();
     }
@@ -841,7 +933,49 @@
             totalPieces += qty;
             totalPrice += sub;
             const label = Object.keys(p.groups).length > 1 ? `${p.name} (${g.label}) × ${qty}` : `${p.name} × ${qty}`;
-            lines += `<div class="summary-line"><span>${label}</span><span>€${sub}</span></div>`;
+
+            let items = '';
+            p.colors.filter(c => c.group === gk).forEach(c => {
+              const key = p.id + '|' + c.name;
+              const q = orderQtys[key] || 0;
+              if (q <= 0) return;
+              items += `
+                <div class="summary-item">
+                  <span class="summary-dots"><span class="color-dot" style="background-color:${c.hex}"></span></span>
+                  <span class="summary-item-name">${c.name}</span>
+                  <span class="summary-item-qty">× ${q}</span>
+                  <button class="summary-remove" onclick="removeLine('${key}')" title="Remove" aria-label="Remove ${c.name} ${p.name}">×</button>
+                </div>`;
+            });
+            if (p.customGroup === gk) {
+              (customEntries[p.id] || []).forEach((e, i) => {
+                if (!(e.qty > 0)) return;
+                let dots, name;
+                if (p.customParts) {
+                  dots = `<span class="color-dot" style="background-color:${e.hex}"></span><span class="color-dot" style="background-color:${e.hex2}"></span>`;
+                  name = `Custom · ${p.customParts[0]} ${colorName(e.hex)} <span class="summary-item-ref">${e.code}</span> / ${p.customParts[1]} ${colorName(e.hex2)} <span class="summary-item-ref">${e.code2}</span>`;
+                } else {
+                  dots = `<span class="color-dot" style="background-color:${e.hex}"></span>`;
+                  name = `Custom ${colorName(e.hex)} <span class="summary-item-ref">${e.code}</span>`;
+                }
+                items += `
+                <div class="summary-item">
+                  <span class="summary-dots">${dots}</span>
+                  <span class="summary-item-name">${name}</span>
+                  <span class="summary-item-qty">× ${e.qty}</span>
+                  <button class="summary-remove" onclick="removeCustom('${p.id}', ${i})" title="Remove" aria-label="Remove custom color ${p.name}">×</button>
+                </div>`;
+              });
+            }
+
+            lines += `
+              <div class="summary-group">
+                <div class="summary-head">
+                  <span>${label}<span class="summary-unit">€${tier.price}/pc</span></span>
+                  <span class="summary-head-price">€${sub}</span>
+                </div>
+                ${items}
+              </div>`;
           }
         });
       });
@@ -881,9 +1015,9 @@
             (customEntries[p.id] || []).forEach(e => {
               if (e.qty > 0) {
                 if (p.customParts) {
-                  details += `   Custom (${p.customParts[0]}: Pantone ${e.code} / ${p.customParts[1]}: Pantone ${e.code2}): ${e.qty} pcs\n`;
+                  details += `   Custom (${p.customParts[0]}: ${colorName(e.hex)}, Pantone ${e.code} / ${p.customParts[1]}: ${colorName(e.hex2)}, Pantone ${e.code2}): ${e.qty} pcs\n`;
                 } else {
-                  details += `   Custom (Pantone ${e.code}): ${e.qty} pcs\n`;
+                  details += `   Custom ${colorName(e.hex)} (Pantone ${e.code}): ${e.qty} pcs\n`;
                 }
               }
             });
